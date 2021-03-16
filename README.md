@@ -22,7 +22,10 @@ For collect the submission I follow thise [guide](https://github.com/toperkin/st
 
 At the beginning I made a notification for all new modify at the google sheet, but for receive the message on my Gmail address is necessary create a google script embedded on google form.
 
-If you want  you can create a copy of the form I use and modify as you prefer: [myform](https://docs.google.com/forms/d/1BWXmqJLUO1MXBruOmpoSkQHbj3cxPeNlB1KD9A8kM7o/copy)  or fallow the folder to see the google script and the html email.
-
+If you want  you can fallow the folder to see the google script and the html email.
+The script create on google form, NB not in the connected sheet, necessity the google permission for send email as you and the activation trigger for the function “sendEmail”.
+In two word the script copy the message that arrived from the form and send an email to you, as the guest send a direct email. 
+The good point is that all are free and on your “roof”.
+In the repository google form there are the html template: Italian version and English version.
 
 
