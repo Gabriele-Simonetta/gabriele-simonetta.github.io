@@ -19,7 +19,7 @@ function sendEmail(e){
   }
   Logger.log(nome)
  var subject= "New mail from: "+ nome + "on your site" ;
- var recipient = "gabriele.simonetta@gmail.com";
+ var recipient = "youremail@";
  var message = getMessage(nome,formattedDate,emailTO,textBody);
 
   GmailApp.sendEmail(recipient,subject,textBody,{name: emailTO, htmlBody : message})        
