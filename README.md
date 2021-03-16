@@ -1,9 +1,9 @@
 # gabriele-simonetta.github.io
 My portfolio website
 
-To create my portfolio website I start to follow the guide to create site on GitHub [here](https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site)
+To create my portfolio website I start to follow the guide to create site on GitHub [here](https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site).
 ## Html base template
-At the link: <https://www.free-css.com/>  you can find just two template for all type of site you want. 
+At the [link](https://www.free-css.com/)  you can find just two template for all type of site you want. 
 
 These are the steps I performed:
 
@@ -17,11 +17,11 @@ The contact me section was the hardest part.
 Remain between us, but there is still a problem with confirming the submission of the form that I cannot get past.
 ## Google Form for feedback
 
-For collect the submission I follow the guide: <https://github.com/toperkin/staticFormEmails#step-5---add-some-javascript-to-keep-track-of-what-happens-after-a-submit> that permit to save all data on google forms.
+For collect the submission I follow thise [guide](https://github.com/toperkin/staticFormEmails#step-5---add-some-javascript-to-keep-track-of-what-happens-after-a-submit) that permit to save all data on google forms.
 
 At the beginning I made a notification for all new modify at the google sheet, but for receive the message on my Gmail address is necessary create a google script embedded on google form.
 
-If you want  you can create a copy of the form I use and modify as you prefer: <https://docs.google.com/forms/d/1BWXmqJLUO1MXBruOmpoSkQHbj3cxPeNlB1KD9A8kM7o/copy>  or fallow the folder to see the google script and the html email.
+If you want  you can create a copy of the form I use and modify as you prefer: [myform](https://docs.google.com/forms/d/1BWXmqJLUO1MXBruOmpoSkQHbj3cxPeNlB1KD9A8kM7o/copy)  or fallow the folder to see the google script and the html email.
 
 
 
