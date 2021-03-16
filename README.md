@@ -1,5 +1,6 @@
 # gabriele-simonetta.github.io
-My portfolio website
+## _My portfolio website_
+
 
 To create my portfolio website I start to follow the guide to create site on GitHub [here](https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site).
 ## Html base template
