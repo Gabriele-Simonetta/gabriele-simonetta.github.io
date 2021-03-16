@@ -1,7 +1,7 @@
 # gabriele-simonetta.github.io
 My portfolio website
 
-To create my portfolio website I start to follow the guide to create site on GitHub here: <https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site> 
+To create my portfolio website I start to follow the guide to create site on GitHub [here] (https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site)
 ## Html base template
 At the link: <https://www.free-css.com/>  you can find just two template for all type of site you want. 
 
