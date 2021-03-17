@@ -18,7 +18,7 @@ function sendEmail(e){
     }  
   }
   Logger.log(nome)
- var subject= "New mail from: "+ nome + "on your site" ;
+ var subject= "New mail from: "+ nome + " on your site" ;
  var recipient = "youremail@";
  var message = getMessage(nome,formattedDate,emailTO,textBody);
 
