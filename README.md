@@ -28,4 +28,5 @@ Inshort words the script copy the message that arrived from the form and send an
 The good point is that all are free and on your “roof”.
 In the repository google form there are alse twp html template for the email: Italian version and English version.
 
-
+![screen email](https://github.com/Gabriele-Simonetta/gabriele-simonetta.github.io/blob/main/assets/img/email.jpg)
+*Screen of the email I receive from the form on the site*
