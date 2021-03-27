@@ -606,8 +606,8 @@ a.icon-up-bg:hover {
 .scroll-down-gif {
   position: absolute;
   bottom: 0;
-  /*left: 50%;*/
-  margin-left: +10px;
+  left: 100%;
+  margin-left: -152px;
   z-index: 999999;
 }
 .hero .scroll-down-gif img {
