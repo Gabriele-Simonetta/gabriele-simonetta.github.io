@@ -69,7 +69,7 @@ if (isset($_POST['Email'])) {
 
     <!-- include your success message below -->
 
-    Grazie per avermi scritto, ti risponderò il prima possibile
+    Grazie per avermi scritto, ti risponderò il prima possibile.
 
 <?php
 }

@@ -85,5 +85,20 @@ $(function() {
                 return false;
             }
     });
+     // form google
+     function processForm(e) {
+        var button = document.getElementById("submit-button");
+        button.innerText = "Inviato";
+        // aggiungi classe "sent" quando hai la classe fai l'animazione
+        form.reset()
+    }
+    
+    var form = document.getElementById('gform');
+    if (form.attachEvent) {
+        form.attachEvent("submit", processForm);
+    } else {
+        form.addEventListener("submit", processForm);
+    }
+
     
 });
