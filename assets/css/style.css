@@ -614,3 +614,16 @@ a.icon-up-bg:hover {
   width: 100px;
   height: 100px;
 }
+
+@keyframes flyAway {
+  from {
+    transform: translate(0) scale(1) rotate(0);
+  }
+  to {
+    transform: translate(30vh, -5vh) scale(0) rotate(-20deg);
+  }
+}
+
+#submit-button.sent span {
+  animation: flyAway 1s cubic-bezier(0.45, -0.1, 0.75, 0.2) forwards;
+}
