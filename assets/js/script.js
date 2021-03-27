@@ -88,11 +88,14 @@ $(function() {
      // form google
      function processForm(e) {
         var button = document.getElementById("submit-button");
-        button.innerText = "Inviato";
-        // aggiungi classe "sent" quando hai la classe fai l'animazione
+       //button.innerText = "Inviato";
+       button.classList.add('sent');
         setTimeout(function() {
             form.reset();
           }, 1000);
+     /*   button.text(function(i, text) {
+            return text === "Inviato!" ? "Invia" : "Inviato!";
+        });   */
 
     }
     
@@ -101,7 +104,8 @@ $(function() {
         form.attachEvent("submit", processForm);
     } else {
         form.addEventListener("submit", processForm);
-    }
-
-    
+    }    
 });
+$( ".submit-button" ).click(function() {
+    $(this).html('Inviato');
+ });
