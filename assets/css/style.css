@@ -605,7 +605,7 @@ a.icon-up-bg:hover {
 
 .scroll-down-gif {
   position: absolute;
-  bottom: 55;
+  bottom: 105;
   left: 100%;
   margin-left: -152px;
   z-index: 999999;
