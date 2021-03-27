@@ -90,7 +90,7 @@ $(function() {
         var button = document.getElementById("submit-button");
         button.innerText = "Inviato";
         // aggiungi classe "sent" quando hai la classe fai l'animazione
-        form.reset()
+        form.reset();
     }
     
     var form = document.getElementById('gform');
