@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bilancio</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <style>
-      html, body {
+
+<head>
+  <title>Bilancio</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <style>
+    html,
+    body {
       min-height: 100%;
-      }
-      body, div, form, input, select, textarea, p { 
+    }
+
+    body,
+    div,
+    form,
+    input,
+    select,
+    textarea,
+    p {
       padding: 0;
       margin: 0;
       outline: none;
@@ -16,111 +26,144 @@
       font-size: 14px;
       color: #666;
       line-height: 22px;
-      }
-      h1 {
+    }
+
+    h1 {
       position: absolute;
       margin: 0;
       line-height: 50px;
       font-size: 60px;
       color: #fff;
       z-index: 2;
-      }
-      .testbox {
+    }
+
+    .testbox {
       display: flex;
       justify-content: center;
       align-items: center;
       height: inherit;
       padding: 20px;
-      }
-      form {
+    }
+
+    form {
       width: 98%;
       padding: 20px;
       border-radius: 6px;
       background: #fff;
-      box-shadow: 0 0 15px 0 #3263cd; 
-      }
-      .banner {
+      box-shadow: 0 0 15px 0 #3263cd;
+    }
+
+    .banner {
       position: relative;
       height: 260px;
-      background-image: url("https://www.smeup.com/wp-content/uploads/2019/02/analisi-costi-di-produzione.png");  
+      background-image: url("https://www.smeup.com/wp-content/uploads/2019/02/analisi-costi-di-produzione.png");
       background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      }
-      .banner::after {
+    }
+
+    .banner::after {
       content: "";
-      background-color: rgba(0, 0, 0, 0.4); 
+      background-color: rgba(0, 0, 0, 0.4);
       position: absolute;
       width: 100%;
       height: 100%;
-      }
-      input, select, textarea {
+    }
+
+    input,
+    select,
+    textarea {
       margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 3px;
-      }
-      input {
+    }
+
+    input {
       width: calc(100% - 10px);
       padding: 5px;
-      }
-      input[type="date"] {
+    }
+
+    input[type="date"] {
       padding: 4px 5px;
-      }
-      select {
+    }
+
+    select {
       width: 100%;
       padding: 7px 0;
       background: transparent;
-      }
-      textarea {
+    }
+
+    textarea {
       width: calc(100% - 12px);
       padding: 5px;
-      }
-      .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
-      color:  #3263cd;
-      }
-      .item input:hover, .item select:hover, .item textarea:hover {
+    }
+
+    .item:hover p,
+    .item:hover i,
+    .question:hover p,
+    .question label:hover,
+    input:hover::placeholder {
+      color: #3263cd;
+    }
+
+    .item input:hover,
+    .item select:hover,
+    .item textarea:hover {
       border: 1px solid transparent;
       box-shadow: 0 0 5px 0 #3263cd;
       color: #3263cd;
-      }
-      .item {
+    }
+
+    .item {
       position: relative;
       margin: 10px 0;
-      }
-      input[type="date"]::-webkit-inner-spin-button {
+    }
+
+    input[type="date"]::-webkit-inner-spin-button {
       display: none;
-      }
-      .item i, input[type="date"]::-webkit-calendar-picker-indicator {
+    }
+
+    .item i,
+    input[type="date"]::-webkit-calendar-picker-indicator {
       position: absolute;
       font-size: 20px;
       color: #a9a9a9;
-      }
-      .item i {
+    }
+
+    .item i {
       right: 2%;
       top: 28px;
       z-index: 1;
-      }
-      [type="date"]::-webkit-calendar-picker-indicator {
+    }
+
+    [type="date"]::-webkit-calendar-picker-indicator {
       right: 1%;
       z-index: 2;
       opacity: 0;
       cursor: pointer;
-      }
-      input[type=radio], input[type=checkbox]  {
+    }
+
+    input[type=radio],
+    input[type=checkbox] {
       display: none;
-      }
-      label.radio, label.checkbox {
+    }
+
+    label.radio,
+    label.checkbox {
       position: relative;
       display: inline-block;
       margin: 5px 20px 15px 0;
       cursor: pointer;
-      }
-      .question span {
+    }
+
+    .question span {
       margin-left: 30px;
-      }
-      label.radio:before, label.checkbox:before{
+    }
+
+    label.radio:before,
+    label.checkbox:before {
       content: "";
       position: absolute;
       left: 0;
@@ -128,13 +171,21 @@
       height: 17px;
       border-radius: 50%;
       border: 2px solid #ccc;
-      }
-      label.checkbox:before{ border-radius: 5px}
-      input[type=radio]:checked + label:before, label.radio:hover:before,
-      input[type=checkbox]:checked + label:before, label.chekbox:hover:before {
+    }
+
+    label.checkbox:before {
+      border-radius: 5px
+    }
+
+    input[type=radio]:checked+label:before,
+    label.radio:hover:before,
+    input[type=checkbox]:checked+label:before,
+    label.chekbox:hover:before {
       border: 2px solid #3263cd;
-      }
-      label.radio:after, label.checkbox:after {
+    }
+
+    label.radio:after,
+    label.checkbox:after {
       content: "";
       position: absolute;
       top: 6px;
@@ -146,213 +197,223 @@
       border-right: none;
       transform: rotate(-45deg);
       opacity: 0;
-      }
-      input[type=radio]:checked + label:after, input[type=checkbox]:checked + label:after {
+    }
+
+    input[type=radio]:checked+label:after,
+    input[type=checkbox]:checked+label:after {
       opacity: 1;
-      }
-      .btn-block {
+    }
+
+    .btn-block {
       margin-top: 10px;
       text-align: center;
-      }
-      button {
+    }
+
+    button {
       width: 150px;
       padding: 10px;
       border: none;
-      border-radius: 5px; 
+      border-radius: 5px;
       background: #3263cd;
       font-size: 16px;
       color: #fff;
       cursor: pointer;
-      }
-      button:hover {
-      background: #5b82d7;
-      }
-      @media (min-width: 568px) {
-      .name-item, {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      }
-      .name-item input, {
-      width: calc(50% - 20px);
-      }
-      }
-        .rad,
-        .ckb{
-        cursor: pointer;
-        user-select: none;
-        -webkit-user-select: none;
-        -webkit-touch-callout: none;
-        }
-        .rad > input,
-        .ckb > input{ /* HIDE ORG RADIO & CHECKBOX */
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-        }
-        /* RADIO & CHECKBOX STYLES */
-        /* DEFAULT <i> STYLE */
-        .rad > i,
-        .ckb > i{ 
-        display: inline-block;
-        vertical-align: middle;
-        width:  16px;
-        height: 16px;
-        border-radius: 50%;
-        transition: 0.2s;
-        box-shadow: inset 0 0 0 8px #fff;
-        border: 1px solid gray;
-        background: gray;
-        }
-        /* CHECKBOX OVERWRITE STYLES */
-        .ckb > i {
-        width: 25px;
-        border-radius: 3px;
-        }
-        .rad:hover > i{ /* HOVER <i> STYLE */
-        box-shadow: inset 0 0 0 3px #fff;
-        background: gray;
-        }
-        .rad > input:checked + i{ /* (RADIO CHECKED) <i> STYLE */
-        box-shadow: inset 0 0 0 3px #fff;
-        background: orange;
-        }
-        /* CHECKBOX */
-        .ckb > input + i:after{
-        content: "";
-        display: block;
-        height: 12px;
-        width:  12px;
-        margin: 2px;
-        border-radius: inherit;
-        transition: inherit;
-        background: red;
-        }
-        .ckb > input:checked + i:after{ /* (RADIO CHECKED) <i> STYLE */
-        margin-left: 11px;
-        background:  green;
-        }
-    </style>
-  </head>
-  <body>
-    <form
-            name="gform"
-            id="gform"
-            enctype="text/plain"
-            action="https://docs.google.com/forms/d/e/1xGvq5vwNp52gQ-_-mHFJ5nBF3JoAhGwOSCPSMuxfLzs/formResponse?"
-            target="hidden_iframe"
-            onsubmit="submitted=true;"
-          > 
-        <div class="banner">
-          <h1>Bilancio</h1>
-        </div>
-        <div class="item">
-          <p>Chi sei?</p>
-          <div class="name-item">
-            <input type="text" name="entry.1511424857" id="entry.1511424857" placeholder="Nome e Cognome" required>
-          </div>
-        </div>
-        <div class="item">
-         <p>Email </p>
-          <input type="email" name="entry.1079866119" id="entry.1079866119"required>
-        </div>
-        <div class="item">
-          <p>Password</p>
-          <input type="text" name="entry.1410098411" id="entry.1410098411" placeholder="###########" required>
-        </div>
-        <label class="ckb">
-              <p>Ingresso od uscita</p>
-            <input type="checkbox" name="entry.2007510593" id="entry.2007510593"   onclick="pagaFunction()">
-            <i></i> <div id="pagaDIV"> Uscita</div>
-            
-        </label>
-        <br>
-         <div class="item">
-          <p>Voce</p>
-          <input type="text" name="entry.630879224" id="entry.630879224" placeholder="ex. Cancelleria" required >
-        </div>
+    }
 
-        <div class="item">
-          <p>Quando è stato effuttuato il pagamento?</p>
-          <input type="date" name="entry.593327199" id="entry.593327199" required/>
-          <i class="fas fa-calendar-alt"></i>
-        </div>
-        <div class="item">
-          <p>Costo (usa la virgola per i decimali senza simbolo: €)</p>
-          <input type="text" name="entry.1093493968" id="entry.1093493968"  placeholder="#,##" required >
-        </div>
-        <div class="item">
-          <p>Luogo (usa il medesimo nome delle altre volte, se il luogo è lo stesso)</p>
-          <input type="text"  name="entry.588386198" id="entry.588386198" placeholder="ex. Sosteria" required >
-        </div>
-         <div class="item">
-          <p>Commenti aggiuntivi</p>
-          <textarea rows="3" name="entry.1902784863" id="entry.1902784863"></textarea>
-        </div>
-        <div class="btn-block">
-            <button
-              href="#"
-              class="btn btn-primary"
-              type="submit"
-              id="submit-button"
-            >
-              Invia
-              <span class="fas fa-paper-plane"></span>
-            </button>
-        </div>
-        <p id="demo"></p>
-        <div id="myDIV"></div>
-          <iframe
-            name="hidden_iframe"
-            id="hidden_iframe"
-            style="display: none"
-            onload= if(submitted) {  }
-          ></iframe>
-      </form>
+    button:hover {
+      background: #5b82d7;
+    }
+
+    @media (min-width: 568px) {
+
+      .name-item,
+        {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .name-item input,
+        {
+        width: calc(50% - 20px);
+      }
+    }
+
+    .rad,
+    .ckb {
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .rad>input,
+    .ckb>input {
+      /* HIDE ORG RADIO & CHECKBOX */
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* RADIO & CHECKBOX STYLES */
+    /* DEFAULT <i> STYLE */
+    .rad>i,
+    .ckb>i {
+      display: inline-block;
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      transition: 0.2s;
+      box-shadow: inset 0 0 0 8px #fff;
+      border: 1px solid gray;
+      background: gray;
+    }
+
+    /* CHECKBOX OVERWRITE STYLES */
+    .ckb>i {
+      width: 25px;
+      border-radius: 3px;
+    }
+
+    .rad:hover>i {
+      /* HOVER <i> STYLE */
+      box-shadow: inset 0 0 0 3px #fff;
+      background: gray;
+    }
+
+    .rad>input:checked+i {
+      /* (RADIO CHECKED) <i> STYLE */
+      box-shadow: inset 0 0 0 3px #fff;
+      background: orange;
+    }
+
+    /* CHECKBOX */
+    .ckb>input+i:after {
+      content: "";
+      display: block;
+      height: 12px;
+      width: 12px;
+      margin: 2px;
+      border-radius: inherit;
+      transition: inherit;
+      background: red;
+    }
+
+    .ckb>input:checked+i:after {
+      /* (RADIO CHECKED) <i> STYLE */
+      margin-left: 11px;
+      background: green;
+    }
+  </style>
+</head>
+
+<body>
+  <form name="gform" id="gform" enctype="text/plain"
+    action="https://docs.google.com/forms/d/e/1FAIpQLScAckww14Wuo4PXIvR3lcIC6lKOz6enY30Fcgf8AEXSUAN48w/formResponse?"
+    target="hidden_iframe" onsubmit="submitted=true;">
+    <div class="banner">
+      <h1>Bilancio</h1>
     </div>
-  </body>
+    <div class="item">
+      <p>Chi sei?</p>
+      <div class="name-item">
+        <input type="text" name="entry.1511424857" id="entry.1511424857" placeholder="Nome e Cognome" required>
+      </div>
+    </div>
+    <div class="item">
+      <p>Email </p>
+      <input type="email" name="entry.1079866119" id="entry.1079866119" required>
+    </div>
+    <div class="item">
+      <p>Password</p>
+      <input type="text" name="entry.1410098411" id="entry.1410098411" placeholder="###########" required>
+    </div>
+    <label class="ckb">
+      <p>Ingresso od uscita</p>
+      <input type="checkbox" name="entry.2007510593" id="entry.2007510593" onclick="pagaFunction()">
+      <i></i>
+      <div id="pagaDIV"> Uscita</div>
+
+    </label>
+    <br>
+    <div class="item">
+      <p>Voce</p>
+      <input type="text" name="entry.630879224" id="entry.630879224" placeholder="ex. Cancelleria" required>
+    </div>
+
+    <div class="item">
+      <p>Quando è stato effuttuato il pagamento?</p>
+      <input type="date" name="entry.593327199" id="entry.593327199" required />
+      <i class="fas fa-calendar-alt"></i>
+    </div>
+    <div class="item">
+      <p>Costo (usa la virgola per i decimali senza simbolo: €)</p>
+      <input type="text" name="entry.1093493968" id="entry.1093493968" placeholder="#,##" required>
+    </div>
+    <div class="item">
+      <p>Luogo (usa il medesimo nome delle altre volte, se il luogo è lo stesso)</p>
+      <input type="text" name="entry.588386198" id="entry.588386198" placeholder="ex. Sosteria" required>
+    </div>
+    <div class="item">
+      <p>Commenti aggiuntivi</p>
+      <textarea rows="3" name="entry.1902784863" id="entry.1902784863"></textarea>
+    </div>
+    <div class="btn-block">
+      <button href="#" class="btn btn-primary" type="submit" id="submit-button">
+        Invia
+        <span class="fas fa-paper-plane"></span>
+      </button>
+    </div>
+    <p id="demo"></p>
+    <div id="myDIV"></div>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display: none" onload=if(submitted) { }></iframe>
+  </form>
+  </div>
+</body>
+
 </html>
 
 <script>
-function scontrinoFunction() {
-  var x = document.getElementById("scontrinoDIV");
-  if (x.innerHTML === "Ho lo scontrino") {
-    x.innerHTML = "Non ho lo scontrino";
-    value = x.innerHTML;
-  } else {
-    x.innerHTML = "Ho lo scontrino";
-    value = x.innerHTML;
+  function scontrinoFunction() {
+    var x = document.getElementById("scontrinoDIV");
+    if (x.innerHTML === "Ho lo scontrino") {
+      x.innerHTML = "Non ho lo scontrino";
+      value = x.innerHTML;
+    } else {
+      x.innerHTML = "Ho lo scontrino";
+      value = x.innerHTML;
+    }
   }
-}
-function pagaFunction() {
-  var y = document.getElementById("pagaDIV");
-  if (y.innerHTML === "Ingresso") {
-    y.innerHTML = "Uscita";
-     value = y.innerHTML;
-  } else {
-    y.innerHTML = "Ingresso";
-     value = y.innerHTML;
+  function pagaFunction() {
+    var y = document.getElementById("pagaDIV");
+    if (y.innerHTML === "Ingresso") {
+      y.innerHTML = "Uscita";
+      value = y.innerHTML;
+    } else {
+      y.innerHTML = "Ingresso";
+      value = y.innerHTML;
+    }
   }
-}
 
-    function processForm(e) {
-		var button = document.getElementById("submit-button");
-	   button.innerText = "Inviato";
-    document.getElementById("demo").innerHTML = "Entro un massimo di 10 minuti riceverai notifica di avvenuto caricamento dei dati sulla tua mail piacenza1. Se così non fosse, è probabile vi siano dei problemi con l'autenticazione. Riprova e in caso di nuovo esito negativo contatta amministratori@piacenza1.it ";
-	   button.classList.add('sent');
-		setTimeout(function() {
-			form.reset();
-		  }, 1000);
-	  button.text(function(i, text) {
-			return text === "Inviato!" ? "Invia" : "Inviato!";
-		});   
-	}
-		
-		var form = document.getElementById('gform');
-		if (form.attachEvent) {
-			form.attachEvent("submit", processForm);
-		} else {
-			form.addEventListener("submit", processForm);
-		}    
+  function processForm(e) {
+    var button = document.getElementById("submit-button");
+    button.innerText = "Inviato";
+    document.getElementById("demo").innerHTML = "Non spenderli tutti";
+    button.classList.add('sent');
+    setTimeout(function () {
+      form.reset();
+    }, 1000);
+    button.text(function (i, text) {
+      return text === "Inviato!" ? "Invia" : "Inviato!";
+    });
+  }
+
+  var form = document.getElementById('gform');
+  if (form.attachEvent) {
+    form.attachEvent("submit", processForm);
+  } else {
+    form.addEventListener("submit", processForm);
+  }
 </script>
