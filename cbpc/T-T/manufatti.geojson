@@ -167,11 +167,7 @@
     "tronchetti_1": 0,
     "nominativo": "Istrice",
     "posato": true,
-    "pdf": null,
-    "pdf_ambiguo": [
-     "schemi/3_102_Collegamento Tub.Battibò.pdf",
-     "schemi/5_102_Il Rio_I.pdf"
-    ],
+    "pdf": "schemi/5_102_Il Rio_I.pdf",
     "foto": "foto/102.jpg",
     "x_utm32": 535777.503905,
     "y_utm32": 4982505.293232

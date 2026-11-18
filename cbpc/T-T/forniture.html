@@ -56,6 +56,10 @@
 
     .bar{ height:8px; background:#eef1f5; border-radius:999px; overflow:hidden; margin-top:4px; }
     .bar > div{ height:100%; background:var(--chart); width:0%; }
+    td.L, th.L{ text-align:left !important; }
+    .sec{ margin-top:14px; }
+    .warn{ color:#9a5b00; }
+    tfoot td{ font-weight:700; background:#fafbfc; }
     .note{ font-size:12px; color:var(--muted); margin-top:10px; }
     code{ background:#f6f6f6; padding:2px 6px; border-radius:6px; border:1px solid #ececec; }
 
@@ -66,7 +70,7 @@
 <header>
   <div class="top">
     <div class="title">
-      <b>PNRR M2C4 – Investimento 4.3 | Monitoraggio forniture</b>
+      <b>PNRR M2C4 – Investimento 4.3 | Forniture e lavori di posa – stato finale</b>
       <div class="subtitle">Investimenti nella resilienza dell'agrosistema irriguo per una migliore gestione delle risorse idriche. Decreto MIPAAF - DISR 01 - Prot. Interno N. 484456 del 30/9/2022. Codice progetto DANIA: 08-05-5703-847. Finanziamento delle forniture dei materiali.Intervento: Schema irriguo Tidone: interventi di risparmio idrico per il contrasto alla siccità e adeguamenti funzionali sistema di adduzione in sponda sinistra e destra Tidone: tronchi 1) Bruso - il Rio; 2) da canale Tavernago - Tuna a lago delle Lische; 3) dal lago delle Lische a Tuna. CUP G99J21006930005.</div>
       <div class="meta">
         <div class="meta-nav">
@@ -92,57 +96,61 @@
 <main>
   <section class="panel">
     <div class="panelHeader">
-      <div class="h">Stato forniture e posa in opera</div>
-      <div class="hint">Sorgente dati: <code>forniture.json</code>.</div>
+      <div class="h">Forniture e servizi – stato finale da collaudo</div>
+      <div class="hint" id="fonte">—</div>
     </div>
     <div class="panelBody">
       <div class="cards">
         <article class="card">
-          <div class="k">Avanzamento economico contabilizzato</div>
-          <div class="v" id="totConsegne">—</div>
-          <div class="s" id="totConsegneDetail">—</div>
-          <div class="bar"><div id="barConsegne"></div></div>
+          <div class="k">Importo stato finale forniture e servizi (A, netto IVA)</div>
+          <div class="v" id="totFinale">—</div>
+          <div class="s" id="totFinaleDetail">—</div>
         </article>
         <article class="card">
-          <div class="k">Eseguito rispetto al totale appalto</div>
-          <div class="v" id="totPosa">—</div>
-          <div class="s" id="totPosaDetail">—</div>
-          <div class="bar"><div id="barPosa"></div></div>
+          <div class="k">Liquidato</div>
+          <div class="v" id="totLiq">—</div>
+          <div class="s" id="totLiqDetail">—</div>
+          <div class="bar"><div id="barLiq"></div></div>
         </article>
         <article class="card">
-          <div class="k">Ultima delibera di comitato</div>
-          <div class="v" style="font-size:16px" id="deliberaNumero">—</div>
-          <div class="s" id="deliberaData">—</div>
-          <div class="s" id="deliberaOggetto">—</div>
+          <div class="k">Collaudo tecnico-amministrativo e funzionale</div>
+          <div class="v" style="font-size:16px" id="collData">—</div>
+          <div class="s" id="collDetail">—</div>
         </article>
       </div>
 
       <div class="tableWrap">
         <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Lotto</th>
-              <th>CIG</th>
-              <th>Fornitura/servizio</th>
-              <th>Totale</th>
-              <th>Contabilizzato</th>
-              <th>% avanzamento</th>
-              <th>Eseguito/posato</th>
-              <th>% eseguito</th>
-              <th>Stato avanzamento</th>
-              <th>Ultima delibera</th>
-              <th>Note</th>
-            </tr>
-          </thead>
+          <thead><tr>
+            <th class="L">Lotto</th><th class="L">Fornitura/servizio</th><th class="L">CIG</th><th class="L">Operatore</th>
+            <th>Aggiudicato (€)</th><th>Perizia variante (€)</th><th>Stato finale (€)</th>
+            <th>Liquidato (€)</th><th>Da liquidare (€)</th><th class="L">Ultimo SAF (DCA)</th>
+          </tr></thead>
           <tbody id="fornitureRows"></tbody>
+          <tfoot id="fornitureTot"></tfoot>
         </table>
       </div>
+      <div class="note">Da liquidare: ritenuta dello 0,50% (art. 11 c. 6 e art. 30 c. 5-bis), svincolata dopo l'approvazione del collaudo, previa verifica del DURC.</div>
 
+      <div class="panelHeader sec" style="border:1px solid var(--border); border-radius:12px;">
+        <div class="h">Lavori di posa per tronco – certificati di regolare esecuzione</div>
+        <div class="hint">Relazioni sul conto finale e CRE del Direttore dei Lavori (art. 116 c. 7 e All. II.14 art. 28 D.Lgs. 36/2023).</div>
+      </div>
+      <div class="tableWrap" style="margin-top:10px">
+        <table>
+          <thead><tr>
+            <th class="L">Tronco</th><th class="L">Impresa</th><th class="L">CIG</th><th>Importo contratto (€)</th>
+            <th>Lungh. contratto (m)</th><th>Lungh. as-built (m)</th><th>Contabilizzato (€)</th><th>%</th>
+            <th class="L">Ultimazione</th><th>Ritenuta da svincolare (€)</th><th class="L">CRE</th>
+          </tr></thead>
+          <tbody id="posaRows"></tbody>
+          <tfoot id="posaTot"></tfoot>
+        </table>
+      </div>
+      <div class="note" id="posaNote"></div>
 
-      <div class="panelHeader" style="margin-top:10px; border:1px solid var(--border); border-radius:12px;">
+      <div class="panelHeader sec" style="border:1px solid var(--border); border-radius:12px;">
         <div class="h">Delibere forniture (fonti)</div>
-        <div class="hint">Elenco delibere lette dai documenti indicati.</div>
         <div id="delibereList" class="note"></div>
       </div>
     </div>
@@ -150,48 +158,52 @@
 </main>
 
 <script>
-  function pct(n, d){ if(!d) return 0; return Math.max(0, Math.min(100, (n / d) * 100)); }
-  function fmtNumber(v){ return new Intl.NumberFormat('it-IT').format(v); }
+  const eur = (v) => (v === null || v === undefined) ? '—' : new Intl.NumberFormat('it-IT',{minimumFractionDigits:2, maximumFractionDigits:2, useGrouping:'always'}).format(v);
+  const num = (v, d=2) => (v === null || v === undefined) ? '—' : new Intl.NumberFormat('it-IT',{minimumFractionDigits:d, maximumFractionDigits:d, useGrouping:'always'}).format(v);
+  const pct = (n, d) => d ? Math.max(0, Math.min(100, n / d * 100)) : 0;
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function render(data){
-    const rows = Array.isArray(data.forniture) ? data.forniture : [];
-    const total = rows.reduce((acc, r) => acc + Number(r.quantita_totale || 0), 0);
-    const consegnata = rows.reduce((acc, r) => acc + Number(r.quantita_consegnata || 0), 0);
-    const posata = rows.reduce((acc, r) => acc + Number(r.quantita_posata || 0), 0);
-    const pctConsegna = pct(consegnata, total);
-    const pctPosa = pct(posata, total);
-
+    const rows = data.forniture || [], c = data.collaudo || {};
     document.getElementById('updated').textContent = `Ultimo aggiornamento: ${data.ultimo_aggiornamento || '—'}`;
     document.getElementById('delibera').textContent = `Delibera: ${data.ultima_delibera_comitato?.numero || '—'}`;
-    const delibere = Array.isArray(data.delibere_forniture) ? data.delibere_forniture : [];
-    document.getElementById('delibereList').innerHTML = delibere.length ? delibere.map(d => { const pct = (d.percentuale_avanzamento === null || d.percentuale_avanzamento === undefined) ? 'n.d.' : `${Number(d.percentuale_avanzamento).toFixed(1)}%`; const cont = (d.contabilizzato_eur === null || d.contabilizzato_eur === undefined) ? 'n.d.' : `${fmtNumber(d.contabilizzato_eur)} €`; const label = d.url ? `<a class="navlink" href="${d.url}" target="_blank" rel="noopener">${d.numero}</a>` : `${d.numero}`; return `• ${label} — Lotto ${d.lotto} (${d.cig}) — ${d.oggetto} — contabilizzato: ${cont} — avanzamento: ${pct}`; }).join('<br/>') : 'Nessuna delibera caricata.';
-    document.getElementById('totConsegne').textContent = `${pctConsegna.toFixed(1)}%`;
-    document.getElementById('totConsegneDetail').textContent = `${fmtNumber(consegnata)} su ${fmtNumber(total)} €`;
-    document.getElementById('barConsegne').style.width = `${pctConsegna.toFixed(1)}%`;
-    document.getElementById('totPosa').textContent = `${pctPosa.toFixed(1)}%`;
-    document.getElementById('totPosaDetail').textContent = `${fmtNumber(posata)} su ${fmtNumber(total)} €`;
-    document.getElementById('barPosa').style.width = `${pctPosa.toFixed(1)}%`;
-    document.getElementById('deliberaNumero').textContent = data.ultima_delibera_comitato?.numero || '—';
-    document.getElementById('deliberaData').textContent = `Data: ${data.ultima_delibera_comitato?.data || '—'}`;
-    document.getElementById('deliberaOggetto').textContent = data.ultima_delibera_comitato?.oggetto || '—';
+    document.getElementById('fonte').textContent = 'Fonte: ' + (data.fonte_dati || '—');
 
-    const tbody = document.getElementById('fornitureRows');
-    tbody.innerHTML = '';
-    rows.forEach(r => {
-      const pConsegna = pct(Number(r.quantita_consegnata || 0), Number(r.quantita_totale || 0));
-      const pPosa = pct(Number(r.quantita_posata || 0), Number(r.quantita_totale || 0));
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${r.id || ''}</td><td>${r.lotto ?? ''}</td><td>${r.cig || ''}</td><td>${r.voce || ''}</td>
-        <td>${fmtNumber(Number(r.quantita_totale || 0))} ${r.unita || ''}</td>
-        <td>${fmtNumber(Number(r.quantita_consegnata || 0))} ${r.unita || ''}</td>
-        <td>${pConsegna.toFixed(1)}%</td>
-        <td>${fmtNumber(Number(r.quantita_posata || 0))} ${r.unita || ''}</td>
-        <td>${pPosa.toFixed(1)}%</td><td>${r.stato_avanzamento || ''}</td><td>${r.ultima_delibera || '—'}</td><td>${r.note || ''}</td>`;
-      tbody.appendChild(tr);
-    });
+    const tot = rows.reduce((a,r) => a + (r.importo_stato_finale_eur || 0), 0);
+    const liq = rows.reduce((a,r) => a + (r.liquidato_eur || 0), 0);
+    const dl  = rows.reduce((a,r) => a + (r.da_liquidare_eur || 0), 0);
+    const agg = rows.reduce((a,r) => a + (r.importo_aggiudicato_eur || 0), 0);
+    const pv  = rows.reduce((a,r) => a + (r.importo_variante_eur || 0), 0);
+    document.getElementById('totFinale').textContent = eur(tot) + ' €';
+    document.getElementById('totFinaleDetail').textContent = `Perizia di variante ${eur(pv)} € – economia ${eur(pv - tot)} €`;
+    document.getElementById('totLiq').textContent = pct(liq, tot).toFixed(2) + '%';
+    document.getElementById('totLiqDetail').textContent = `${eur(liq)} € liquidati – ${eur(dl)} € ritenute da svincolare`;
+    document.getElementById('barLiq').style.width = pct(liq, tot) + '%';
+    document.getElementById('collData').textContent = c.data ? new Date(c.data).toLocaleDateString('it-IT') : '—';
+    document.getElementById('collDetail').textContent = c.collaudatore ? `${c.collaudatore} – prot. ${c.protocollo}. Importo complessivo finale IVA compresa ${eur(c.importo_complessivo_iva_compresa_eur)} €` : '—';
+
+    document.getElementById('fornitureRows').innerHTML = rows.map(r => `<tr>
+      <td class="L">${r.lotto}</td><td class="L">${esc(r.voce)}</td><td class="L">${esc(r.cig)}</td><td class="L">${esc(r.operatore)}</td>
+      <td>${eur(r.importo_aggiudicato_eur)}</td><td>${eur(r.importo_variante_eur)}</td><td><b>${eur(r.importo_stato_finale_eur)}</b></td>
+      <td>${eur(r.liquidato_eur)}</td><td>${eur(r.da_liquidare_eur)}</td><td class="L">${esc(r.ultima_delibera || '—')}</td></tr>`).join('');
+    document.getElementById('fornitureTot').innerHTML = `<tr><td></td><td>Totale</td><td></td><td></td><td>${eur(agg)}</td><td>${eur(pv)}</td><td>${eur(tot)}</td><td>${eur(liq)}</td><td>${eur(dl)}</td><td></td></tr>`;
+
+    const posa = data.lavori_posa || [];
+    document.getElementById('posaRows').innerHTML = posa.map(p => `<tr>
+      <td class="L">${esc(p.tronco)}</td><td class="L">${esc(p.impresa)}</td><td class="L">${esc(p.cig)}</td><td>${eur(p.importo_contratto_eur)}</td>
+      <td>${p.lunghezza_contratto_m ? num(p.lunghezza_contratto_m,0) : '—'}</td><td>${num(p.lunghezza_asbuilt_m)}</td>
+      <td>${eur(p.contabilizzato_eur)}</td><td>${pct(p.contabilizzato_eur, p.importo_contratto_eur).toFixed(2)}%</td>
+      <td class="L">${esc(p.ultimazione)}</td><td>${eur(p.ritenuta_eur)}</td><td class="L${/^Emesso/.test(p.cre) ? '' : ' warn'}">${esc(p.cre)}</td></tr>`).join('');
+    const sum = (k) => posa.reduce((a,p) => a + (p[k] || 0), 0);
+    document.getElementById('posaTot').innerHTML = `<tr><td></td><td>Totale</td><td></td><td>${eur(sum('importo_contratto_eur'))}</td><td></td><td>${num(sum('lunghezza_asbuilt_m'))}</td><td>${eur(sum('contabilizzato_eur'))}</td><td></td><td></td><td>${eur(sum('ritenuta_eur'))}</td><td></td></tr>`;
+    document.getElementById('posaNote').innerHTML = posa.filter(p => p.note).map(p => `• Tronco ${esc(p.tronco)} (${esc(p.impresa)}): ${esc(p.note)}`).join('<br>');
+
+    const del = data.delibere_forniture || [];
+    document.getElementById('delibereList').innerHTML = del.map(d => {
+      const label = d.url ? `<a class="navlink" href="${d.url}" target="_blank" rel="noopener">${esc(d.numero)}</a>` : esc(d.numero);
+      return `• ${label} – Lotto ${d.lotto} (${esc(d.cig)}) – ${esc(d.oggetto)} – contabilizzato: ${eur(d.contabilizzato_eur)} €`; }).join('<br>');
   }
-  fetch('forniture.json').then(r => r.json()).then(render).catch(() => {
-    document.getElementById('fornitureRows').innerHTML = '<tr><td colspan="12">Errore nel caricamento di forniture.json</td></tr>';
+  fetch('forniture.json?cb=' + Date.now()).then(r => r.json()).then(render).catch(() => {
+    document.getElementById('fornitureRows').innerHTML = '<tr><td colspan="10">Errore nel caricamento di forniture.json</td></tr>';
   });
 </script>
 </body>
