@@ -132,7 +132,7 @@
     "tronco": 1,
     "curva": 0,
     "id_qgis": 4,
-    "tipo": 1,
+    "tipo": 2,
     "distanza_m": 784.191,
     "progressiva_m": 808.294,
     "vertice_pe": "3",
@@ -151,7 +151,7 @@
     "tronchetti_1": 0,
     "nominativo": "Istrice",
     "posato": true,
-    "pdf": "schemi/3_102_Collegamento Tub.Battibò.pdf",
+    "pdf": null,
     "foto": "foto/102.jpg",
     "x_utm32": 535777.503905,
     "y_utm32": 4982505.293232
