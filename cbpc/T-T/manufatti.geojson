@@ -112,8 +112,8 @@
     "tronchetti_1": 0,
     "nominativo": null,
     "posato": true,
-    "pdf": null,
-    "foto": null,
+    "pdf": "schemi/101_Collegamento Tub.Bruso-Bilegno.pdf",
+    "foto": "foto/101.jpg",
     "x_utm32": 535555.705277,
     "y_utm32": 4983257.463563
    },
@@ -151,7 +151,7 @@
     "tronchetti_1": 0,
     "nominativo": "Istrice",
     "posato": true,
-    "pdf": "schemi/5_102_Il Rio_I.pdf",
+    "pdf": "schemi/3_102_Collegamento Tub.Battibò.pdf",
     "foto": "foto/102.jpg",
     "x_utm32": 535777.503905,
     "y_utm32": 4982505.293232
@@ -307,7 +307,7 @@
     "tronchetti_1": null,
     "nominativo": "Il Rio",
     "posato": true,
-    "pdf": "schemi/10_107_Il Rio_I.pdf",
+    "pdf": "schemi/5_107_Il Rio_I.pdf",
     "foto": "foto/107.jpg",
     "x_utm32": 536204.067511,
     "y_utm32": 4981426.127602
