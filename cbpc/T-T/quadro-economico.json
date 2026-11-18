@@ -2,7 +2,6 @@
   "fonte": "Confronto quadri economici da Delibera CA_066 (26/02/2025)",
   "fonte_url": "https://www.cbpiacenza.it/attachments/article/1726/CA_066.pdf",
   "cup": "G99J21006930005",
-
   "quadri": [
     {
       "codice": "QE-01",
@@ -26,97 +25,103 @@
       "spese_con_iva_eur": 7666906.95
     }
   ],
-
   "confronto_lotti_senza_iva": [
     {
       "lotto": "1",
       "descrizione": "Tubazione PVC DN 630",
-      "base_gara_eur": 2996476.00,
+      "base_gara_eur": 2996476.0,
       "post_gara_eur": 2182033.82,
-      "variante_eur": 2356044.50,
-      "diff_variante_vs_post_gara_eur": 174010.68
+      "variante_eur": 2356044.5,
+      "diff_variante_vs_post_gara_eur": 174010.68,
+      "finale_collaudo_eur": 2356044.5
     },
     {
       "lotto": "2",
       "descrizione": "Manufatti in acciaio e saracinesche di linea",
-      "base_gara_eur": 534644.00,
+      "base_gara_eur": 534644.0,
       "post_gara_eur": 534590.54,
       "variante_eur": 534590.54,
-      "diff_variante_vs_post_gara_eur": 0.00
+      "diff_variante_vs_post_gara_eur": 0.0,
+      "finale_collaudo_eur": 454221.57
     },
     {
       "lotto": "3",
       "descrizione": "Stazioni TLC e misuratori di portata",
-      "base_gara_eur": 497878.00,
-      "post_gara_eur": 448090.20,
-      "variante_eur": 448090.20,
-      "diff_variante_vs_post_gara_eur": 0.00
+      "base_gara_eur": 497878.0,
+      "post_gara_eur": 448090.2,
+      "variante_eur": 448090.2,
+      "diff_variante_vs_post_gara_eur": 0.0,
+      "finale_collaudo_eur": 448090.2
     },
     {
       "lotto": "4",
       "descrizione": "Tubazioni mobili complete di raccordi",
-      "base_gara_eur": 313500.00,
-      "post_gara_eur": 238322.70,
-      "variante_eur": 238322.70,
-      "diff_variante_vs_post_gara_eur": 0.00
+      "base_gara_eur": 313500.0,
+      "post_gara_eur": 238322.7,
+      "variante_eur": 238322.7,
+      "diff_variante_vs_post_gara_eur": 0.0,
+      "finale_collaudo_eur": 238322.7
     },
     {
       "lotto": "5",
       "descrizione": "Elettropompe",
-      "base_gara_eur": 278684.00,
+      "base_gara_eur": 278684.0,
       "post_gara_eur": 232859.99,
       "variante_eur": 243940.02,
-      "diff_variante_vs_post_gara_eur": 11080.03
+      "diff_variante_vs_post_gara_eur": 11080.03,
+      "finale_collaudo_eur": 241780.0
     },
     {
       "lotto": "6",
       "descrizione": "Attrezzature elettriche",
-      "base_gara_eur": 189000.00,
-      "post_gara_eur": 77490.00,
-      "variante_eur": 77490.00,
-      "diff_variante_vs_post_gara_eur": 0.00
+      "base_gara_eur": 189000.0,
+      "post_gara_eur": 77490.0,
+      "variante_eur": 77490.0,
+      "diff_variante_vs_post_gara_eur": 0.0,
+      "finale_collaudo_eur": 77490.0
     },
     {
       "lotto": "7",
       "descrizione": "Materiali inerti",
-      "base_gara_eur": 109095.00,
+      "base_gara_eur": 109095.0,
       "post_gara_eur": 93461.69,
       "variante_eur": 93461.69,
-      "diff_variante_vs_post_gara_eur": 0.00
+      "diff_variante_vs_post_gara_eur": 0.0,
+      "finale_collaudo_eur": 92779.42
     },
     {
       "lotto": "8",
       "descrizione": "Materiali edili",
-      "base_gara_eur": 36652.00,
-      "post_gara_eur": 36652.00,
-      "variante_eur": 36652.00,
-      "diff_variante_vs_post_gara_eur": 0.00
+      "base_gara_eur": 36652.0,
+      "post_gara_eur": 36652.0,
+      "variante_eur": 36652.0,
+      "diff_variante_vs_post_gara_eur": 0.0,
+      "finale_collaudo_eur": 36274.48
     },
     {
       "lotto": "9",
       "descrizione": "Serbatoio in PE corrugato",
-      "base_gara_eur": 16475.00,
-      "post_gara_eur": 14700.00,
-      "variante_eur": 14700.00,
-      "diff_variante_vs_post_gara_eur": 0.00
+      "base_gara_eur": 16475.0,
+      "post_gara_eur": 14700.0,
+      "variante_eur": 14700.0,
+      "diff_variante_vs_post_gara_eur": 0.0,
+      "finale_collaudo_eur": 14700.0
     }
   ],
-
   "totali_sezione_A_senza_iva": {
     "base_gara": 5374006.15,
-    "post_gara": 4213918.10,
+    "post_gara": 4213918.1,
     "variante": 4399008.81,
     "differenza_variante_vs_post_gara": 185090.71
   },
-
   "sezione_B_senza_iva": {
     "voci": [
       {
         "voce": "b.3 - allacciamenti pubblici servizi",
-        "base_gara": 100000.00,
-        "post_gara": 100000.00,
-        "variante": 100000.00,
-        "differenza_variante_vs_post_gara": 0.00
+        "base_gara": 100000.0,
+        "post_gara": 100000.0,
+        "variante": 100000.0,
+        "differenza_variante_vs_post_gara": 0.0
       },
       {
         "voce": "b.4 - imprevisti",
@@ -130,51 +135,66 @@
         "base_gara": 591516.28,
         "post_gara": 591516.28,
         "variante": 591516.28,
-        "differenza_variante_vs_post_gara": 0.00
+        "differenza_variante_vs_post_gara": 0.0
       },
       {
         "voce": "b.15 - interferenze",
-        "base_gara": 17250.00,
-        "post_gara": 17250.00,
-        "variante": 17250.00,
-        "differenza_variante_vs_post_gara": 0.00
+        "base_gara": 17250.0,
+        "post_gara": 17250.0,
+        "variante": 17250.0,
+        "differenza_variante_vs_post_gara": 0.0
       }
     ],
     "totali": {
       "base_gara": 869986.45,
       "post_gara": 919462.19,
-      "variante": 885469.90,
+      "variante": 885469.9,
       "differenza_variante_vs_post_gara": -33992.29
     }
   },
-
   "sezione_C_spese_generali_senza_iva": {
     "base_gara": 147024.22,
     "post_gara": 232024.22,
     "variante": 232024.22,
-    "differenza_variante_vs_post_gara": 0.00
+    "differenza_variante_vs_post_gara": 0.0
   },
-
   "sezione_D_economie_ribasso_senza_iva": {
-    "base_gara": 0.00,
+    "base_gara": 0.0,
     "post_gara": 1025612.31,
     "variante": 874513.89,
     "differenza_variante_vs_post_gara": -151098.42
   },
-
   "importo_complessivo_senza_iva": {
     "base_gara": 6391016.82,
     "post_gara": 6391016.82,
     "variante": 6391016.82,
-    "differenza_variante_vs_post_gara": 0.00
+    "differenza_variante_vs_post_gara": 0.0
   },
-
   "ripartizione_finale_con_iva": {
     "importo_totale": 7666906.95,
-    "di_cui_pnrr": 6600000.00,
+    "di_cui_pnrr": 6600000.0,
     "di_cui_foi": 1066906.95
   },
-
-  
+  "note": "Base gara/post gara/variante dal prospetto della Delibera CA_066; colonna finale dal Collaudo tecnico-amministrativo del 23/10/2026.",
+  "qe_finale_collaudo": {
+    "fonte": "Collaudo tecnico-amministrativo e funzionale, Ing. Giacomo Morillo, 23/10/2026",
+    "documento": "documenti/Collaudo.pdf",
+    "A_forniture_eur": 3959702.87,
+    "A_servizi_eur": 355717.16,
+    "A_totale_eur": 4315420.03,
+    "B": {
+      "b.3": 0.0,
+      "b.4": 36000.0,
+      "b.5": 277445.6,
+      "b.15": 0.0,
+      "totale": 313445.6
+    },
+    "C_spese_generali_eur": 147997.13,
+    "D_economie_eur": 0.0,
+    "totale_netto_iva_eur": 4776862.76,
+    "iva_eur": 989871.78,
+    "totale_iva_compresa_eur": 5766734.54,
+    "pnrr_eur": 5766734.54,
+    "foi_eur": 0.0
+  }
 }
- "note": "Valori riportati dal prospetto di confronto quadri economici allegato alla Delibera CA_066.",
