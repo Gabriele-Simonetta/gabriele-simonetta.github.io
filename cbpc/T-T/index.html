@@ -61,7 +61,7 @@
   .pop{ font-size:12px; min-width:240px; max-width:320px; }
   .pop h3{ margin:0 0 4px; font-size:14px; }
   .pop .sub{ color:var(--muted); margin-bottom:6px; }
-  .pop img{ width:100%; border-radius:8px; margin:6px 0; display:block; }
+  .pop img{ width:100%; max-height:170px; object-fit:cover; border-radius:8px; margin:6px 0; display:block; cursor:zoom-in; }
   .pop table td{ padding:3px 4px; border-bottom:1px solid #f0f0f0; }
   .pop table td:first-child{ color:var(--muted); }
   .pop .btn{ display:inline-block; margin-top:8px; padding:6px 10px; border-radius:8px; background:var(--accent); color:#fff !important; text-decoration:none; font-weight:700; }
@@ -132,7 +132,7 @@
     ["valv_315","Valvole DN315"],["valv_630","Valvole DN630"],["mis_315","Misuratori DN315"],["mot_315","Motorizzazioni DN315"],
     ["pozz","Pozzetti"],["coperchio","Coperchi"],["anfore_cu","Anfore e cu"],["r150x160","Rid. 150x160"],["r150x80","Rid. 150x80"],
     ["r150x75","Rid. 150x75"],["r150x40","Rid. 150x40"],["tronchetti","Tronchetti"],["tronchetti_1","Tronchetti (2)"],
-    ["tipologia","Tipologia"],["coll_enel","Coll. ENEL"],["punti","Punti"],["vertice_pe","Vertice PE"]
+    ["tipologia","Tipologia"],["punti","Punti"],["vertice_pe","Vertice PE"]
   ];
   const nf = (n, d=2) => Number(n).toLocaleString("it-IT",{minimumFractionDigits:d, maximumFractionDigits:d});
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -199,9 +199,9 @@
     return `<div class="pop">
       <h3>${esc(nome)}</h3>
       <div class="sub">Manufatto n. ${esc(p.univoco)}${t ? " – " + t.l : ""}</div>
-      ${p.foto ? `<img src="${encodeURI(p.foto)}" alt="Foto ${esc(nome)}" loading="lazy" onerror="this.remove()">` : ""}
+      ${p.foto ? `<img src="${encodeURI(p.foto)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)" onerror="this.remove()">` : ""}
       <table>${rows.map(tr).join("")}</table>
-      ${extra.length ? `<details open><summary>Componenti e attrezzature</summary><table>${extra.map(tr).join("")}</table></details>` : ""}
+      ${extra.length ? `<details><summary>Componenti e attrezzature (${extra.length})</summary><table>${extra.map(tr).join("")}</table></details>` : ""}
       ${p.pdf ? `<a class="btn" href="${encodeURI(p.pdf)}" target="_blank" rel="noopener">Schema manufatto (PDF)</a>` : ""}
     </div>`;
   }
@@ -249,7 +249,13 @@
     // Manufatti
     const markers = new Map();
     manufatti.features.forEach(f => {
-      const m = markerFor(f).bindPopup(popupHtml(f.properties), { maxWidth:340 }).addTo(map);
+      const m = markerFor(f).bindPopup(popupHtml(f.properties), { maxWidth:340, maxHeight: Math.max(260, window.innerHeight - 320), autoPanPadding:[20,20] }).addTo(map);
+      // ricalcola dimensione e pan quando la foto si carica o si apre il dettaglio
+      m.on("popupopen", (e) => {
+        const el = e.popup.getElement(), upd = () => { e.popup.update(); };
+        el.querySelectorAll("img").forEach(i => i.addEventListener("load", upd, { once:true }));
+        el.querySelectorAll("details").forEach(d => d.addEventListener("toggle", upd));
+      });
       markers.set(f.properties.univoco, m);
     });
     const named = manufatti.features.filter(f => TIPI[tipoOf(f.properties)])
@@ -269,7 +275,7 @@
     [q, fTr, fTi].forEach(el => el.addEventListener("input", renderM));
     renderM();
     tblM.tBodies[0].onclick = (e) => { const tr = e.target.closest("tr"); if(!tr) return;
-      const m = markers.get(Number(tr.dataset.u)); map.setView(m.getLatLng(), Math.max(map.getZoom(), 17)); m.openPopup(); };
+      const m = markers.get(Number(tr.dataset.u)); map.once("moveend", () => m.openPopup()); map.setView(m.getLatLng(), Math.max(map.getZoom(), 17)); };
   }).catch(err => { console.error(err); alert("Errore caricamento dati: " + err.message); });
 })();
 </script>
