@@ -67,8 +67,22 @@
   .pop .btn{ display:inline-block; margin-top:8px; padding:6px 10px; border-radius:8px; background:var(--accent); color:#fff !important; text-decoration:none; font-weight:700; }
   .pop details{ margin-top:6px; } .pop summary{ cursor:pointer; color:var(--accent); }
 
+  .scheda{ position:fixed; right:14px; width:min(620px, calc(100vw - 28px)); bottom:14px; z-index:1000; background:#fff;
+    border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden; }
+  .scheda[hidden]{ display:none; }
+  body.scheda-open .overlay{ display:none; }
+  .scheda-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:10px 12px; border-bottom:1px solid var(--border); background:#fafafa; }
+  .scheda-head h2{ margin:0; font-size:16px; } .scheda-head .sub{ color:var(--muted); font-size:12px; margin-top:2px; }
+  .scheda-head button{ border:1px solid var(--border); background:#fff; border-radius:10px; padding:4px 10px; font-size:16px; cursor:pointer; }
+  .scheda-body{ overflow:auto; padding:10px 12px; font-size:12px; }
+  .scheda-body h4{ margin:12px 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+  .scheda-body .foto{ width:100%; height:220px; object-fit:cover; border-radius:10px; display:block; cursor:zoom-in; background:#eef1f5; }
+  .scheda-body .nofoto{ border:1px dashed var(--border); border-radius:10px; padding:18px; text-align:center; color:var(--muted); }
+  .scheda-body table td{ padding:4px 6px; border-bottom:1px solid #f0f0f0; } .scheda-body table td:first-child{ color:var(--muted); }
+  .scheda-body .pdf{ width:100%; height:max(320px, calc(100vh - var(--schedaTop, 300px) - 400px)); border:1px solid var(--border); border-radius:10px; display:block; background:#f4f4f4; }
+  .scheda-body .btn{ display:inline-block; margin-top:6px; padding:6px 10px; border-radius:8px; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; }
   .footnote{ padding:8px 12px; border-top:1px dashed #d9d9d9; font-size:11px; color:#58606b; line-height:1.35; }
-  @media (max-width:720px){ .logos img{ height:34px; } .overlay{ top:auto; bottom:14px; left:14px; right:14px; width:auto; } .overlay-body{ max-height:35vh; } }
+  @media (max-width:720px){ .scheda{ left:8px; right:8px; width:auto; z-index:1001; } .scheda-body .pdf{ height:60vh; } .logos img{ height:34px; } .overlay{ top:auto; bottom:14px; left:14px; right:14px; width:auto; } .overlay-body{ max-height:35vh; } }
 </style>
 </head>
 <body>
@@ -94,6 +108,14 @@
 </header>
 
 <div id="map"></div>
+
+<aside class="scheda" id="scheda" hidden>
+  <div class="scheda-head">
+    <div><h2 id="schedaTitolo">—</h2><div class="sub" id="schedaSub"></div></div>
+    <button id="schedaChiudi" title="Chiudi" aria-label="Chiudi">×</button>
+  </div>
+  <div class="scheda-body" id="schedaBody"></div>
+</aside>
 
 <div class="overlay" id="overlay">
   <div class="overlay-header">
@@ -206,6 +228,41 @@
     </div>`;
   }
 
+  // ===== Scheda manufatto (foto + PDF in vista) =====
+  const scheda = document.getElementById("scheda");
+  function placeScheda(){ const t = document.querySelector("header").offsetHeight + 10; scheda.style.top = t + "px"; document.documentElement.style.setProperty("--schedaTop", t + "px"); }
+  window.addEventListener("resize", placeScheda);
+  document.getElementById("schedaChiudi").onclick = () => { scheda.hidden = true; document.body.classList.remove("scheda-open"); };
+  function openScheda(p){
+    const tipo = tipoOf(p), t = TIPI[tipo];
+    const nome = nomeOf(p) || (t ? t.l : "Pezzo speciale");
+    const rows = [["Codice univoco", p.univoco], ["Tronco", troncoLabel(p.tronco)]];
+    if(t) rows.push(["Tipo", t.l]);
+    if(p.curva) rows.push(["Curva", p.curva + "°"]);
+    if(p.progressiva_m != null) rows.push(["Progressiva", nf(p.progressiva_m) + " m"]);
+    rows.push(["Quota Z", p.quota_z ? nf(p.quota_z,3) + " m s.l.m." : "n.d."]);
+    rows.push(["Coord. UTM32 (E, N)", nf(p.x_utm32,2) + ", " + nf(p.y_utm32,2)]);
+    const extra = ATTR.filter(([k]) => p[k] !== null && p[k] !== undefined && p[k] !== 0 && p[k] !== "").map(([k,l]) => [l, p[k]]);
+    const tr = (r) => `<tr><td>${esc(r[0])}</td><td><b>${esc(r[1])}</b></td></tr>`;
+    const pdf = p.pdf ? encodeURI(p.pdf) : null;
+    document.getElementById("schedaTitolo").textContent = nome;
+    document.getElementById("schedaSub").textContent = `Manufatto n. ${p.univoco}${t ? " – " + t.l : ""} – tronco ${troncoLabel(p.tronco)}`;
+    document.getElementById("schedaBody").innerHTML = `
+      <h4>Foto</h4>
+      ${p.foto ? `<img class="foto" src="${encodeURI(p.foto)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)"
+          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">` : `<div class="nofoto">Foto non disponibile</div>`}
+      <h4>Schema manufatto</h4>
+      ${pdf ? `<iframe class="pdf" src="${pdf}#view=Fit&toolbar=0&navpanes=0" title="Schema ${esc(nome)}"></iframe>
+          <a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>` : `<div class="nofoto">Schema non disponibile</div>`}
+      <h4>Dati</h4>
+      <table>${rows.map(tr).join("")}</table>
+      ${extra.length ? `<h4>Componenti e attrezzature</h4><table>${extra.map(tr).join("")}</table>` : ""}`;
+    placeScheda();
+    scheda.hidden = false;
+    document.body.classList.add("scheda-open");
+    document.getElementById("schedaBody").scrollTop = 0;
+  }
+
   // ===== Pannello =====
   const overlay = document.getElementById("overlay");
   const tblT = document.getElementById("tblTronchi"), tblM = document.getElementById("tblManufatti"), filters = document.getElementById("filters");
@@ -249,14 +306,11 @@
     // Manufatti
     const markers = new Map();
     manufatti.features.forEach(f => {
-      const m = markerFor(f).bindPopup(popupHtml(f.properties), { maxWidth:340, maxHeight: Math.max(260, window.innerHeight - 320), autoPanPadding:[20,20] }).addTo(map);
-      // ricalcola dimensione e pan quando la foto si carica o si apre il dettaglio
-      m.on("popupopen", (e) => {
-        const el = e.popup.getElement(), upd = () => { e.popup.update(); };
-        el.querySelectorAll("img").forEach(i => i.addEventListener("load", upd, { once:true }));
-        el.querySelectorAll("details").forEach(d => d.addEventListener("toggle", upd));
-      });
-      markers.set(f.properties.univoco, m);
+      const p = f.properties, m = markerFor(f).addTo(map);
+      if(TIPI[tipoOf(p)]) m.on("click", () => { openScheda(p);
+        if(window.innerWidth > 720){ const z = map.getZoom(); map.panTo(map.unproject(map.project(m.getLatLng(), z).add([scheda.offsetWidth / 2, 0]), z)); } });
+      else m.bindPopup(popupHtml(p), { maxWidth:340, autoPanPadding:[20,20] });
+      markers.set(p.univoco, m);
     });
     const named = manufatti.features.filter(f => TIPI[tipoOf(f.properties)])
       .sort((a,b) => (a.properties.tronco - b.properties.tronco) || ((a.properties.progressiva_m||0) - (b.properties.progressiva_m||0)));
@@ -275,7 +329,11 @@
     [q, fTr, fTi].forEach(el => el.addEventListener("input", renderM));
     renderM();
     tblM.tBodies[0].onclick = (e) => { const tr = e.target.closest("tr"); if(!tr) return;
-      const m = markers.get(Number(tr.dataset.u)); map.once("moveend", () => m.openPopup()); map.setView(m.getLatLng(), Math.max(map.getZoom(), 17)); };
+      const u = Number(tr.dataset.u), m = markers.get(u), f = named.find(x => x.properties.univoco === u);
+      openScheda(f.properties);
+      // centra il manufatto nella parte di mappa non coperta dalla scheda
+      const z = Math.max(map.getZoom(), 17), pt = map.project(m.getLatLng(), z).add([window.innerWidth > 720 ? scheda.offsetWidth / 2 : 0, 0]);
+      map.setView(map.unproject(pt, z), z); };
   }).catch(err => { console.error(err); alert("Errore caricamento dati: " + err.message); });
 })();
 </script>
