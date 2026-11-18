@@ -1,0 +1,32 @@
+{
+ "_updated": "18-11-2026 (as-built)",
+ "_note": "Lavori ultimati: lunghezze da rilievo as-built QGIS (Tubo_ASbuilt)",
+ "2": {
+  "tot": 2337.69,
+  "done": 2337.69
+ },
+ "3-1": {
+  "tot": 905.51,
+  "done": 905.51
+ },
+ "4": {
+  "tot": 2766.43,
+  "done": 2766.43
+ },
+ "5": {
+  "tot": 2681.9,
+  "done": 2681.9
+ },
+ "3-2": {
+  "tot": 1615.37,
+  "done": 1615.37
+ },
+ "1": {
+  "tot": 2079.16,
+  "done": 2079.16
+ },
+ "PV": {
+  "tot": 1139.23,
+  "done": 1139.23
+ }
+}

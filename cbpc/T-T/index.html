@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Condotta as-built – Schema irriguo Tidone</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root{ --fg:#111; --muted:#666; --border:#ddd; --shadow:0 8px 28px rgba(0,0,0,.12); --accent:#0b3d91; }
+  body{ margin:0; font-family:Arial, sans-serif; color:var(--fg); background:#fff; height:100vh; overflow:hidden; display:flex; flex-direction:column; }
+  header{ padding:10px 14px; border-bottom:1px solid var(--border); background:#fff; }
+  .topline{ display:flex; gap:12px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; }
+  .title{ max-width:1200px; line-height:1.25; font-size:13px; }
+  .title b{ font-size:16px; display:block; margin-bottom:4px; }
+  .meta{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:6px; color:var(--muted); font-size:12px; }
+  .pill{ border:1px solid var(--border); border-radius:999px; padding:4px 10px; background:#f7f7f7; }
+  .navlink{ color:#111; text-decoration:none; font-weight:600; }
+  .navlink:hover{ background:#efefef; }
+  .logos{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+  .logos img{ height:42px; width:auto; object-fit:contain; border:1px solid #eee; border-radius:10px; padding:6px 8px; background:#fff; }
+  #map{ flex:1; min-height:0; }
+
+  .overlay{ position:absolute; top:135px; right:14px; width:min(520px, calc(100vw - 28px)); background:#fff; border:1px solid var(--border);
+    border-radius:14px; box-shadow:var(--shadow); overflow:hidden; z-index:999; }
+  .overlay-header{ display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px 12px; border-bottom:1px solid var(--border); background:#fafafa; flex-wrap:wrap; }
+  .overlay-header .h{ font-weight:700; font-size:13px; }
+  .tabs{ display:flex; gap:6px; }
+  .overlay button, .overlay input, .overlay select{ border:1px solid var(--border); background:#fff; border-radius:10px; padding:6px 10px; font-size:12px; }
+  .overlay button{ cursor:pointer; }
+  .overlay button.active{ background:var(--accent); color:#fff; border-color:var(--accent); }
+  .overlay-body{ max-height:55vh; overflow:auto; }
+  .overlay.compact .overlay-body, .overlay.compact .filters{ display:none; }
+  .filters{ display:flex; gap:6px; padding:8px 12px; border-bottom:1px solid #eee; flex-wrap:wrap; }
+  .filters[hidden]{ display:none; }
+  .filters input{ flex:1; min-width:140px; }
+  table{ width:100%; border-collapse:collapse; font-size:12px; }
+  th, td{ padding:7px 8px; border-bottom:1px solid #eee; text-align:left; }
+  th{ position:sticky; top:0; background:#fff; z-index:2; border-bottom:1px solid var(--border); }
+  td.num, th.num{ text-align:right; white-space:nowrap; }
+  tbody tr.click{ cursor:pointer; } tbody tr.click:hover{ background:#f4f7fd; }
+  tfoot td{ font-weight:700; }
+  .swatch{ display:inline-block; width:10px; height:10px; border-radius:999px; margin-right:6px; vertical-align:middle; }
+  .ico{ font-size:11px; color:var(--accent); }
+
+  .legend{ background:#fff; border:1px solid #d9d9d9; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.08); padding:8px 10px; font-size:12px; line-height:1.4; }
+  .legend .t{ font-weight:700; margin-bottom:4px; }
+  .legend .item{ display:flex; align-items:center; gap:8px; margin:2px 0; }
+  .sym{ width:12px; height:12px; border:2px solid #222; box-sizing:border-box; background:#222; display:inline-block; }
+  .circle{ border-radius:50%; } .square{ border-radius:2px; } .diamond{ border-radius:2px; transform:rotate(45deg); }
+  .sym.small{ width:8px; height:8px; background:#fff; }
+  .basebar{ display:flex; border:1px solid #d9d9d9; border-radius:12px; overflow:hidden; background:#fff; box-shadow:0 6px 16px rgba(0,0,0,.08); }
+  .basebar button{ border:0; background:#fff; padding:6px 10px; font-size:12px; cursor:pointer; border-right:1px solid #e6e6e6; }
+  .basebar button:last-child{ border-right:0; }
+  .basebar button.active{ background:var(--accent); color:#fff; }
+
+  .mk{ box-sizing:border-box; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.55); }
+  .mk.circle{ border-radius:50%; } .mk.square{ border-radius:2px; } .mk.diamond{ border-radius:2px; transform:rotate(45deg); }
+
+  .pop{ font-size:12px; min-width:240px; max-width:320px; }
+  .pop h3{ margin:0 0 4px; font-size:14px; }
+  .pop .sub{ color:var(--muted); margin-bottom:6px; }
+  .pop img{ width:100%; max-height:170px; object-fit:cover; border-radius:8px; margin:6px 0; display:block; cursor:zoom-in; }
+  .pop table td{ padding:3px 4px; border-bottom:1px solid #f0f0f0; }
+  .pop table td:first-child{ color:var(--muted); }
+  .pop .btn{ display:inline-block; margin-top:8px; padding:6px 10px; border-radius:8px; background:var(--accent); color:#fff !important; text-decoration:none; font-weight:700; }
+  .pop details{ margin-top:6px; } .pop summary{ cursor:pointer; color:var(--accent); }
+
+  .scheda{ position:fixed; right:14px; width:min(620px, calc(100vw - 28px)); bottom:14px; z-index:1000; background:#fff;
+    border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden; }
+  .scheda[hidden]{ display:none; }
+  body.scheda-open .overlay{ display:none; }
+  .scheda-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:10px 12px; border-bottom:1px solid var(--border); background:#fafafa; }
+  .scheda-head h2{ margin:0; font-size:16px; } .scheda-head .sub{ color:var(--muted); font-size:12px; margin-top:2px; }
+  .scheda-head button{ border:1px solid var(--border); background:#fff; border-radius:10px; padding:4px 10px; font-size:16px; cursor:pointer; }
+  .scheda-body{ overflow:auto; padding:10px 12px; font-size:12px; }
+  .scheda-body h4{ margin:12px 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+  .scheda-body .foto{ width:100%; height:220px; object-fit:cover; border-radius:10px; display:block; cursor:zoom-in; background:#eef1f5; }
+  .scheda-body .nofoto{ border:1px dashed var(--border); border-radius:10px; padding:18px; text-align:center; color:var(--muted); }
+  .scheda-body table td{ padding:4px 6px; border-bottom:1px solid #f0f0f0; } .scheda-body table td:first-child{ color:var(--muted); }
+  .scheda-body .pdf{ width:100%; height:max(320px, calc(100vh - var(--schedaTop, 300px) - 400px)); border:1px solid var(--border); border-radius:10px; display:block; background:#f4f4f4; }
+  .scheda-body .btn{ display:inline-block; margin-top:6px; padding:6px 10px; border-radius:8px; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; }
+  .footnote{ padding:8px 12px; border-top:1px dashed #d9d9d9; font-size:11px; color:#58606b; line-height:1.35; }
+  @media (max-width:720px){ .scheda{ left:8px; right:8px; width:auto; z-index:1001; } .scheda-body .pdf{ height:60vh; } .logos img{ height:34px; } .overlay{ top:auto; bottom:14px; left:14px; right:14px; width:auto; } .overlay-body{ max-height:35vh; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="topline">
+    <div class="title">
+      <b>Schema irriguo Tidone – Condotta e manufatti as-built</b>
+      Piano Nazionale di Ripresa e Resilienza (PNRR). Missione 2 - Componente 4 - Investimento 4.3 - Investimenti nella resilienza dell'agrosistema irriguo per una migliore gestione delle risorse idriche - finanziato dall'Unione Europea - Next Generation EU. Intervento: Schema irriguo Tidone: interventi di risparmio idrico per il contrasto alla siccità e adeguamenti funzionali del sistema adduzione in sponda sinistra e destra Tidone: tronchi 1) Bruso - Rio; 2) da canale Tavernago - Tuna a lago delle Lische; 3) dal lago delle Lische a Tuna. Codice intervento: 08-05-5703-847. Decreto MIPAAF - DISR 01 - Prot. 0484456 del 30/09/2022. Importo complessivo € 7.666.906,95. CUP G99J21006930005.
+      <div class="meta">
+        <span class="pill">Lavori ultimati – rilievo as-built</span>
+        <a class="pill navlink" href="info.html">Scheda informativa</a>
+        <a class="pill navlink" href="forniture.html">Forniture</a>
+        <a class="pill navlink" href="quadro-economico.html">Quadro economico</a>
+      </div>
+    </div>
+    <div class="logos">
+      <img src="assets/italiadomani.png" alt="Italia Domani">
+      <img src="assets/masaf.png" alt="MASAF">
+      <img src="assets/nextgenerationeu.png" alt="NextGenerationEU">
+      <img src="assets/consorzio.png" alt="Consorzio di Bonifica di Piacenza">
+    </div>
+  </div>
+</header>
+
+<div id="map"></div>
+
+<aside class="scheda" id="scheda" hidden>
+  <div class="scheda-head">
+    <div><h2 id="schedaTitolo">—</h2><div class="sub" id="schedaSub"></div></div>
+    <button id="schedaChiudi" title="Chiudi" aria-label="Chiudi">×</button>
+  </div>
+  <div class="scheda-body" id="schedaBody"></div>
+</aside>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-header">
+    <div class="tabs">
+      <button id="tabTronchi" class="active">Tronchi</button>
+      <button id="tabManufatti">Manufatti</button>
+    </div>
+    <button id="toggle">Comprimi</button>
+  </div>
+  <div class="filters" id="filters" hidden>
+    <input id="q" type="search" placeholder="Cerca manufatto (nome o n.)">
+    <select id="fTronco"><option value="">Tutti i tronchi</option></select>
+    <select id="fTipo"><option value="">Tutti i tipi</option></select>
+  </div>
+  <div class="overlay-body">
+    <table id="tblTronchi">
+      <thead><tr><th>Tronco</th><th>Ditta</th><th class="num">Lunghezza as-built (m)</th></tr></thead>
+      <tbody></tbody><tfoot></tfoot>
+    </table>
+    <table id="tblManufatti" hidden>
+      <thead><tr><th>N.</th><th>Manufatto</th><th>Tipo</th><th>Tr.</th><th class="num">Prog. (m)</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="footnote">Dati da rilievo as-built (QGIS, EPSG:25832, riproiettati in WGS84). I contenuti e l'impaginazione sono stati sviluppati con il supporto di strumenti di intelligenza artificiale, con validazione e controllo finale da parte dell'autore.</div>
+</div>
+
+<script>
+(() => {
+  const CB = Date.now();
+  const TRONCHI_ORDER = ["PV","1","2","3-1","3-2","4","5"];
+  const PALETTE = ["#e6194b","#3cb44b","#4363d8","#f58231","#911eb4","#46a3a8","#b8860b"];
+  const TIPI = { "1":{l:"Innesto",s:"circle"}, "2":{l:"Derivazione",s:"square"}, "3":{l:"Sezionamento",s:"diamond"}};
+  // Etichette attributi QGIS mostrati nel popup (null o 0 = non mostrato)
+  const ATTR = [
+    ["valv_315","Valvole DN315"],["valv_630","Valvole DN630"],["mis_315","Misuratori DN315"],["mot_315","Motorizzazioni DN315"],
+    ["pozz","Pozzetti"],["coperchio","Coperchi"],["anfore_cu","Anfore e cu"],["r150x160","Rid. 150x160"],["r150x80","Rid. 150x80"],
+    ["r150x75","Rid. 150x75"],["r150x40","Rid. 150x40"],["tronchetti","Tronchetti"],["tronchetti_1","Tronchetti (2)"],
+    ["tipologia","Tipologia"],["punti","Punti"],["vertice_pe","Vertice PE"]
+  ];
+  const nf = (n, d=2) => Number(n).toLocaleString("it-IT",{minimumFractionDigits:d, maximumFractionDigits:d});
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const colorForTronco = (id) => String(id) === "3" ? "#555" /* manufatti tronco 3 = 3-1 + 3-2 */ : PALETTE[Math.max(0, TRONCHI_ORDER.indexOf(String(id))) % PALETTE.length];
+  // tronco manufatti è numerico (0=PV, 3=3-1/3-2)
+  const troncoLabel = (t) => String(t) === "0" ? "PV" : String(t);
+  // nome manufatto: da QGIS, altrimenti dal nome del PDF (NN_univoco_Nome_X.pdf)
+  const nomeOf = (p) => p.nominativo || (p.pdf ? p.pdf.split("/").pop().replace(/\.pdf$/i,"").replace(/^(?:\w+?_)?\d+_/,"").replace(/_[IDS]$/,"").replace(/_/g," ") : "");
+  const tipoOf = (p) => (p.tipo === null || p.tipo === undefined) ? "" : String(p.tipo);
+
+  // ===== Mappa =====
+  const map = L.map("map", { preferCanvas:false });
+  const bases = {
+    "OSM": L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom:20, maxNativeZoom:19, attribution:"&copy; OpenStreetMap" }),
+    "Chiara": L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", { maxZoom:20, attribution:"&copy; OpenStreetMap &copy; CARTO" }),
+    "Satellite": L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxZoom:20, maxNativeZoom:19, attribution:"Tiles &copy; Esri" })
+  };
+  let current = bases["Satellite"].addTo(map);
+  const BaseBar = L.Control.extend({ options:{ position:"topleft" }, onAdd(){
+    const div = L.DomUtil.create("div","basebar");
+    Object.keys(bases).forEach(k => {
+      const b = L.DomUtil.create("button", k==="Satellite"?"active":"", div); b.textContent = k;
+      b.onclick = () => { map.removeLayer(current); current = bases[k].addTo(map); div.querySelectorAll("button").forEach(x=>x.classList.toggle("active", x===b)); };
+    });
+    L.DomEvent.disableClickPropagation(div); return div;
+  }});
+  map.addControl(new BaseBar());
+  L.control.scale({ position:"bottomleft", imperial:false }).addTo(map);
+
+  const Legend = L.Control.extend({ options:{ position:"bottomleft" }, onAdd(){
+    const div = L.DomUtil.create("div","legend");
+    div.innerHTML = `<div class="t">Manufatti</div>` +
+      Object.values(TIPI).map(t => `<div class="item"><span class="sym ${t.s}"></span>${t.l}</div>`).join("") +
+      `<div class="item"><span class="sym small circle"></span>Curva / pezzo speciale</div>`;
+    return div;
+  }});
+  map.addControl(new Legend());
+
+  function markerFor(f){
+    const p = f.properties, tipo = tipoOf(p), t = TIPI[tipo];
+    const col = colorForTronco(troncoLabel(p.tronco));
+    const named = !!p.nominativo || !!p.pdf;
+    const size = t ? (named ? 16 : 13) : 8;
+    const html = `<div class="mk ${t ? t.s : "circle"}" style="width:${size}px;height:${size}px;background:${t ? col : "#fff"};border-color:${t ? "#fff" : col}"></div>`;
+    return L.marker([f.geometry.coordinates[1], f.geometry.coordinates[0]], {
+      icon: L.divIcon({ className:"", html, iconSize:[size,size], iconAnchor:[size/2,size/2] }),
+      zIndexOffset: t ? 500 : 0
+    });
+  }
+
+  function popupHtml(p){
+    const tipo = tipoOf(p), t = TIPI[tipo];
+    const nome = nomeOf(p) || (t ? t.l : "Pezzo speciale");
+    const rows = [];
+    rows.push(["Codice univoco", p.univoco]);
+    rows.push(["Tronco", troncoLabel(p.tronco)]);
+    if(t) rows.push(["Tipo", t.l]);
+    if(p.curva) rows.push(["Curva", p.curva + "°"]);
+    if(p.progressiva_m !== null && p.progressiva_m !== undefined) rows.push(["Progressiva", nf(p.progressiva_m) + " m"]);
+    rows.push(["Quota Z", p.quota_z ? nf(p.quota_z,3) + " m s.l.m." : "n.d."]);
+    rows.push(["Coord. UTM32 (E, N)", nf(p.x_utm32,2) + ", " + nf(p.y_utm32,2)]);
+    const extra = ATTR.filter(([k]) => p[k] !== null && p[k] !== undefined && p[k] !== 0 && p[k] !== "").map(([k,l]) => [l, p[k]]);
+    const tr = (r) => `<tr><td>${esc(r[0])}</td><td><b>${esc(r[1])}</b></td></tr>`;
+    return `<div class="pop">
+      <h3>${esc(nome)}</h3>
+      <div class="sub">Manufatto n. ${esc(p.univoco)}${t ? " – " + t.l : ""}</div>
+      ${p.foto ? `<img src="${encodeURI(p.foto)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)" onerror="this.remove()">` : ""}
+      <table>${rows.map(tr).join("")}</table>
+      ${extra.length ? `<details><summary>Componenti e attrezzature (${extra.length})</summary><table>${extra.map(tr).join("")}</table></details>` : ""}
+      ${p.pdf ? `<a class="btn" href="${encodeURI(p.pdf)}" target="_blank" rel="noopener">Schema manufatto (PDF)</a>` : ""}
+    </div>`;
+  }
+
+  // ===== Scheda manufatto (foto + PDF in vista) =====
+  const scheda = document.getElementById("scheda");
+  function placeScheda(){ const t = document.querySelector("header").offsetHeight + 10; scheda.style.top = t + "px"; document.documentElement.style.setProperty("--schedaTop", t + "px"); }
+  window.addEventListener("resize", placeScheda);
+  document.getElementById("schedaChiudi").onclick = () => { scheda.hidden = true; document.body.classList.remove("scheda-open"); };
+  function openScheda(p){
+    const tipo = tipoOf(p), t = TIPI[tipo];
+    const nome = nomeOf(p) || (t ? t.l : "Pezzo speciale");
+    const rows = [["Codice univoco", p.univoco], ["Tronco", troncoLabel(p.tronco)]];
+    if(t) rows.push(["Tipo", t.l]);
+    if(p.curva) rows.push(["Curva", p.curva + "°"]);
+    if(p.progressiva_m != null) rows.push(["Progressiva", nf(p.progressiva_m) + " m"]);
+    rows.push(["Quota Z", p.quota_z ? nf(p.quota_z,3) + " m s.l.m." : "n.d."]);
+    rows.push(["Coord. UTM32 (E, N)", nf(p.x_utm32,2) + ", " + nf(p.y_utm32,2)]);
+    const extra = ATTR.filter(([k]) => p[k] !== null && p[k] !== undefined && p[k] !== 0 && p[k] !== "").map(([k,l]) => [l, p[k]]);
+    const tr = (r) => `<tr><td>${esc(r[0])}</td><td><b>${esc(r[1])}</b></td></tr>`;
+    const pdf = p.pdf ? encodeURI(p.pdf) : null;
+    document.getElementById("schedaTitolo").textContent = nome;
+    document.getElementById("schedaSub").textContent = `Manufatto n. ${p.univoco}${t ? " – " + t.l : ""} – tronco ${troncoLabel(p.tronco)}`;
+    document.getElementById("schedaBody").innerHTML = `
+      <h4>Foto</h4>
+      ${p.foto ? `<img class="foto" src="${encodeURI(p.foto)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)"
+          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">` : `<div class="nofoto">Foto non disponibile</div>`}
+      <h4>Schema manufatto</h4>
+      ${pdf ? `<iframe class="pdf" src="${pdf}#view=Fit&toolbar=0&navpanes=0" title="Schema ${esc(nome)}"></iframe>
+          <a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>` : `<div class="nofoto">Schema non disponibile</div>`}
+      <h4>Dati</h4>
+      <table>${rows.map(tr).join("")}</table>
+      ${extra.length ? `<h4>Componenti e attrezzature</h4><table>${extra.map(tr).join("")}</table>` : ""}`;
+    placeScheda();
+    scheda.hidden = false;
+    document.body.classList.add("scheda-open");
+    document.getElementById("schedaBody").scrollTop = 0;
+  }
+
+  // ===== Pannello =====
+  const overlay = document.getElementById("overlay");
+  const tblT = document.getElementById("tblTronchi"), tblM = document.getElementById("tblManufatti"), filters = document.getElementById("filters");
+  const tabT = document.getElementById("tabTronchi"), tabM = document.getElementById("tabManufatti");
+  function showTab(m){
+    tabT.classList.toggle("active", !m); tabM.classList.toggle("active", m);
+    tblT.hidden = m; tblM.hidden = !m; filters.hidden = !m;
+  }
+  tabT.onclick = () => showTab(false); tabM.onclick = () => showTab(true);
+  document.getElementById("toggle").onclick = (e) => { overlay.classList.toggle("compact"); e.target.textContent = overlay.classList.contains("compact") ? "Espandi" : "Comprimi"; };
+
+  Promise.all([
+    fetch("tronchi.geojson?cb=" + CB).then(r => { if(!r.ok) throw new Error("tronchi.geojson HTTP " + r.status); return r.json(); }),
+    fetch("manufatti.geojson?cb=" + CB).then(r => { if(!r.ok) throw new Error("manufatti.geojson HTTP " + r.status); return r.json(); })
+  ]).then(([tronchi, manufatti]) => {
+    // Linee
+    const byTronco = {};
+    const lines = L.geoJSON(tronchi, {
+      style: f => ({ color: colorForTronco(f.properties.tronco), weight: 5, opacity: .95 }),
+      onEachFeature: (f, layer) => {
+        const p = f.properties;
+        layer.bindPopup(`<div class="pop"><h3>Tronco ${esc(p.tronco)}</h3><table>
+          <tr><td>Ditta</td><td><b>${esc(p.ditta)}</b></td></tr>
+          <tr><td>Lunghezza as-built</td><td><b>${nf(p.lunghezza_m)} m</b></td></tr></table></div>`);
+        (byTronco[p.tronco] = byTronco[p.tronco] || { ditta:p.ditta, len:p.lunghezza_m, layers:[] }).layers.push(layer);
+      }
+    }).addTo(map);
+    map.fitBounds(lines.getBounds(), { padding:[30,30] });
+
+    // Tabella tronchi (la lunghezza QGIS è per feature: PV ha due feature distinte, le multilinee no)
+    const pvLen = tronchi.features.filter(f => f.properties.tronco === "PV").reduce((s,f) => s + (f.properties.lunghezza_m||0), 0);
+    if(byTronco.PV) byTronco.PV.len = pvLen;
+    const ids = Object.keys(byTronco).sort((a,b) => TRONCHI_ORDER.indexOf(a) - TRONCHI_ORDER.indexOf(b));
+    let tot = 0;
+    tblT.tBodies[0].innerHTML = ids.map(id => { tot += byTronco[id].len || 0;
+      return `<tr class="click" data-id="${esc(id)}"><td><span class="swatch" style="background:${colorForTronco(id)}"></span>${esc(id)}</td><td>${esc(byTronco[id].ditta)}</td><td class="num">${nf(byTronco[id].len)}</td></tr>`; }).join("");
+    tblT.tFoot.innerHTML = `<tr><td colspan="2">Totale condotta</td><td class="num">${nf(tot)}</td></tr>`;
+    tblT.tBodies[0].onclick = (e) => { const tr = e.target.closest("tr"); if(!tr) return;
+      const g = L.featureGroup(byTronco[tr.dataset.id].layers); map.fitBounds(g.getBounds(), { padding:[40,40] }); };
+
+    // Manufatti
+    const markers = new Map();
+    manufatti.features.forEach(f => {
+      const p = f.properties, m = markerFor(f).addTo(map);
+      if(TIPI[tipoOf(p)]) m.on("click", () => { openScheda(p);
+        if(window.innerWidth > 720){ const z = map.getZoom(); map.panTo(map.unproject(map.project(m.getLatLng(), z).add([scheda.offsetWidth / 2, 0]), z)); } });
+      else m.bindPopup(popupHtml(p), { maxWidth:340, autoPanPadding:[20,20] });
+      markers.set(p.univoco, m);
+    });
+    const named = manufatti.features.filter(f => TIPI[tipoOf(f.properties)])
+      .sort((a,b) => (a.properties.tronco - b.properties.tronco) || ((a.properties.progressiva_m||0) - (b.properties.progressiva_m||0)));
+    const fTr = document.getElementById("fTronco"), fTi = document.getElementById("fTipo"), q = document.getElementById("q");
+    [...new Set(named.map(f => troncoLabel(f.properties.tronco)))].forEach(v => fTr.add(new Option("Tronco " + v, v)));
+    [...new Set(named.map(f => tipoOf(f.properties)))].sort().forEach(v => fTi.add(new Option(TIPI[v].l, v)));
+    function renderM(){
+      const s = q.value.trim().toLowerCase();
+      const rows = named.filter(f => { const p = f.properties;
+        return (!fTr.value || troncoLabel(p.tronco) === fTr.value) && (!fTi.value || tipoOf(p) === fTi.value) &&
+          (!s || String(p.univoco).includes(s) || nomeOf(p).toLowerCase().includes(s)); });
+      tblM.tBodies[0].innerHTML = rows.map(f => { const p = f.properties;
+        return `<tr class="click" data-u="${p.univoco}"><td>${p.univoco}</td><td>${esc(nomeOf(p) || "—")}</td><td>${TIPI[tipoOf(p)].l}</td><td>${troncoLabel(p.tronco)}</td>
+          <td class="num">${p.progressiva_m != null ? nf(p.progressiva_m,1) : ""}</td><td class="ico">${p.pdf ? "PDF" : ""}</td></tr>`; }).join("");
+    }
+    [q, fTr, fTi].forEach(el => el.addEventListener("input", renderM));
+    renderM();
+    tblM.tBodies[0].onclick = (e) => { const tr = e.target.closest("tr"); if(!tr) return;
+      const u = Number(tr.dataset.u), m = markers.get(u), f = named.find(x => x.properties.univoco === u);
+      openScheda(f.properties);
+      // centra il manufatto nella parte di mappa non coperta dalla scheda
+      const z = Math.max(map.getZoom(), 17), pt = map.project(m.getLatLng(), z).add([window.innerWidth > 720 ? scheda.offsetWidth / 2 : 0, 0]);
+      map.setView(map.unproject(pt, z), z); };
+  }).catch(err => { console.error(err); alert("Errore caricamento dati: " + err.message); });
+})();
+</script>
+</body>
+</html>

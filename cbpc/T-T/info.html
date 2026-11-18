@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PNRR M2C4 – Investimento 4.3 | KPI di progetto</title>
+  <link rel="icon" href="data:,"/>
+  <style>
+    :root{--bg:#f6f7f9;--fg:#111;--muted:#5f6570;--panel:#fff;--border:#e3e6eb;--soft:#f1f3f6;--shadow:0 8px 22px rgba(0,0,0,.08);--radius:14px;--chart:#2A7DBA;}
+    *{box-sizing:border-box;min-width:0}
+    body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--fg)}
+    header{background:#fff;border-bottom:1px solid var(--border);padding:10px 12px}
+    .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .title{flex:1 1 860px}.title b{display:block;font-size:22px;margin-bottom:4px}
+    .subtitle{font-size:13px;line-height:1.3;color:#1a1d22}
+    .meta{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .meta-nav{display:flex;gap:8px;flex-wrap:wrap}
+    .meta-static{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+    .pill{border:1px solid var(--border);background:var(--soft);padding:4px 10px;border-radius:999px;font-size:12px;color:#2e333b}
+    .navlink{color:#111;text-decoration:none;font-weight:700}.navlink:hover{background:#e9edf2}
+    .logos{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .logos img{height:40px;width:auto;object-fit:contain;border:1px solid #e8ebf1;border-radius:10px;padding:6px 8px;background:#fff}
+
+    main{padding:10px;max-width:1600px;margin:0 auto}
+    .dashboard{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:10px}
+    .dashHead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+    .dashHead .h{font-weight:700;font-size:16px}.dashHead .hint{color:var(--muted);font-size:12px}
+
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .card{border:1px solid var(--border);border-radius:12px;background:#fff;padding:10px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+    .k{font-size:12px;color:var(--muted)} .v{font-size:34px;font-weight:700;line-height:1.18}
+    .s{font-size:12px;color:#4d535e;line-height:1.35}
+    .pRow{display:flex;justify-content:space-between;font-size:12px}
+    .bar{height:8px;border-radius:999px;background:#eceff4;overflow:hidden;border:1px solid #e2e6ee}
+    .bar > div{height:100%;width:0;background:var(--chart)}
+    .barMeta{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+    .donutWrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    canvas.donut{width:88px;height:88px;border:1px solid var(--border);border-radius:50%;background:#fff;flex:0 0 auto}
+    .donutText{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 140px;overflow-wrap:anywhere}
+    .badge{border:1px solid var(--border);background:var(--soft);padding:2px 8px;border-radius:999px;font-size:11px;width:max-content;max-width:100%}
+    .split{display:grid;grid-template-columns:1fr;gap:6px}
+    .foot{margin-top:10px;border:1px dashed #d8dde5;border-radius:12px;padding:8px 10px;font-size:12px;color:var(--muted);background:#fbfcfe}
+
+    @media (max-width:1200px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.meta-static{margin-left:0}}
+    @media (max-width:760px){.cards{grid-template-columns:1fr}.title b{font-size:19px}.subtitle{font-size:12px}.v{font-size:30px}.logos img{height:34px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="title">
+      <b>PNRR M2C4 – Investimento 4.3 | KPI di progetto</b>
+      <div class="subtitle"> Investimenti nella resilienza dell'agrosistema irriguo per una migliore gestione delle risorse idriche. Decreto MIPAAF - DISR 01 - Prot. Interno N. 484456 del 30/9/2022. Codice progetto DANIA: 08-05-5703-847. Finanziamento delle forniture dei materiali.Intervento: Schema irriguo Tidone: interventi di risparmio idrico per il contrasto alla siccità e adeguamenti funzionali sistema di adduzione in sponda sinistra e destra Tidone: tronchi 1) Bruso - il Rio; 2) da canale Tavernago - Tuna a lago delle Lische; 3) dal lago delle Lische a Tuna. CUP G99J21006930005.</div>
+      <div class="meta">
+        <div class="meta-nav">
+          <a class="pill navlink" href="index.html">Mappa as-built</a>
+          <a class="pill navlink" href="forniture.html">Forniture</a>
+          <a class="pill navlink" href="quadro-economico.html">Quadro economico</a>
+        </div>
+        <div class="meta-static">
+          <span class="pill">Misuratori fonte Pievetta: n. 4 (tutti posati)</span>
+          <span class="pill" id="upd">Aggiornato: —</span>
+        </div>
+      </div>
+    </div>
+    <div class="logos">
+      <img src="assets/italiadomani.png" alt="Italia Domani">
+      <img src="assets/masaf.png" alt="MASAF">
+      <img src="assets/nextgenerationeu.png" alt="NextGenerationEU">
+      <img src="assets/consorzio.png" alt="Consorzio">
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="dashboard">
+    <div class="dashHead">
+      <div class="h">KPI PNRR – Quadro sintetico</div>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="k">Risparmio idrico + baseline volume</div>
+        <div class="v">300.000 m³/stagione</div>
+        <div class="s">Baseline volume stagionale: 1.749.600 m³</div>
+        <div class="pRow"><span>Raggiungimento target</span><span id="kpiSavePct">0%</span></div>
+        <div class="bar"><div id="barSave"></div></div>
+      </article>
+
+      <article class="card">
+        <div class="k">Efficienza distribuzione</div>
+        <div class="v" id="lossTitle">Perdite stimate: 48.0%</div>
+        <div class="s">Progressione lineare da baseline 48% verso target 2% in funzione della posa tubazioni.</div>
+        <div class="donutWrap">
+          <canvas class="donut" id="donut_losses" width="88" height="88"></canvas>
+          <div class="donutText">
+            <span class="badge">Baseline: 48% • Target: 2%</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="k">Area irrigua efficientata (2 componenti)</div>
+        <div class="v">7.448 ha</div>
+        <div class="split">
+          <div class="s">Componente rete (legata a posa tubazioni)</div>
+          <div class="pRow"><span>Quota rete</span><span id="areaPipePct">0%</span></div>
+          <div class="bar"><div id="barAreaPipe"></div></div>
+
+          <div class="s">Componente fonte Po (TABU, già rendicontata in REGIS)</div>
+          <div class="pRow"><span>Quota fonte</span><span>100%</span></div>
+          <div class="bar"><div style="width:100%"></div></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="k">Misurazione prelievi</div>
+        <div class="v">4 / 4</div>
+        <div class="s">Misuratori di portata alla fonte "tabu" Po Pievetta - completati.</div>
+        <div class="pRow"><span>Raggiungimento</span><span>100%</span></div>
+        <div class="bar"><div style="width:100%"></div></div>
+      </article>
+
+      <article class="card">
+        <div class="k">Target PNRR – verifica di collaudo (23/10/2026)</div>
+        <div class="v">Conseguiti</div>
+        <div class="s">T044 area efficientata 74.480.000 m² (7.448 ha) • T0325 misuratori III livello n. 4 • T0326 misuratori IV livello n. 29. Dati aggiornati su REGIS.</div>
+        <div class="pRow"><span>Raggiungimento</span><span>100%</span></div>
+        <div class="bar"><div style="width:100%"></div></div>
+      </article>
+
+      <article class="card">
+        <div class="k">Miglioramento servizio rete</div>
+        <div class="v">17–20 h → 3–4 h</div>
+        <div class="s">Riduzione del tempo di percorrenza e maggiore flessibilità gestionale.</div>
+        <div class="donutWrap">
+          <canvas class="donut" id="donut_time" width="88" height="88"></canvas>
+          <div class="donutText"><span class="badge">Riduzione indicativa: ~80%</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="k">Posa tubazioni completata – vedasi "Mappa as-built"</div>
+        <div class="v" id="pipeProgress">0%</div>
+        <div class="s" id="pipeMeters">0 / 0 m</div>
+        <div class="bar"><div id="barPipe"></div></div>
+      </article>
+    </div>
+
+    <div class="foot">Fonti tecniche: relazioni di progetto (Agronomica e CSA); lunghezze da rilievo as-built; target da <a href="documenti/Collaudo.pdf" target="_blank" rel="noopener">Collaudo tecnico-amministrativo del 23/10/2026</a>. Perdite e tempi di percorrenza sono valori di progetto.<br>I contenuti e l'impaginazione sono stati sviluppati con il supporto di strumenti di intelligenza artificiale (ChatGPT – OpenAI), con validazione e controllo finale da parte dell'autore.</div>
+  </section>
+</main>
+
+<script>
+  function clamp01(x){ return Math.max(0, Math.min(1, x)); }
+  function drawDonut(id, value){
+    const c=document.getElementById(id); if(!c) return;
+    const ctx=c.getContext('2d'); const w=c.width,h=c.height; const cx=w/2,cy=h/2; const r=Math.min(w,h)/2-8; const t=10;
+    const v=clamp01(value);
+    ctx.clearRect(0,0,w,h);
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.strokeStyle='#eceff4'; ctx.lineWidth=t; ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+Math.PI*2*v); ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--chart').trim() || '#0b3d91'; ctx.lineWidth=t; ctx.lineCap='round'; ctx.stroke();
+    ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--chart').trim() || '#0b3d91'; ctx.font='bold 14px Arial'; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText(Math.round(v*100)+'%',cx,cy);
+  }
+  function fmt(n){ return new Intl.NumberFormat('it-IT', {maximumFractionDigits:2}).format(n||0); }
+
+  function applyProgress(done, tot, updated){
+    const p = tot>0 ? clamp01(done/tot) : 0;
+    const pPct = Math.round(p*1000)/10;
+
+    document.getElementById('upd').textContent = 'Aggiornato: ' + (updated || '—');
+    document.getElementById('pipeProgress').textContent = pPct.toFixed(1) + '%';
+    document.getElementById('pipeMeters').textContent = `${fmt(done)} / ${fmt(tot)} m`;
+    document.getElementById('barPipe').style.width = pPct + '%';
+
+    document.getElementById('kpiSavePct').textContent = pPct.toFixed(1) + '%';
+    document.getElementById('barSave').style.width = pPct + '%';
+
+    document.getElementById('areaPipePct').textContent = pPct.toFixed(1) + '%';
+    document.getElementById('barAreaPipe').style.width = pPct + '%';
+
+    const loss = 48 - (48-2)*p; // 48 -> 2 in funzione posa
+    document.getElementById('lossTitle').textContent = 'Perdite stimate: ' + loss.toFixed(1) + '%';
+    drawDonut('donut_losses', 1 - (loss/100));
+    drawDonut('donut_time', 0.80);
+  }
+
+  fetch('avanzamento.json')
+    .then(r=>r.json())
+    .then(data=>{
+      let tot=0, done=0;
+      Object.keys(data).forEach(k=>{
+        if(k.startsWith('_')) return;
+        const o=data[k]||{};
+        tot += Number(o.tot)||0;
+        done += Number(o.done)||0;
+      });
+      applyProgress(done, tot, data._updated || '—');
+    })
+    .catch(()=> applyProgress(0,0,'—'));
+</script>
+</body>
+</html>

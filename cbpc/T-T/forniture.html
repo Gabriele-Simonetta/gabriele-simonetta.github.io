@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PNRR M2C4 – Investimento 4.3 | Forniture</title>
+  <link rel="icon" href="data:," />
+  <style>
+    :root{
+      --bg:#f6f7f9;
+      --fg:#111;
+      --muted:#5f6570;
+      --panel:#fff;
+      --border:#e3e6eb;
+      --soft:#f1f3f6;
+      --shadow:0 8px 22px rgba(0,0,0,.08);
+      --shadow2:0 6px 16px rgba(0,0,0,.08);
+      --radius:14px;
+      --chart:#2A7DBA;
+    }
+    *{ box-sizing:border-box; min-width:0; }
+    body{ margin:0; font-family:Arial,sans-serif; color:var(--fg); background:var(--bg); }
+    header{ background:#fff; border-bottom:1px solid var(--border); padding:10px 12px; }
+    .top{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start; }
+    .title{ flex:1 1 860px; }
+    .title b{ display:block; font-size:22px; margin-bottom:4px; }
+    .subtitle{ font-size:13px; color:#1a1d22; line-height:1.3; }
+    .meta{ margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .meta-nav{ display:flex; gap:8px; flex-wrap:wrap; }
+    .meta-static{ display:flex; gap:8px; flex-wrap:wrap; margin-left:auto; }
+    .pill{ border:1px solid var(--border); background:var(--soft); border-radius:999px; padding:4px 10px; font-size:12px; color:#333; }
+    .navlink{ color:#111; text-decoration:none; font-weight:700; }
+    .navlink:hover{ background:#e9edf2; }
+    .logos{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+    .logos img{ height:40px; width:auto; object-fit:contain; border:1px solid #e8ebf1; border-radius:10px; padding:6px 8px; background:#fff; }
+
+    main{ max-width:1280px; margin:0 auto; padding:10px; }
+    .panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+    .panelHeader{ padding:10px 12px; border-bottom:1px solid var(--border); background:#fafbfc; }
+    .panelHeader .h{ font-size:15px; font-weight:700; }
+    .panelHeader .hint{ font-size:12px; color:var(--muted); margin-top:4px; }
+    .panelBody{ padding:10px; }
+
+    .cards{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-bottom:10px; }
+    .card{ border:1px solid #e7ebf2; border-radius:12px; box-shadow:var(--shadow2); background:#fff; padding:10px; }
+    .k{ font-size:12px; color:var(--muted); }
+    .v{ font-size:22px; font-weight:700; margin-top:6px; }
+    .s{ font-size:12px; color:var(--muted); margin-top:4px; line-height:1.3; }
+
+    .tableWrap{ border:1px solid #e7ebf2; border-radius:12px; overflow:auto; box-shadow:var(--shadow2); }
+    table{ width:100%; border-collapse:collapse; min-width:920px; font-size:12px; }
+    th, td{ padding:10px; border-bottom:1px solid #edf1f6; text-align:right; white-space:nowrap; }
+    th{ text-align:right; background:#fff; position:sticky; top:0; z-index:1; }
+    th:first-child, td:first-child, th:nth-child(2), td:nth-child(2), th:last-child, td:last-child{ text-align:left; }
+    tr:last-child td{ border-bottom:0; }
+
+    .bar{ height:8px; background:#eef1f5; border-radius:999px; overflow:hidden; margin-top:4px; }
+    .bar > div{ height:100%; background:var(--chart); width:0%; }
+    td.L, th.L{ text-align:left !important; }
+    .sec{ margin-top:14px; }
+    .warn{ color:#9a5b00; }
+    tfoot td{ font-weight:700; background:#fafbfc; }
+    .note{ font-size:12px; color:var(--muted); margin-top:10px; }
+    code{ background:#f6f6f6; padding:2px 6px; border-radius:6px; border:1px solid #ececec; }
+
+    @media (max-width:1100px){ .cards{ grid-template-columns:1fr; } .meta-static{ margin-left:0; } .logos img{ height:34px; } .title b{ font-size:19px; } }
+  </style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="title">
+      <b>PNRR M2C4 – Investimento 4.3 | Forniture e lavori di posa – stato finale</b>
+      <div class="subtitle">Investimenti nella resilienza dell'agrosistema irriguo per una migliore gestione delle risorse idriche. Decreto MIPAAF - DISR 01 - Prot. Interno N. 484456 del 30/9/2022. Codice progetto DANIA: 08-05-5703-847. Finanziamento delle forniture dei materiali.Intervento: Schema irriguo Tidone: interventi di risparmio idrico per il contrasto alla siccità e adeguamenti funzionali sistema di adduzione in sponda sinistra e destra Tidone: tronchi 1) Bruso - il Rio; 2) da canale Tavernago - Tuna a lago delle Lische; 3) dal lago delle Lische a Tuna. CUP G99J21006930005.</div>
+      <div class="meta">
+        <div class="meta-nav">
+          <a class="pill navlink" href="index.html">Mappa as-built</a>
+          <a class="pill navlink" href="info.html">Scheda KPI</a>
+          <a class="pill navlink" href="quadro-economico.html">Quadro economico</a>
+        </div>
+        <div class="meta-static">
+          <span class="pill" id="updated">Ultimo aggiornamento: —</span>
+          <span class="pill" id="delibera">Delibera: —</span>
+        </div>
+      </div>
+    </div>
+    <div class="logos">
+      <img src="assets/italiadomani.png" alt="Italia Domani">
+      <img src="assets/masaf.png" alt="MASAF">
+      <img src="assets/nextgenerationeu.png" alt="NextGenerationEU">
+      <img src="assets/consorzio.png" alt="Consorzio">
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="panel">
+    <div class="panelHeader">
+      <div class="h">Forniture e servizi – stato finale da collaudo</div>
+      <div class="hint" id="fonte">—</div>
+    </div>
+    <div class="panelBody">
+      <div class="cards">
+        <article class="card">
+          <div class="k">Importo stato finale forniture e servizi (A, netto IVA)</div>
+          <div class="v" id="totFinale">—</div>
+          <div class="s" id="totFinaleDetail">—</div>
+        </article>
+        <article class="card">
+          <div class="k">Liquidato</div>
+          <div class="v" id="totLiq">—</div>
+          <div class="s" id="totLiqDetail">—</div>
+          <div class="bar"><div id="barLiq"></div></div>
+        </article>
+        <article class="card">
+          <div class="k">Collaudo tecnico-amministrativo e funzionale</div>
+          <div class="v" style="font-size:16px" id="collData">—</div>
+          <div class="s" id="collDetail">—</div>
+        </article>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead><tr>
+            <th class="L">Lotto</th><th class="L">Fornitura/servizio</th><th class="L">CIG</th><th class="L">Operatore</th>
+            <th>Aggiudicato (€)</th><th>Perizia variante (€)</th><th>Stato finale (€)</th>
+            <th>Liquidato (€)</th><th>Da liquidare (€)</th><th class="L">Ultimo SAF (DCA)</th>
+          </tr></thead>
+          <tbody id="fornitureRows"></tbody>
+          <tfoot id="fornitureTot"></tfoot>
+        </table>
+      </div>
+      <div class="note">Da liquidare: ritenuta dello 0,50% (art. 11 c. 6 e art. 30 c. 5-bis), svincolata dopo l'approvazione del collaudo, previa verifica del DURC.</div>
+
+      <div class="panelHeader sec" style="border:1px solid var(--border); border-radius:12px;">
+        <div class="h">Lavori di posa per tronco – certificati di regolare esecuzione</div>
+        <div class="hint">Relazioni sul conto finale e CRE del Direttore dei Lavori (art. 116 c. 7 e All. II.14 art. 28 D.Lgs. 36/2023).</div>
+      </div>
+      <div class="tableWrap" style="margin-top:10px">
+        <table>
+          <thead><tr>
+            <th class="L">Tronco</th><th class="L">Impresa</th><th class="L">CIG</th><th>Importo contratto (€)</th>
+            <th>Lungh. contratto (m)</th><th>Lungh. as-built (m)</th><th>Contabilizzato (€)</th><th>%</th>
+            <th class="L">Ultimazione</th><th>Ritenuta da svincolare (€)</th><th class="L">CRE</th>
+          </tr></thead>
+          <tbody id="posaRows"></tbody>
+          <tfoot id="posaTot"></tfoot>
+        </table>
+      </div>
+      <div class="note" id="posaNote"></div>
+
+      <div class="panelHeader sec" style="border:1px solid var(--border); border-radius:12px;">
+        <div class="h">Documenti</div>
+        <div class="note">• <a class="navlink" href="documenti/Collaudo.pdf" target="_blank" rel="noopener">Collaudo tecnico-amministrativo e funzionale (23/10/2026)</a><br>• <a class="navlink" href="documenti/CRE T1.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 1</a><br>• <a class="navlink" href="documenti/CRE T2.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 2</a><br>• <a class="navlink" href="documenti/CRE T3-1.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 3-1</a><br>• <a class="navlink" href="documenti/CRE T3-2.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 3-2</a><br>• <a class="navlink" href="documenti/CRE T4.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 4</a><br>• <a class="navlink" href="documenti/CRE T5-Gom.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 5-Gom</a><br>• <a class="navlink" href="documenti/CRE T5-Pagani.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 5-Pagani</a></div>
+      </div>
+
+      <div class="panelHeader sec" style="border:1px solid var(--border); border-radius:12px;">
+        <div class="h">Delibere forniture (fonti)</div>
+        <div id="delibereList" class="note"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const eur = (v) => (v === null || v === undefined) ? '—' : new Intl.NumberFormat('it-IT',{minimumFractionDigits:2, maximumFractionDigits:2, useGrouping:'always'}).format(v);
+  const num = (v, d=2) => (v === null || v === undefined) ? '—' : new Intl.NumberFormat('it-IT',{minimumFractionDigits:d, maximumFractionDigits:d, useGrouping:'always'}).format(v);
+  const pct = (n, d) => d ? Math.max(0, Math.min(100, n / d * 100)) : 0;
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function render(data){
+    const rows = data.forniture || [], c = data.collaudo || {};
+    const delUrl = Object.fromEntries((data.delibere_forniture || []).filter(d => d.url).map(d => [d.numero, d.url]));
+    document.getElementById('updated').textContent = `Ultimo aggiornamento: ${data.ultimo_aggiornamento || '—'}`;
+    document.getElementById('delibera').textContent = `Delibera: ${data.ultima_delibera_comitato?.numero || '—'}`;
+    document.getElementById('fonte').textContent = 'Fonte: ' + (data.fonte_dati || '—');
+
+    const tot = rows.reduce((a,r) => a + (r.importo_stato_finale_eur || 0), 0);
+    const liq = rows.reduce((a,r) => a + (r.liquidato_eur || 0), 0);
+    const dl  = rows.reduce((a,r) => a + (r.da_liquidare_eur || 0), 0);
+    const agg = rows.reduce((a,r) => a + (r.importo_aggiudicato_eur || 0), 0);
+    const pv  = rows.reduce((a,r) => a + (r.importo_variante_eur || 0), 0);
+    document.getElementById('totFinale').textContent = eur(tot) + ' €';
+    document.getElementById('totFinaleDetail').textContent = `Perizia di variante ${eur(pv)} € – economia ${eur(pv - tot)} €`;
+    document.getElementById('totLiq').textContent = pct(liq, tot).toFixed(2) + '%';
+    document.getElementById('totLiqDetail').textContent = `${eur(liq)} € liquidati – ${eur(dl)} € ritenute da svincolare`;
+    document.getElementById('barLiq').style.width = pct(liq, tot) + '%';
+    document.getElementById('collData').textContent = c.data ? new Date(c.data).toLocaleDateString('it-IT') : '—';
+    document.getElementById('collDetail').textContent = c.collaudatore ? `${c.collaudatore} – prot. ${c.protocollo}. Importo complessivo finale IVA compresa ${eur(c.importo_complessivo_iva_compresa_eur)} €` : '—';
+
+    document.getElementById('fornitureRows').innerHTML = rows.map(r => `<tr>
+      <td class="L">${r.lotto}</td><td class="L">${esc(r.voce)}</td><td class="L">${esc(r.cig)}</td><td class="L">${esc(r.operatore)}</td>
+      <td>${eur(r.importo_aggiudicato_eur)}</td><td>${eur(r.importo_variante_eur)}</td><td><b>${eur(r.importo_stato_finale_eur)}</b></td>
+      <td>${eur(r.liquidato_eur)}</td><td>${eur(r.da_liquidare_eur)}</td><td class="L">${delUrl[r.ultima_delibera] ? `<a class="navlink" href="${delUrl[r.ultima_delibera]}" target="_blank" rel="noopener">${esc(r.ultima_delibera)}</a>` : esc(r.ultima_delibera || '—')}</td></tr>`).join('');
+    document.getElementById('fornitureTot').innerHTML = `<tr><td></td><td>Totale</td><td></td><td></td><td>${eur(agg)}</td><td>${eur(pv)}</td><td>${eur(tot)}</td><td>${eur(liq)}</td><td>${eur(dl)}</td><td></td></tr>`;
+
+    const posa = data.lavori_posa || [];
+    document.getElementById('posaRows').innerHTML = posa.map(p => `<tr>
+      <td class="L">${esc(p.tronco)}</td><td class="L">${esc(p.impresa)}</td><td class="L">${esc(p.cig)}</td><td>${eur(p.importo_contratto_eur)}</td>
+      <td>${p.lunghezza_contratto_m ? num(p.lunghezza_contratto_m,0) : '—'}</td><td>${num(p.lunghezza_asbuilt_m)}</td>
+      <td>${eur(p.contabilizzato_eur)}</td><td>${pct(p.contabilizzato_eur, p.importo_contratto_eur).toFixed(2)}%</td>
+      <td class="L">${esc(p.ultimazione)}</td><td>${eur(p.ritenuta_eur)}</td><td class="L${/^Emesso/.test(p.cre) ? '' : ' warn'}">${esc(p.cre)}</td></tr>`).join('');
+    const sum = (k) => posa.reduce((a,p) => a + (p[k] || 0), 0);
+    document.getElementById('posaTot').innerHTML = `<tr><td></td><td>Totale</td><td></td><td>${eur(sum('importo_contratto_eur'))}</td><td></td><td>${num(sum('lunghezza_asbuilt_m'))}</td><td>${eur(sum('contabilizzato_eur'))}</td><td></td><td></td><td>${eur(sum('ritenuta_eur'))}</td><td></td></tr>`;
+    document.getElementById('posaNote').innerHTML = posa.filter(p => p.note).map(p => `• Tronco ${esc(p.tronco)} (${esc(p.impresa)}): ${esc(p.note)}`).join('<br>');
+
+    const del = data.delibere_forniture || [];
+    document.getElementById('delibereList').innerHTML = del.map(d => {
+      const label = d.url ? `<a class="navlink" href="${d.url}" target="_blank" rel="noopener">${esc(d.numero)}</a>` : esc(d.numero);
+      return `• ${label} – Lotto ${d.lotto} (${esc(d.cig)}) – ${esc(d.oggetto)} – contabilizzato: ${eur(d.contabilizzato_eur)} €`; }).join('<br>');
+  }
+  fetch('forniture.json?cb=' + Date.now()).then(r => r.json()).then(render).catch(() => {
+    document.getElementById('fornitureRows').innerHTML = '<tr><td colspan="10">Errore nel caricamento di forniture.json</td></tr>';
+  });
+</script>
+</body>
+</html>
