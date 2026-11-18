@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PNRR M2C4 – Investimento 4.3 | Forniture</title>
+  <link rel="icon" href="data:," />
+  <style>
+    :root{
+      --bg:#f6f7f9;
+      --fg:#111;
+      --muted:#5f6570;
+      --panel:#fff;
+      --border:#e3e6eb;
+      --soft:#f1f3f6;
+      --shadow:0 8px 22px rgba(0,0,0,.08);
+      --shadow2:0 6px 16px rgba(0,0,0,.08);
+      --radius:14px;
+      --chart:#2A7DBA;
+    }
+    *{ box-sizing:border-box; min-width:0; }
+    body{ margin:0; font-family:Arial,sans-serif; color:var(--fg); background:var(--bg); }
+    header{ background:#fff; border-bottom:1px solid var(--border); padding:10px 12px; }
+    .top{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start; }
+    .title{ flex:1 1 860px; }
+    .title b{ display:block; font-size:22px; margin-bottom:4px; }
+    .subtitle{ font-size:13px; color:#1a1d22; line-height:1.3; }
+    .meta{ margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .meta-nav{ display:flex; gap:8px; flex-wrap:wrap; }
+    .meta-static{ display:flex; gap:8px; flex-wrap:wrap; margin-left:auto; }
+    .pill{ border:1px solid var(--border); background:var(--soft); border-radius:999px; padding:4px 10px; font-size:12px; color:#333; }
+    .navlink{ color:#111; text-decoration:none; font-weight:700; }
+    .navlink:hover{ background:#e9edf2; }
+    .logos{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+    .logos img{ height:40px; width:auto; object-fit:contain; border:1px solid #e8ebf1; border-radius:10px; padding:6px 8px; background:#fff; }
+
+    main{ max-width:1280px; margin:0 auto; padding:10px; }
+    .panel{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+    .panelHeader{ padding:10px 12px; border-bottom:1px solid var(--border); background:#fafbfc; }
+    .panelHeader .h{ font-size:15px; font-weight:700; }
+    .panelHeader .hint{ font-size:12px; color:var(--muted); margin-top:4px; }
+    .panelBody{ padding:10px; }
+
+    .cards{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-bottom:10px; }
+    .card{ border:1px solid #e7ebf2; border-radius:12px; box-shadow:var(--shadow2); background:#fff; padding:10px; }
+    .k{ font-size:12px; color:var(--muted); }
+    .v{ font-size:22px; font-weight:700; margin-top:6px; }
+    .s{ font-size:12px; color:var(--muted); margin-top:4px; line-height:1.3; }
+
+    .tableWrap{ border:1px solid #e7ebf2; border-radius:12px; overflow:auto; box-shadow:var(--shadow2); }
+    table{ width:100%; border-collapse:collapse; min-width:920px; font-size:12px; }
+    th, td{ padding:10px; border-bottom:1px solid #edf1f6; text-align:right; white-space:nowrap; }
+    th{ text-align:right; background:#fff; position:sticky; top:0; z-index:1; }
+    th:first-child, td:first-child, th:nth-child(2), td:nth-child(2), th:last-child, td:last-child{ text-align:left; }
+    tr:last-child td{ border-bottom:0; }
+
+    .bar{ height:8px; background:#eef1f5; border-radius:999px; overflow:hidden; margin-top:4px; }
+    .bar > div{ height:100%; background:var(--chart); width:0%; }
+    td.L, th.L{ text-align:left !important; }
+    .sec{ margin-top:14px; }
+    .warn{ color:#9a5b00; }
+    tfoot td{ font-weight:700; background:#fafbfc; }
+    .note{ font-size:12px; color:var(--muted); margin-top:10px; }
+    code{ background:#f6f6f6; padding:2px 6px; border-radius:6px; border:1px solid #ececec; }
+
+    @media (max-width:1100px){ .cards{ grid-template-columns:1fr; } .meta-static{ margin-left:0; } .logos img{ height:34px; } .title b{ font-size:19px; } }
+  </style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="title">
+      <b>Schema irriguo Tidone | Finanziato CBPC – Lavori di posa</b>
+      <div class="subtitle">Investimenti nella resilienza dell'agrosistema irriguo per una migliore gestione delle risorse idriche. Decreto MIPAAF - DISR 01 - Prot. Interno N. 484456 del 30/9/2022. Codice progetto DANIA: 08-05-5703-847. Lavori di posa delle tubazioni finanziati dal Consorzio di Bonifica di Piacenza.Intervento: Schema irriguo Tidone: interventi di risparmio idrico per il contrasto alla siccità e adeguamenti funzionali sistema di adduzione in sponda sinistra e destra Tidone: tronchi 1) Bruso - il Rio; 2) da canale Tavernago - Tuna a lago delle Lische; 3) dal lago delle Lische a Tuna. CUP G99J21006930005.</div>
+      <div class="meta">
+        <div class="meta-nav">
+          <a class="pill navlink" href="index.html">Mappa as-built</a>
+          <a class="pill navlink" href="forniture.html">Finanziato PNRR</a>
+          <a class="pill navlink" href="info.html">Scheda KPI</a>
+          <a class="pill navlink" href="quadro-economico.html">Quadro economico</a>
+        </div>
+        <div class="meta-static">
+          <span class="pill" id="updated">Ultimo aggiornamento: —</span>
+          <span class="pill" id="delibera">Delibera: —</span>
+        </div>
+      </div>
+    </div>
+    <div class="logos">
+      <img src="assets/italiadomani.png" alt="Italia Domani">
+      <img src="assets/masaf.png" alt="MASAF">
+      <img src="assets/nextgenerationeu.png" alt="NextGenerationEU">
+      <img src="assets/consorzio.png" alt="Consorzio">
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="panel">
+    <div class="panelHeader">
+      <div class="h">Lavori di posa per tronco – certificati di regolare esecuzione</div>
+      <div class="hint">Relazioni sul conto finale e CRE del Direttore dei Lavori (art. 116 c. 7 e All. II.14 art. 28 D.Lgs. 36/2023), 21/10/2026.</div>
+    </div>
+    <div class="panelBody">
+      <div class="cards">
+        <article class="card">
+          <div class="k">Importo contrattuale lavori di posa</div>
+          <div class="v" id="totContr">—</div>
+          <div class="s" id="totContrDetail">—</div>
+        </article>
+        <article class="card">
+          <div class="k">Contabilizzato</div>
+          <div class="v" id="totCont">—</div>
+          <div class="s" id="totContDetail">—</div>
+          <div class="bar"><div id="barCont"></div></div>
+        </article>
+        <article class="card">
+          <div class="k">Condotta posata (as-built)</div>
+          <div class="v" id="totLen">—</div>
+          <div class="s" id="totLenDetail">—</div>
+        </article>
+      </div>
+      <div class="tableWrap">
+        <table>
+          <thead><tr>
+            <th class="L">Tronco</th><th class="L">Impresa</th><th class="L">CIG</th><th>Importo contratto (€)</th>
+            <th>Lungh. contratto (m)</th><th>Lungh. as-built (m)</th><th>Contabilizzato (€)</th><th>%</th>
+            <th class="L">Ultimazione</th><th>Ritenuta da svincolare (€)</th><th class="L">CRE</th>
+          </tr></thead>
+          <tbody id="posaRows"></tbody>
+          <tfoot id="posaTot"></tfoot>
+        </table>
+      </div>
+      <div class="note" id="posaNote"></div>
+      <div class="panelHeader sec" style="border:1px solid var(--border); border-radius:12px;">
+        <div class="h">Documenti</div>
+        <div class="note" id="docs"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const eur = (v) => (v === null || v === undefined) ? '—' : new Intl.NumberFormat('it-IT',{minimumFractionDigits:2, maximumFractionDigits:2, useGrouping:'always'}).format(v);
+  const num = (v, d=2) => (v === null || v === undefined) ? '—' : new Intl.NumberFormat('it-IT',{minimumFractionDigits:d, maximumFractionDigits:d, useGrouping:'always'}).format(v);
+  const pct = (n, d) => d ? Math.max(0, Math.min(100, n / d * 100)) : 0;
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const CRE = { "1":"CRE T1.pdf", "2":"CRE T2.pdf", "3-1":"CRE T3-1.pdf", "3-2":"CRE T3-2.pdf", "4":"CRE T4.pdf" };
+  function creFile(p){ return p.tronco === "5" ? (/Pagani/i.test(p.impresa) ? "CRE T5-Pagani.pdf" : "CRE T5-Gom.pdf") : CRE[p.tronco]; }
+  function render(data){
+    document.getElementById('updated').textContent = 'Ultimo aggiornamento: 21/10/2026 (CRE)';
+    document.getElementById('delibera').textContent = 'Finanziamento: CBPC';
+    const posa = data.lavori_posa || [];
+    const sum = (k) => posa.reduce((a,p) => a + (p[k] || 0), 0);
+    const contr = sum('importo_contratto_eur'), cont = sum('contabilizzato_eur'), len = sum('lunghezza_asbuilt_m');
+    document.getElementById('totContr').textContent = eur(contr) + ' €';
+    document.getElementById('totContrDetail').textContent = `${posa.length} contratti, 6 imprese – oltre IVA`;
+    document.getElementById('totCont').textContent = eur(cont) + ' €';
+    document.getElementById('totContDetail').textContent = `${pct(cont, contr).toFixed(2)}% dell'importo contrattuale – ritenute da svincolare ${eur(sum('ritenuta_eur'))} €`;
+    document.getElementById('barCont').style.width = pct(cont, contr) + '%';
+    document.getElementById('totLen').textContent = num(len) + ' m';
+    document.getElementById('totLenDetail').textContent = 'Tronchi 1–5 (escluso PV, senza CRE di posa)';
+    document.getElementById('posaRows').innerHTML = posa.map(p => `<tr>
+      <td class="L">${esc(p.tronco)}</td><td class="L">${esc(p.impresa)}</td><td class="L">${esc(p.cig)}</td><td>${eur(p.importo_contratto_eur)}</td>
+      <td>${p.lunghezza_contratto_m ? num(p.lunghezza_contratto_m,0) : '—'}</td><td>${num(p.lunghezza_asbuilt_m)}</td>
+      <td>${eur(p.contabilizzato_eur)}</td><td>${pct(p.contabilizzato_eur, p.importo_contratto_eur).toFixed(2)}%</td>
+      <td class="L">${esc(p.ultimazione)}</td><td>${eur(p.ritenuta_eur)}</td>
+      <td class="L${/^Emesso/.test(p.cre) ? '' : ' warn'}"><a class="navlink" href="documenti/${encodeURI(creFile(p))}" target="_blank" rel="noopener">${esc(p.cre)}</a></td></tr>`).join('');
+    document.getElementById('posaTot').innerHTML = `<tr><td></td><td class="L">Totale</td><td></td><td>${eur(contr)}</td><td></td><td>${num(len)}</td><td>${eur(cont)}</td><td></td><td></td><td>${eur(sum('ritenuta_eur'))}</td><td></td></tr>`;
+    document.getElementById('posaNote').innerHTML = posa.filter(p => p.note).map(p => `• Tronco ${esc(p.tronco)} (${esc(p.impresa)}): ${esc(p.note)}`).join('<br>');
+    document.getElementById('docs').innerHTML = posa.map(p => `• <a class="navlink" href="documenti/${encodeURI(creFile(p))}" target="_blank" rel="noopener">CRE lavori di posa – tronco ${esc(p.tronco)} (${esc(p.impresa)})</a>`).join('<br>');
+  }
+  fetch('forniture.json?cb=' + Date.now()).then(r => r.json()).then(render).catch(() => {
+    document.getElementById('posaRows').innerHTML = '<tr><td colspan="11">Errore nel caricamento dei dati</td></tr>';
+  });
+</script>
+</body>
+</html>

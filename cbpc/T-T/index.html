@@ -94,7 +94,8 @@
       <div class="meta">
         <span class="pill">Lavori ultimati – rilievo as-built</span>
         <a class="pill navlink" href="info.html">Scheda informativa</a>
-        <a class="pill navlink" href="forniture.html">Forniture</a>
+        <a class="pill navlink" href="forniture.html">Finanziato PNRR</a>
+        <a class="pill navlink" href="posa.html">Finanziato CBPC</a>
         <a class="pill navlink" href="quadro-economico.html">Quadro economico</a>
       </div>
     </div>
@@ -120,22 +121,22 @@
 <div class="overlay" id="overlay">
   <div class="overlay-header">
     <div class="tabs">
-      <button id="tabTronchi" class="active">Tronchi</button>
-      <button id="tabManufatti">Manufatti</button>
+      <button id="tabManufatti" class="active">Manufatti</button>
+      <button id="tabTronchi">Tronchi</button>
     </div>
     <button id="toggle">Comprimi</button>
   </div>
-  <div class="filters" id="filters" hidden>
+  <div class="filters" id="filters">
     <input id="q" type="search" placeholder="Cerca manufatto (nome o n.)">
     <select id="fTronco"><option value="">Tutti i tronchi</option></select>
     <select id="fTipo"><option value="">Tutti i tipi</option></select>
   </div>
   <div class="overlay-body">
-    <table id="tblTronchi">
+    <table id="tblTronchi" hidden>
       <thead><tr><th>Tronco</th><th>Ditta</th><th class="num">Lunghezza as-built (m)</th></tr></thead>
       <tbody></tbody><tfoot></tfoot>
     </table>
-    <table id="tblManufatti" hidden>
+    <table id="tblManufatti">
       <thead><tr><th>N.</th><th>Manufatto</th><th>Tipo</th><th>Tr.</th><th class="num">Prog. (m)</th><th></th></tr></thead>
       <tbody></tbody>
     </table>
@@ -152,8 +153,8 @@
   // Etichette attributi QGIS mostrati nel popup (null o 0 = non mostrato)
   const ATTR = [
     ["valv_315","Valvole DN315"],["valv_630","Valvole DN630"],["mis_315","Misuratori DN315"],["mot_315","Motorizzazioni DN315"],
-    ["pozz","Pozzetti"],["coperchio","Coperchi"],["anfore_cu","Anfore e cu"],["r150x160","Rid. 150x160"],["r150x80","Rid. 150x80"],
-    ["r150x75","Rid. 150x75"],["r150x40","Rid. 150x40"],["tronchetti","Tronchetti"],["tronchetti_1","Tronchetti (2)"],
+    ["pozz","Pozzetti"],["coperchio","Coperchi"],["anfore_cu","Anfor"],["r150x160","Anelli da 160"],["r150x80","Anelli da 80"],
+    ["r150x75","Anelli da 75"],["r150x40","Anelli da 40"],["tronchetti","Tronchetti"],["tronchetti_1","Tronchetti (2)"],
     ["vertice_pe","Vertice PE"]
   ];
   const nf = (n, d=2) => Number(n).toLocaleString("it-IT",{minimumFractionDigits:d, maximumFractionDigits:d});
@@ -224,10 +225,12 @@
       <table>${rows.map(tr).join("")}</table>
       ${extra.length ? `<details><summary>Componenti e attrezzature (${extra.length})</summary><table>${extra.map(tr).join("")}</table></details>` : ""}
       ${p.pdf ? `<a class="btn" href="${encodeURI(p.pdf)}" target="_blank" rel="noopener">Schema manufatto (PDF)</a>` : ""}
+      ${f_ll.get(p.univoco) ? `<a class="btn" href="https://www.google.com/maps?q=${f_ll.get(p.univoco)[1]},${f_ll.get(p.univoco)[0]}" target="_blank" rel="noopener">Google Maps</a>` : ""}
     </div>`;
   }
 
   // ===== Scheda manufatto (foto + PDF in vista) =====
+  const f_ll = new Map(); // univoco -> [lon, lat]
   const scheda = document.getElementById("scheda");
   function placeScheda(){ const t = document.querySelector("header").offsetHeight + 10; scheda.style.top = t + "px"; document.documentElement.style.setProperty("--schedaTop", t + "px"); }
   window.addEventListener("resize", placeScheda);
@@ -243,9 +246,11 @@
     const extra = ATTR.filter(([k]) => p[k] !== null && p[k] !== undefined && p[k] !== 0 && p[k] !== "").map(([k,l]) => [l, p[k]]);
     const tr = (r) => `<tr><td>${esc(r[0])}</td><td><b>${esc(r[1])}</b></td></tr>`;
     const pdf = p.pdf ? encodeURI(p.pdf) : null;
+    const ll = f_ll.get(p.univoco), gmaps = ll ? `https://www.google.com/maps?q=${ll[1]},${ll[0]}` : null;
     document.getElementById("schedaTitolo").textContent = nome;
     document.getElementById("schedaSub").textContent = `Manufatto n. ${p.univoco}${t ? " – " + t.l : ""} – tronco ${troncoLabel(p.tronco)}`;
     document.getElementById("schedaBody").innerHTML = `
+      ${gmaps ? `<a class="btn" href="${gmaps}" target="_blank" rel="noopener">Apri in Google Maps</a>` : ""}
       <h4>Foto</h4>
       ${p.foto ? `<img class="foto" src="${encodeURI(p.foto)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)"
           onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">` : `<div class="nofoto">Foto non disponibile</div>`}
@@ -279,7 +284,7 @@
     // Linee
     const byTronco = {};
     const lines = L.geoJSON(tronchi, {
-      style: f => ({ color: colorForTronco(f.properties.tronco), weight: 5, opacity: .95 }),
+      style: f => ({ color: colorForTronco(f.properties.tronco), weight: 4, opacity: .85 }),
       onEachFeature: (f, layer) => {
         const p = f.properties;
         layer.bindPopup(`<div class="pop"><h3>Tronco ${esc(p.tronco)}</h3><table>
@@ -305,6 +310,7 @@
     const markers = new Map();
     manufatti.features.forEach(f => {
       const p = f.properties, m = markerFor(f).addTo(map);
+      f_ll.set(p.univoco, f.geometry.coordinates);
       if(TIPI[tipoOf(p)]) m.on("click", () => { openScheda(p);
         if(window.innerWidth > 720){ const z = map.getZoom(); map.panTo(map.unproject(map.project(m.getLatLng(), z).add([scheda.offsetWidth / 2, 0]), z)); } });
       else m.bindPopup(popupHtml(p), { maxWidth:340, autoPanPadding:[20,20] });

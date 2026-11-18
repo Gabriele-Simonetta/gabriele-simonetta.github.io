@@ -70,11 +70,12 @@
 <header>
   <div class="top">
     <div class="title">
-      <b>PNRR M2C4 – Investimento 4.3 | Forniture e lavori di posa – stato finale</b>
+      <b>PNRR M2C4 – Investimento 4.3 | Finanziato PNRR – Forniture e servizi</b>
       <div class="subtitle">Investimenti nella resilienza dell'agrosistema irriguo per una migliore gestione delle risorse idriche. Decreto MIPAAF - DISR 01 - Prot. Interno N. 484456 del 30/9/2022. Codice progetto DANIA: 08-05-5703-847. Finanziamento delle forniture dei materiali.Intervento: Schema irriguo Tidone: interventi di risparmio idrico per il contrasto alla siccità e adeguamenti funzionali sistema di adduzione in sponda sinistra e destra Tidone: tronchi 1) Bruso - il Rio; 2) da canale Tavernago - Tuna a lago delle Lische; 3) dal lago delle Lische a Tuna. CUP G99J21006930005.</div>
       <div class="meta">
         <div class="meta-nav">
           <a class="pill navlink" href="index.html">Mappa as-built</a>
+          <a class="pill navlink" href="posa.html">Finanziato CBPC</a>
           <a class="pill navlink" href="info.html">Scheda KPI</a>
           <a class="pill navlink" href="quadro-economico.html">Quadro economico</a>
         </div>
@@ -132,26 +133,11 @@
       </div>
       <div class="note">Da liquidare: ritenuta dello 0,50% (art. 11 c. 6 e art. 30 c. 5-bis), svincolata dopo l'approvazione del collaudo, previa verifica del DURC.</div>
 
-      <div class="panelHeader sec" style="border:1px solid var(--border); border-radius:12px;">
-        <div class="h">Lavori di posa per tronco – certificati di regolare esecuzione</div>
-        <div class="hint">Relazioni sul conto finale e CRE del Direttore dei Lavori (art. 116 c. 7 e All. II.14 art. 28 D.Lgs. 36/2023).</div>
-      </div>
-      <div class="tableWrap" style="margin-top:10px">
-        <table>
-          <thead><tr>
-            <th class="L">Tronco</th><th class="L">Impresa</th><th class="L">CIG</th><th>Importo contratto (€)</th>
-            <th>Lungh. contratto (m)</th><th>Lungh. as-built (m)</th><th>Contabilizzato (€)</th><th>%</th>
-            <th class="L">Ultimazione</th><th>Ritenuta da svincolare (€)</th><th class="L">CRE</th>
-          </tr></thead>
-          <tbody id="posaRows"></tbody>
-          <tfoot id="posaTot"></tfoot>
-        </table>
-      </div>
-      <div class="note" id="posaNote"></div>
+
 
       <div class="panelHeader sec" style="border:1px solid var(--border); border-radius:12px;">
         <div class="h">Documenti</div>
-        <div class="note">• <a class="navlink" href="documenti/Collaudo.pdf" target="_blank" rel="noopener">Collaudo tecnico-amministrativo e funzionale (23/10/2026)</a><br>• <a class="navlink" href="documenti/CRE T1.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 1</a><br>• <a class="navlink" href="documenti/CRE T2.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 2</a><br>• <a class="navlink" href="documenti/CRE T3-1.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 3-1</a><br>• <a class="navlink" href="documenti/CRE T3-2.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 3-2</a><br>• <a class="navlink" href="documenti/CRE T4.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 4</a><br>• <a class="navlink" href="documenti/CRE T5-Gom.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 5-Gom</a><br>• <a class="navlink" href="documenti/CRE T5-Pagani.pdf" target="_blank" rel="noopener">CRE lavori di posa – tronco 5-Pagani</a></div>
+        <div class="note">• <a class="navlink" href="documenti/Collaudo.pdf" target="_blank" rel="noopener">Collaudo tecnico-amministrativo e funzionale (23/10/2026)</a></div>
       </div>
 
       <div class="panelHeader sec" style="border:1px solid var(--border); border-radius:12px;">
@@ -192,16 +178,6 @@
       <td>${eur(r.importo_aggiudicato_eur)}</td><td>${eur(r.importo_variante_eur)}</td><td><b>${eur(r.importo_stato_finale_eur)}</b></td>
       <td>${eur(r.liquidato_eur)}</td><td>${eur(r.da_liquidare_eur)}</td><td class="L">${delUrl[r.ultima_delibera] ? `<a class="navlink" href="${delUrl[r.ultima_delibera]}" target="_blank" rel="noopener">${esc(r.ultima_delibera)}</a>` : esc(r.ultima_delibera || '—')}</td></tr>`).join('');
     document.getElementById('fornitureTot').innerHTML = `<tr><td></td><td>Totale</td><td></td><td></td><td>${eur(agg)}</td><td>${eur(pv)}</td><td>${eur(tot)}</td><td>${eur(liq)}</td><td>${eur(dl)}</td><td></td></tr>`;
-
-    const posa = data.lavori_posa || [];
-    document.getElementById('posaRows').innerHTML = posa.map(p => `<tr>
-      <td class="L">${esc(p.tronco)}</td><td class="L">${esc(p.impresa)}</td><td class="L">${esc(p.cig)}</td><td>${eur(p.importo_contratto_eur)}</td>
-      <td>${p.lunghezza_contratto_m ? num(p.lunghezza_contratto_m,0) : '—'}</td><td>${num(p.lunghezza_asbuilt_m)}</td>
-      <td>${eur(p.contabilizzato_eur)}</td><td>${pct(p.contabilizzato_eur, p.importo_contratto_eur).toFixed(2)}%</td>
-      <td class="L">${esc(p.ultimazione)}</td><td>${eur(p.ritenuta_eur)}</td><td class="L${/^Emesso/.test(p.cre) ? '' : ' warn'}">${esc(p.cre)}</td></tr>`).join('');
-    const sum = (k) => posa.reduce((a,p) => a + (p[k] || 0), 0);
-    document.getElementById('posaTot').innerHTML = `<tr><td></td><td>Totale</td><td></td><td>${eur(sum('importo_contratto_eur'))}</td><td></td><td>${num(sum('lunghezza_asbuilt_m'))}</td><td>${eur(sum('contabilizzato_eur'))}</td><td></td><td></td><td>${eur(sum('ritenuta_eur'))}</td><td></td></tr>`;
-    document.getElementById('posaNote').innerHTML = posa.filter(p => p.note).map(p => `• Tronco ${esc(p.tronco)} (${esc(p.impresa)}): ${esc(p.note)}`).join('<br>');
 
     const del = data.delibere_forniture || [];
     document.getElementById('delibereList').innerHTML = del.map(d => {
