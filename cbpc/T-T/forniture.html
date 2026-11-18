@@ -169,6 +169,7 @@
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function render(data){
     const rows = data.forniture || [], c = data.collaudo || {};
+    const delUrl = Object.fromEntries((data.delibere_forniture || []).filter(d => d.url).map(d => [d.numero, d.url]));
     document.getElementById('updated').textContent = `Ultimo aggiornamento: ${data.ultimo_aggiornamento || '—'}`;
     document.getElementById('delibera').textContent = `Delibera: ${data.ultima_delibera_comitato?.numero || '—'}`;
     document.getElementById('fonte').textContent = 'Fonte: ' + (data.fonte_dati || '—');
@@ -189,7 +190,7 @@
     document.getElementById('fornitureRows').innerHTML = rows.map(r => `<tr>
       <td class="L">${r.lotto}</td><td class="L">${esc(r.voce)}</td><td class="L">${esc(r.cig)}</td><td class="L">${esc(r.operatore)}</td>
       <td>${eur(r.importo_aggiudicato_eur)}</td><td>${eur(r.importo_variante_eur)}</td><td><b>${eur(r.importo_stato_finale_eur)}</b></td>
-      <td>${eur(r.liquidato_eur)}</td><td>${eur(r.da_liquidare_eur)}</td><td class="L">${esc(r.ultima_delibera || '—')}</td></tr>`).join('');
+      <td>${eur(r.liquidato_eur)}</td><td>${eur(r.da_liquidare_eur)}</td><td class="L">${delUrl[r.ultima_delibera] ? `<a class="navlink" href="${delUrl[r.ultima_delibera]}" target="_blank" rel="noopener">${esc(r.ultima_delibera)}</a>` : esc(r.ultima_delibera || '—')}</td></tr>`).join('');
     document.getElementById('fornitureTot').innerHTML = `<tr><td></td><td>Totale</td><td></td><td></td><td>${eur(agg)}</td><td>${eur(pv)}</td><td>${eur(tot)}</td><td>${eur(liq)}</td><td>${eur(dl)}</td><td></td></tr>`;
 
     const posa = data.lavori_posa || [];
