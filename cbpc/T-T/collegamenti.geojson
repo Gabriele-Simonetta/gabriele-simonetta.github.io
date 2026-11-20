@@ -1,0 +1,166 @@
+{
+ "type": "FeatureCollection",
+ "name": "collegamenti_rete_esistente",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "tronco": "PV",
+    "descrizione": "Convogliamento nella rete esistente già intubata",
+    "tratto": "Tronco PV (variante Peveri): tra i due tratti",
+    "percorso": "rettilineo tra gli estremi as-built"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      9.45279487,
+      45.0044491
+     ],
+     [
+      9.45458507,
+      45.00847435
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "tronco": "PV-1",
+    "descrizione": "Convogliamento nella rete esistente già intubata",
+    "tratto": "Tra tronco PV (variante Peveri) e inizio tronco 1",
+    "percorso": "rettilineo nord-sud tra gli estremi as-built"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      9.45121361,
+      45.00230056
+     ],
+     [
+      9.45103628,
+      45.00210433
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "tronco": "1-2",
+    "descrizione": "Convogliamento nella rete esistente già intubata",
+    "tratto": "Tra tronco 1 e tronco 2",
+    "percorso": "punti di passaggio forniti dal DL (20/11/2026)"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      9.45924312,
+      44.98537045
+     ],
+     [
+      9.460299,
+      44.985079
+     ],
+     [
+      9.465374,
+      44.983486
+     ],
+     [
+      9.466894,
+      44.982891
+     ],
+     [
+      9.470096,
+      44.98101
+     ],
+     [
+      9.47224,
+      44.983639
+     ],
+     [
+      9.472837,
+      44.983947
+     ],
+     [
+      9.472267,
+      44.984561
+     ],
+     [
+      9.47234986,
+      44.98452014
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "tronco": "4",
+    "descrizione": "Convogliamento nella rete esistente già intubata",
+    "tratto": "Tronco 4: tra i due tratti",
+    "percorso": "rettilineo tra gli estremi as-built"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      9.52327383,
+      44.99004259
+     ],
+     [
+      9.52599485,
+      44.99149999
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "tronco": "5",
+    "descrizione": "Convogliamento nella rete esistente già intubata",
+    "tratto": "Tronco 5: tra il 1° e il 2° tratto",
+    "percorso": "rettilineo tra gli estremi as-built"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      9.57014672,
+      44.9843246
+     ],
+     [
+      9.57059427,
+      44.98439496
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "tronco": "5",
+    "descrizione": "Convogliamento nella rete esistente già intubata",
+    "tratto": "Tronco 5: tra il 2° e il 3° tratto",
+    "percorso": "rettilineo tra gli estremi as-built"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      9.57308529,
+      44.98478214
+     ],
+     [
+      9.57360339,
+      44.98492498
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -65,6 +65,15 @@
   .pop table td{ padding:3px 4px; border-bottom:1px solid #f0f0f0; }
   .pop table td:first-child{ color:var(--muted); }
   .pop .btn{ display:inline-block; margin-top:8px; padding:6px 10px; border-radius:8px; background:var(--accent); color:#fff !important; text-decoration:none; font-weight:700; }
+  .pop .fin{ display:flex; align-items:center; gap:8px; margin-top:8px; padding:6px 8px; border:1px solid #e3e7ef; border-radius:8px; background:#f7f9fc; }
+  .pop .fin img{ height:30px; width:auto; margin:0; border-radius:0; cursor:default; }
+  .pop .fin a{ color:var(--accent); font-weight:700; text-decoration:none; }
+  .pop .cre{ margin-top:6px; } .pop .cre .btn{ margin:4px 4px 0 0; }
+  .line-dash{ display:inline-block; width:22px; border-top:3px dashed #fff; box-shadow:0 0 0 1px #333 inset; vertical-align:middle; }
+  .legend .line-dash{ border-top-color:#333; box-shadow:none; }
+  .lbl-coll{ background:rgba(255,255,255,.92); border:1px solid #888; border-radius:6px; padding:2px 6px; font-size:11px; color:#222; box-shadow:none; white-space:nowrap; }
+  .lbl-coll::before{ display:none; }
+  .hide-lbl .lbl-coll.perm{ display:none; }
   .pop details{ margin-top:6px; } .pop summary{ cursor:pointer; color:var(--accent); }
 
   .scheda{ position:fixed; right:14px; width:min(620px, calc(100vw - 28px)); bottom:14px; z-index:1000; background:#fff;
@@ -189,7 +198,10 @@
     const div = L.DomUtil.create("div","legend");
     div.innerHTML = `<div class="t">Manufatti</div>` +
       Object.values(TIPI).map(t => `<div class="item"><span class="sym ${t.s}"></span>${t.l}</div>`).join("") +
-      `<div class="item"><span class="sym small circle"></span>Curva / pezzo speciale</div>`;
+      `<div class="item"><span class="sym small circle"></span>Curva / pezzo speciale</div>` +
+      `<div class="t" style="margin-top:6px">Condotta</div>` +
+      `<div class="item"><span style="display:inline-block;width:22px;border-top:4px solid #3cb44b"></span>Tubo in PVC-A DN 630 (clic: dati e CRE)</div>` +
+      `<div class="item"><span class="line-dash"></span>Convogliamento nella rete esistente già intubata</div>`;
     return div;
   }});
   map.addControl(new Legend());
@@ -226,6 +238,28 @@
       ${extra.length ? `<details><summary>Componenti e attrezzature (${extra.length})</summary><table>${extra.map(tr).join("")}</table></details>` : ""}
       ${p.pdf ? `<a class="btn" href="${encodeURI(p.pdf)}" target="_blank" rel="noopener">Schema manufatto (PDF)</a>` : ""}
       ${f_ll.get(p.univoco) ? `<a class="btn" href="https://www.google.com/maps?q=${f_ll.get(p.univoco)[1]},${f_ll.get(p.univoco)[0]}" target="_blank" rel="noopener">Google Maps</a>` : ""}
+    </div>`;
+  }
+
+  // ===== Popup tronco: condotta, finanziamento posa CBPC, CRE =====
+  const CONDOTTA = "Tubo in PVC-A DN 630";
+  const CRE = { "1":["CRE T1.pdf"], "2":["CRE T2.pdf"], "3-1":["CRE T3-1.pdf"], "3-2":["CRE T3-2.pdf"], "4":["CRE T4.pdf"],
+    "5":["CRE T5-Gom.pdf","CRE T5-Pagani.pdf"] };
+  let POSA = []; // lavori_posa da forniture.json (imprese e stato CRE)
+  const creFile = (lp) => lp.tronco === "5" ? (/Pagani/i.test(lp.impresa) ? "CRE T5-Pagani.pdf" : "CRE T5-Gom.pdf") : (CRE[lp.tronco] || [])[0];
+  function troncoPopup(p){
+    const id = String(p.tronco), posa = POSA.filter(lp => String(lp.tronco) === id);
+    const cre = posa.length ? posa.map(lp => [creFile(lp), lp.impresa]).filter(x => x[0])
+                            : (CRE[id] || []).map(f => [f, ""]);
+    const len = id === "PV" ? null : p.lunghezza_m; // PV: due tratti con lunghezze distinte
+    return `<div class="pop"><h3>Tronco ${esc(id)}</h3><div class="sub">Condotta as-built</div><table>
+      <tr><td>Condotta</td><td><b>${CONDOTTA}</b></td></tr>
+      <tr><td>Ditta posa</td><td><b>${esc(p.ditta)}</b></td></tr>
+      <tr><td>Lunghezza as-built</td><td><b>${nf(len ?? p.lunghezza_m)} m${id === "PV" ? " (questo tratto)" : ""}</b></td></tr></table>
+      ${cre.length ? `<div class="fin"><img src="assets/consorzio.png" alt="Consorzio di Bonifica di Piacenza">
+        <div>Lavori di posa <b>finanziati CBPC</b><br><a href="posa.html">Dettaglio lavori di posa</a></div></div>
+        <div class="cre">${cre.map(([f, imp]) => `<a class="btn" href="documenti/${encodeURI(f)}" target="_blank" rel="noopener">CRE${imp ? " – " + esc(imp) : ""} (PDF)</a>`).join("")}</div>`
+      : `<div class="fin"><div>Certificato di regolare esecuzione non disponibile per questo tronco.</div></div>`}
     </div>`;
   }
 
@@ -279,17 +313,33 @@
 
   Promise.all([
     fetch("tronchi.geojson?cb=" + CB).then(r => { if(!r.ok) throw new Error("tronchi.geojson HTTP " + r.status); return r.json(); }),
-    fetch("manufatti.geojson?cb=" + CB).then(r => { if(!r.ok) throw new Error("manufatti.geojson HTTP " + r.status); return r.json(); })
-  ]).then(([tronchi, manufatti]) => {
+    fetch("manufatti.geojson?cb=" + CB).then(r => { if(!r.ok) throw new Error("manufatti.geojson HTTP " + r.status); return r.json(); }),
+    fetch("collegamenti.geojson?cb=" + CB).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch("forniture.json?cb=" + CB).then(r => r.ok ? r.json() : null).catch(() => null)
+  ]).then(([tronchi, manufatti, collegamenti, forniture]) => {
+    POSA = (forniture && forniture.lavori_posa) || [];
+    // Collegamenti tratteggiati: convogliamento nella rete esistente già intubata
+    if(collegamenti){
+      L.geoJSON(collegamenti, {
+        style: () => ({ color:"#fff", weight:3, opacity:.95, dashArray:"8 7", lineCap:"butt" }),
+        onEachFeature: (f, layer) => {
+          const p = f.properties, txt = p.descrizione || "Convogliamento nella rete esistente già intubata";
+          layer.bindTooltip(esc(txt), { permanent:true, direction:"center", className:"lbl-coll perm" });
+          layer.bindPopup(`<div class="pop"><h3>${esc(txt)}</h3><div class="sub">${esc(p.tratto || ("Tronco " + p.tronco))}</div>
+            <table><tr><td>Tratto</td><td><b>Rete esistente, non oggetto di posa</b></td></tr></table></div>`);
+        }
+      }).addTo(map);
+      // etichette fisse solo da vicino, per non affollare la vista d'insieme
+      const lbl = () => document.getElementById("map").classList.toggle("hide-lbl", map.getZoom() < 16);
+      map.on("zoomend", lbl); lbl();
+    }
     // Linee
     const byTronco = {};
     const lines = L.geoJSON(tronchi, {
       style: f => ({ color: colorForTronco(f.properties.tronco), weight: 4, opacity: .85 }),
       onEachFeature: (f, layer) => {
         const p = f.properties;
-        layer.bindPopup(`<div class="pop"><h3>Tronco ${esc(p.tronco)}</h3><table>
-          <tr><td>Ditta</td><td><b>${esc(p.ditta)}</b></td></tr>
-          <tr><td>Lunghezza as-built</td><td><b>${nf(p.lunghezza_m)} m</b></td></tr></table></div>`);
+        layer.bindPopup(() => troncoPopup(p), { maxWidth:340 });
         (byTronco[p.tronco] = byTronco[p.tronco] || { ditta:p.ditta, len:p.lunghezza_m, layers:[] }).layers.push(layer);
       }
     }).addTo(map);
