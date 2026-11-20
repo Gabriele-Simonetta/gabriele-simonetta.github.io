@@ -7,7 +7,7 @@
    "properties": {
     "tronco": "PV",
     "descrizione": "Convogliamento nella rete esistente già intubata",
-    "tratto": "Tronco PV (variante): tra i due tratti",
+    "tratto": "Tronco PV (variante Peveri): tra i due tratti",
     "percorso": "rettilineo tra gli estremi as-built"
    },
    "geometry": {
@@ -20,6 +20,28 @@
      [
       9.45458507,
       45.00847435
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "tronco": "PV-1",
+    "descrizione": "Convogliamento nella rete esistente già intubata",
+    "tratto": "Tra tronco PV (variante Peveri) e inizio tronco 1",
+    "percorso": "rettilineo nord-sud tra gli estremi as-built"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      9.45121361,
+      45.00230056
+     ],
+     [
+      9.45103628,
+      45.00210433
      ]
     ]
    }
