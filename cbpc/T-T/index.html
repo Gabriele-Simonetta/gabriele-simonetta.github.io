@@ -74,7 +74,13 @@
   .lbl-coll{ background:rgba(255,255,255,.92); border:1px solid #888; border-radius:6px; padding:2px 6px; font-size:11px; color:#222; box-shadow:none; white-space:nowrap; }
   .lbl-coll::before{ display:none; }
   .hide-lbl .lbl-coll.perm{ display:none; }
-  .pop details{ margin-top:6px; } .pop summary{ cursor:pointer; color:var(--accent); }
+  .pop details{ margin-top:6px; }
+  .mis{ box-sizing:border-box; width:22px; height:22px; border-radius:50%; background:#0077b6; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.6); display:flex; align-items:center; justify-content:center; }
+  .mis svg{ width:14px; height:14px; display:block; }
+  .legend .item.link{ cursor:pointer; } .legend .item.link:hover{ color:var(--accent); }
+  .legend .item.link .pdfi{ font-size:10px; color:var(--accent); border:1px solid var(--accent); border-radius:4px; padding:0 3px; margin-left:auto; }
+  .legend .mis{ width:16px; height:16px; } .legend .mis svg{ width:10px; height:10px; }
+  .scheda-head .tag{ display:inline-block; background:#fff4d6; border:1px solid #e6c46a; color:#7a5a00; border-radius:6px; padding:1px 6px; font-size:11px; font-weight:700; margin-bottom:3px; } .pop summary{ cursor:pointer; color:var(--accent); }
 
   .scheda{ position:fixed; right:14px; width:min(620px, calc(100vw - 28px)); bottom:14px; z-index:1000; background:#fff;
     border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden; }
@@ -194,14 +200,27 @@
   map.addControl(new BaseBar());
   L.control.scale({ position:"bottomleft", imperial:false }).addTo(map);
 
+  // Schemi tipo (PDF) apribili dalla legenda
+  const SCHEMI_TIPO = {
+    "2": { t:"Manufatto di derivazione", f:"schemi/tipo/schema-tipo-derivazione.pdf" },
+    "3": { t:"Manufatto di sezionamento", f:"schemi/tipo/schema-tipo-sezionamento.pdf" },
+    "curva": { t:"Curva / pezzo speciale", f:"schemi/tipo/schema-tipo-curva.pdf" }
+  };
+  // simbolo misuratore: quadrante con lancetta
+  const GAUGE = `<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4.5-5"/><circle cx="12" cy="17" r="1.4" fill="#fff"/></svg>`;
   const Legend = L.Control.extend({ options:{ position:"bottomleft" }, onAdd(){
     const div = L.DomUtil.create("div","legend");
     div.innerHTML = `<div class="t">Manufatti</div>` +
-      Object.values(TIPI).map(t => `<div class="item"><span class="sym ${t.s}"></span>${t.l}</div>`).join("") +
-      `<div class="item"><span class="sym small circle"></span>Curva / pezzo speciale</div>` +
+      Object.entries(TIPI).map(([k,t]) => SCHEMI_TIPO[k]
+        ? `<div class="item link" data-st="${k}" title="Apri lo schema tipo"><span class="sym ${t.s}"></span>${t.l}<span class="pdfi">PDF</span></div>`
+        : `<div class="item"><span class="sym ${t.s}"></span>${t.l}</div>`).join("") +
+      `<div class="item link" data-st="curva" title="Apri lo schema tipo"><span class="sym small circle"></span>Curva / pezzo speciale<span class="pdfi">PDF</span></div>` +
+      `<div class="item"><span class="mis">${GAUGE}</span>Misuratore (portata / livello)</div>` +
       `<div class="t" style="margin-top:6px">Condotta</div>` +
       `<div class="item"><span style="display:inline-block;width:22px;border-top:4px solid #3cb44b"></span>Tubo in PVC-A DN 630 (clic: dati e CRE)</div>` +
       `<div class="item"><span class="line-dash"></span>Convogliamento nella rete esistente già intubata</div>`;
+    div.querySelectorAll("[data-st]").forEach(el => el.onclick = () => openSchemaTipo(el.dataset.st));
+    L.DomEvent.disableClickPropagation(div);
     return div;
   }});
   map.addControl(new Legend());
@@ -300,6 +319,33 @@
     document.getElementById("schedaBody").scrollTop = 0;
   }
 
+  function showScheda(titolo, sub, body, tag){
+    document.getElementById("schedaTitolo").innerHTML = (tag ? `<span class="tag">${esc(tag)}</span><br>` : "") + esc(titolo);
+    document.getElementById("schedaSub").textContent = sub;
+    document.getElementById("schedaBody").innerHTML = body;
+    placeScheda(); scheda.hidden = false; document.body.classList.add("scheda-open");
+    document.getElementById("schedaBody").scrollTop = 0;
+  }
+  function openSchemaTipo(k){
+    const s = SCHEMI_TIPO[k]; if(!s) return;
+    const pdf = encodeURI(s.f);
+    showScheda(s.t, "Schema tipo – non riferito a un singolo manufatto", `
+      <iframe class="pdf" src="${pdf}#view=Fit&toolbar=0&navpanes=0" title="Schema tipo ${esc(s.t)}"></iframe>
+      <a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>`, "SCHEMA TIPO");
+  }
+  function openMisuratore(p, ll){
+    const tr = (r) => `<tr><td>${esc(r[0])}</td><td><b>${esc(r[1])}</b></td></tr>`;
+    const rows = [["Tipo", p.tipo === "livello" ? "Misuratore di livello" : "Misuratore di portata"], ["Ditta fornitrice", p.fornitore],
+      ["Coordinate (lat, lon)", ll[1].toFixed(6) + ", " + ll[0].toFixed(6)]];
+    if(p.note) rows.push(["Note", p.note]);
+    showScheda(p.nome, p.fornitore, `
+      <a class="btn" href="https://www.google.com/maps?q=${ll[1]},${ll[0]}" target="_blank" rel="noopener">Apri in Google Maps</a>
+      <h4>Foto</h4>
+      ${p.foto ? `<img class="foto" src="${encodeURI(p.foto)}" alt="Foto ${esc(p.nome)}" onclick="window.open(this.src)"
+          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">` : `<div class="nofoto">Foto non disponibile</div>`}
+      <h4>Dati</h4><table>${rows.map(tr).join("")}</table>`);
+  }
+
   // ===== Pannello =====
   const overlay = document.getElementById("overlay");
   const tblT = document.getElementById("tblTronchi"), tblM = document.getElementById("tblManufatti"), filters = document.getElementById("filters");
@@ -314,9 +360,10 @@
   Promise.all([
     fetch("tronchi.geojson?cb=" + CB).then(r => { if(!r.ok) throw new Error("tronchi.geojson HTTP " + r.status); return r.json(); }),
     fetch("manufatti.geojson?cb=" + CB).then(r => { if(!r.ok) throw new Error("manufatti.geojson HTTP " + r.status); return r.json(); }),
+    fetch("misuratori.geojson?cb=" + CB).then(r => r.ok ? r.json() : null).catch(() => null),
     fetch("collegamenti.geojson?cb=" + CB).then(r => r.ok ? r.json() : null).catch(() => null),
     fetch("forniture.json?cb=" + CB).then(r => r.ok ? r.json() : null).catch(() => null)
-  ]).then(([tronchi, manufatti, collegamenti, forniture]) => {
+  ]).then(([tronchi, manufatti, misuratori, collegamenti, forniture]) => {
     POSA = (forniture && forniture.lavori_posa) || [];
     // Collegamenti tratteggiati: convogliamento nella rete esistente già intubata
     if(collegamenti){
@@ -355,6 +402,14 @@
     tblT.tFoot.innerHTML = `<tr><td colspan="2">Totale condotta</td><td class="num">${nf(tot)}</td></tr>`;
     tblT.tBodies[0].onclick = (e) => { const tr = e.target.closest("tr"); if(!tr) return;
       const g = L.featureGroup(byTronco[tr.dataset.id].layers); map.fitBounds(g.getBounds(), { padding:[40,40] }); };
+
+    // Misuratori (portata / livello) – Lotto 3 Mottech
+    (misuratori ? misuratori.features : []).forEach(f => {
+      const c = f.geometry.coordinates;
+      L.marker([c[1], c[0]], { zIndexOffset:800, title:f.properties.nome,
+        icon: L.divIcon({ className:"", html:`<div class="mis">${GAUGE}</div>`, iconSize:[22,22], iconAnchor:[11,11] }) })
+        .on("click", () => openMisuratore(f.properties, c)).addTo(map);
+    });
 
     // Manufatti
     const markers = new Map();
