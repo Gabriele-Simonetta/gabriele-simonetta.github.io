@@ -168,7 +168,7 @@
     "tronco": "adduzione",
     "tipo": "adduzione",
     "descrizione": "Adduzione esistente da Po",
-    "tratto": "Pievetta – Caramello – RDB – Bruso – vasca del Rio",
+    "tratto": "Pievetta – Caramello – RDB",
     "percorso": "spezzata rettilinea fra gli impianti (schematica)"
    },
    "geometry": {
@@ -185,14 +185,6 @@
      [
       9.4575,
       45.016306
-     ],
-     [
-      9.451124,
-      45.002101
-     ],
-     [
-      9.459421,
-      44.98517
      ]
     ]
    }
