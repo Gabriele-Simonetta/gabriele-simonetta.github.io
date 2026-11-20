@@ -35,16 +35,9 @@
     "nominativo": "Bruso",
     "posato": true,
     "pdf": "schemi/7_7_Imp.Bruso_I.pdf",
-    "foto": [
-     "foto/impianti/Bruso.jpg"
-    ],
+    "foto": "foto/7.jpg",
     "x_utm32": 535561.111787,
-    "y_utm32": 4983304.98121,
-    "impianto": {
-     "nome": "Impianto di pompaggio Bruso",
-     "tavola": "documenti/impianti/Vasca Bruso - planimetria sezioni prospetti 3D.pdf",
-     "titolo_tavola": "Vasca Bruso: planimetria, sezioni e prospetti 3D"
-    }
+    "y_utm32": 4983304.98121
    },
    "geometry": {
     "type": "Point",
@@ -3438,17 +3431,9 @@
     "nominativo": "Innesto RDB",
     "posato": true,
     "pdf": null,
-    "foto": [
-     "foto/1.jpg",
-     "foto/impianti/RDB.jpg"
-    ],
+    "foto": "foto/1.jpg",
     "x_utm32": 536047.113055,
-    "y_utm32": 4984841.722017,
-    "impianto": {
-     "nome": "Impianto di pompaggio RDB",
-     "tavola": "documenti/impianti/Vasca RDB - planimetria sezioni prospetti 3D.pdf",
-     "titolo_tavola": "Vasca RDB: planimetria, sezioni e prospetti 3D"
-    }
+    "y_utm32": 4984841.722017
    },
    "geometry": {
     "type": "Point",

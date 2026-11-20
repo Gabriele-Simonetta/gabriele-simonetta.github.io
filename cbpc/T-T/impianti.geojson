@@ -1,0 +1,42 @@
+{
+ "type": "FeatureCollection",
+ "name": "impianti",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "rdb",
+    "nome": "Impianto di pompaggio RDB",
+    "foto": "foto/impianti/RDB.jpg",
+    "tavola": "documenti/impianti/Vasca RDB - planimetria sezioni prospetti 3D.pdf",
+    "titolo_tavola": "Vasca RDB: planimetria, sezioni e prospetti 3D",
+    "note": "Coordinate fornite: 45°00'58.7\"N 9°27'27.0\"E"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.4575,
+     45.016306
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "bruso",
+    "nome": "Impianto di pompaggio Bruso",
+    "foto": "foto/impianti/Bruso.jpg",
+    "tavola": "documenti/impianti/Vasca Bruso - planimetria sezioni prospetti 3D.pdf",
+    "titolo_tavola": "Vasca Bruso: planimetria, sezioni e prospetti 3D",
+    "note": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.451124,
+     45.002101
+    ]
+   }
+  }
+ ]
+}
