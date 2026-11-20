@@ -1,0 +1,60 @@
+{
+ "type": "FeatureCollection",
+ "name": "misuratori",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "pievetta",
+    "nome": "Misuratore di portata – Pievetta",
+    "tipo": "portata",
+    "fornitore": "Lotto 3 – Mottech",
+    "foto": "foto/misuratori/pievetta.jpg",
+    "note": "Plus code 3FR4+QG, 29015 Castel San Giovanni (PC)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.4563125,
+     45.0919375
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "caramello",
+    "nome": "Misuratore di portata – Caramello",
+    "tipo": "portata",
+    "fornitore": "Lotto 3 – Mottech",
+    "foto": "foto/misuratori/caramello.jpg",
+    "note": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.455847,
+     45.052566
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "vasca-rio",
+    "nome": "Misuratore di livello – Vasca del Rio",
+    "tipo": "livello",
+    "fornitore": "Lotto 3 – Mottech",
+    "foto": "foto/misuratori/vasca-rio.jpg",
+    "note": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.459421,
+     44.98517
+    ]
+   }
+  }
+ ]
+}
