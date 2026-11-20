@@ -76,6 +76,9 @@
   .hide-lbl .lbl-coll.perm{ display:none; }
   .pop details{ margin-top:6px; }
   .mis{ box-sizing:border-box; width:22px; height:22px; border-radius:50%; background:#0077b6; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.6); display:flex; align-items:center; justify-content:center; }
+  .imp{ box-sizing:border-box; width:24px; height:24px; border-radius:6px; background:#d35400; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.6); display:flex; align-items:center; justify-content:center; }
+  .imp svg{ width:16px; height:16px; display:block; }
+  .legend .imp{ width:16px; height:16px; border-radius:4px; } .legend .imp svg{ width:11px; height:11px; }
   .mis svg{ width:14px; height:14px; display:block; }
   .legend .item.link{ cursor:pointer; } .legend .item.link:hover{ color:var(--accent); }
   .legend .item.link .pdfi{ font-size:10px; color:var(--accent); border:1px solid var(--accent); border-radius:4px; padding:0 3px; margin-left:auto; }
@@ -91,6 +94,7 @@
   .scheda-head button{ border:1px solid var(--border); background:#fff; border-radius:10px; padding:4px 10px; font-size:16px; cursor:pointer; }
   .scheda-body{ overflow:auto; padding:10px 12px; font-size:12px; }
   .scheda-body h4{ margin:12px 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+  .scheda-body .foto + .foto{ margin-top:8px; }
   .scheda-body .foto{ width:100%; height:220px; object-fit:cover; border-radius:10px; display:block; cursor:zoom-in; background:#eef1f5; }
   .scheda-body .nofoto{ border:1px dashed var(--border); border-radius:10px; padding:18px; text-align:center; color:var(--muted); }
   .scheda-body table td{ padding:4px 6px; border-bottom:1px solid #f0f0f0; } .scheda-body table td:first-child{ color:var(--muted); }
@@ -179,6 +183,16 @@
   const troncoLabel = (t) => String(t) === "0" ? "PV" : String(t);
   // nome manufatto: da QGIS, altrimenti dal nome del PDF (NN_univoco_Nome_X.pdf)
   const nomeOf = (p) => p.nominativo || (p.pdf ? p.pdf.split("/").pop().replace(/\.pdf$/i,"").replace(/^(?:\w+?_)?\d+_/,"").replace(/_[IDS]$/,"").replace(/_/g," ") : "");
+  // una o più foto; se il campo manca si prova foto/<univoco>.jpg
+  const fotoOf = (p) => (Array.isArray(p.foto) ? p.foto : (p.foto ? [p.foto] : (p.univoco != null ? ["foto/" + p.univoco + ".jpg"] : [])));
+  // foto non trovata: prova le altre estensioni (.jpg/.jpeg/.JPG/.JPEG/.png), poi segnaposto
+  window.fotoAlt = (img, rimuovi) => {
+    const base = img.getAttribute("src").replace(/\.(jpe?g|png)$/i, ""), tried = (img.dataset.tried || "").split(",").filter(Boolean);
+    tried.push(img.getAttribute("src").slice(base.length));
+    const next = [".jpg", ".jpeg", ".JPG", ".JPEG", ".png"].find(e => !tried.includes(e));
+    if(next){ img.dataset.tried = tried.join(","); img.src = base + next; return; }
+    if(rimuovi) img.remove(); else img.outerHTML = '<div class="nofoto">Foto non ancora disponibile</div>';
+  };
   const tipoOf = (p) => (p.tipo === null || p.tipo === undefined) ? "" : String(p.tipo);
 
   // ===== Mappa =====
@@ -208,6 +222,8 @@
   };
   // simbolo misuratore: quadrante con lancetta
   const GAUGE = `<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4.5-5"/><circle cx="12" cy="17" r="1.4" fill="#fff"/></svg>`;
+  // simbolo impianto di pompaggio: corpo pompa con girante e mandata
+  const PUMP = `<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="6"/><path d="M16 12h5v-5"/><path d="M10 14l3-3M10 14l-3 3M10 14l-3-3M10 14l3 3"/></svg>`;
   const Legend = L.Control.extend({ options:{ position:"bottomleft" }, onAdd(){
     const div = L.DomUtil.create("div","legend");
     div.innerHTML = `<div class="t">Manufatti</div>` +
@@ -216,6 +232,7 @@
         : `<div class="item"><span class="sym ${t.s}"></span>${t.l}</div>`).join("") +
       `<div class="item link" data-st="curva" title="Apri lo schema tipo"><span class="sym small circle"></span>Curva / pezzo speciale<span class="pdfi">PDF</span></div>` +
       `<div class="item"><span class="mis">${GAUGE}</span>Misuratore (portata / livello)</div>` +
+      `<div class="item"><span class="imp">${PUMP}</span>Impianto di pompaggio</div>` +
       `<div class="t" style="margin-top:6px">Condotta</div>` +
       `<div class="item"><span style="display:inline-block;width:22px;border-top:4px solid #3cb44b"></span>Tubo in PVC-A DN 630 (clic: dati e CRE)</div>` +
       `<div class="item"><span class="line-dash"></span>Convogliamento nella rete esistente già intubata</div>`;
@@ -252,7 +269,7 @@
     return `<div class="pop">
       <h3>${esc(nome)}</h3>
       <div class="sub">Manufatto n. ${esc(p.univoco)}${t ? " – " + t.l : ""}</div>
-      ${p.foto ? `<img src="${encodeURI(p.foto)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)" onerror="this.remove()">` : ""}
+      ${fotoOf(p).map(u => `<img src="${encodeURI(u)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)" onerror="fotoAlt(this, true)">`).join("")}
       <table>${rows.map(tr).join("")}</table>
       ${extra.length ? `<details><summary>Componenti e attrezzature (${extra.length})</summary><table>${extra.map(tr).join("")}</table></details>` : ""}
       ${p.pdf ? `<a class="btn" href="${encodeURI(p.pdf)}" target="_blank" rel="noopener">Schema manufatto (PDF)</a>` : ""}
@@ -305,8 +322,8 @@
     document.getElementById("schedaBody").innerHTML = `
       ${gmaps ? `<a class="btn" href="${gmaps}" target="_blank" rel="noopener">Apri in Google Maps</a>` : ""}
       <h4>Foto</h4>
-      ${p.foto ? `<img class="foto" src="${encodeURI(p.foto)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)"
-          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">` : `<div class="nofoto">Foto non disponibile</div>`}
+      ${fotoOf(p).length ? fotoOf(p).map(u => `<img class="foto" src="${encodeURI(u)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)"
+          onerror="fotoAlt(this)">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
       <h4>Schema manufatto</h4>
       ${pdf ? `<iframe class="pdf" src="${pdf}#view=Fit&toolbar=0&navpanes=0" title="Schema ${esc(nome)}"></iframe>
           <a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>` : `<div class="nofoto">Schema non disponibile</div>`}
@@ -341,8 +358,24 @@
     showScheda(p.nome, p.fornitore, `
       <a class="btn" href="https://www.google.com/maps?q=${ll[1]},${ll[0]}" target="_blank" rel="noopener">Apri in Google Maps</a>
       <h4>Foto</h4>
-      ${p.foto ? `<img class="foto" src="${encodeURI(p.foto)}" alt="Foto ${esc(p.nome)}" onclick="window.open(this.src)"
-          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">` : `<div class="nofoto">Foto non disponibile</div>`}
+      ${fotoOf(p).length ? fotoOf(p).map(u => `<img class="foto" src="${encodeURI(u)}" alt="Foto ${esc(p.nome)}" onclick="window.open(this.src)"
+          onerror="fotoAlt(this)">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
+      <h4>Dati</h4><table>${rows.map(tr).join("")}</table>`);
+  }
+
+  function openImpianto(p, ll){
+    const tr = (r) => `<tr><td>${esc(r[0])}</td><td><b>${esc(r[1])}</b></td></tr>`;
+    const rows = [["Tipo", "Impianto di pompaggio"], ["Coordinate (lat, lon)", ll[1].toFixed(6) + ", " + ll[0].toFixed(6)]];
+    if(p.note) rows.push(["Note", p.note]);
+    const pdf = p.tavola ? encodeURI(p.tavola) : null;
+    showScheda(p.nome, "Impianto di pompaggio", `
+      <a class="btn" href="https://www.google.com/maps?q=${ll[1]},${ll[0]}" target="_blank" rel="noopener">Apri in Google Maps</a>
+      <h4>Foto</h4>
+      ${fotoOf(p).length ? fotoOf(p).map(u => `<img class="foto" src="${encodeURI(u)}" alt="Foto ${esc(p.nome)}" onclick="window.open(this.src)"
+          onerror="fotoAlt(this)">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
+      <h4>${esc(p.titolo_tavola || "Tavola")}</h4>
+      ${pdf ? `<iframe class="pdf" src="${pdf}#view=Fit&toolbar=0&navpanes=0" title="${esc(p.titolo_tavola)}"></iframe>
+          <a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>` : `<div class="nofoto">Tavola non disponibile</div>`}
       <h4>Dati</h4><table>${rows.map(tr).join("")}</table>`);
   }
 
@@ -360,10 +393,11 @@
   Promise.all([
     fetch("tronchi.geojson?cb=" + CB).then(r => { if(!r.ok) throw new Error("tronchi.geojson HTTP " + r.status); return r.json(); }),
     fetch("manufatti.geojson?cb=" + CB).then(r => { if(!r.ok) throw new Error("manufatti.geojson HTTP " + r.status); return r.json(); }),
+    fetch("impianti.geojson?cb=" + CB).then(r => r.ok ? r.json() : null).catch(() => null),
     fetch("misuratori.geojson?cb=" + CB).then(r => r.ok ? r.json() : null).catch(() => null),
     fetch("collegamenti.geojson?cb=" + CB).then(r => r.ok ? r.json() : null).catch(() => null),
     fetch("forniture.json?cb=" + CB).then(r => r.ok ? r.json() : null).catch(() => null)
-  ]).then(([tronchi, manufatti, misuratori, collegamenti, forniture]) => {
+  ]).then(([tronchi, manufatti, impianti, misuratori, collegamenti, forniture]) => {
     POSA = (forniture && forniture.lavori_posa) || [];
     // Collegamenti tratteggiati: convogliamento nella rete esistente già intubata
     if(collegamenti){
@@ -409,6 +443,14 @@
       L.marker([c[1], c[0]], { zIndexOffset:800, title:f.properties.nome,
         icon: L.divIcon({ className:"", html:`<div class="mis">${GAUGE}</div>`, iconSize:[22,22], iconAnchor:[11,11] }) })
         .on("click", () => openMisuratore(f.properties, c)).addTo(map);
+    });
+
+    // Impianti di pompaggio
+    (impianti ? impianti.features : []).forEach(f => {
+      const c = f.geometry.coordinates;
+      L.marker([c[1], c[0]], { zIndexOffset:900, title:f.properties.nome,
+        icon: L.divIcon({ className:"", html:`<div class="imp">${PUMP}</div>`, iconSize:[24,24], iconAnchor:[12,12] }) })
+        .on("click", () => openImpianto(f.properties, c)).addTo(map);
     });
 
     // Manufatti

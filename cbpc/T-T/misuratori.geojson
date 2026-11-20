@@ -27,8 +27,13 @@
     "nome": "Misuratore di portata – Caramello",
     "tipo": "portata",
     "fornitore": "Lotto 3 – Mottech",
-    "foto": "foto/misuratori/caramello.jpg",
-    "note": null
+    "foto": [
+     "foto/misuratori/caramello-1.jpg",
+     "foto/misuratori/caramello-2.jpg",
+     "foto/misuratori/caramello-3.jpg",
+     "foto/misuratori/caramello-4.jpg"
+    ],
+    "note": "Misuratori elettromagnetici di portata (n. 1, 2, 3)"
    },
    "geometry": {
     "type": "Point",
