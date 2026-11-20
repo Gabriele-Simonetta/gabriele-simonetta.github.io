@@ -183,7 +183,16 @@
   const troncoLabel = (t) => String(t) === "0" ? "PV" : String(t);
   // nome manufatto: da QGIS, altrimenti dal nome del PDF (NN_univoco_Nome_X.pdf)
   const nomeOf = (p) => p.nominativo || (p.pdf ? p.pdf.split("/").pop().replace(/\.pdf$/i,"").replace(/^(?:\w+?_)?\d+_/,"").replace(/_[IDS]$/,"").replace(/_/g," ") : "");
-  const fotoOf = (p) => (Array.isArray(p.foto) ? p.foto : (p.foto ? [p.foto] : [])); // una o più foto per manufatto
+  // una o più foto; se il campo manca si prova foto/<univoco>.jpg
+  const fotoOf = (p) => (Array.isArray(p.foto) ? p.foto : (p.foto ? [p.foto] : (p.univoco != null ? ["foto/" + p.univoco + ".jpg"] : [])));
+  // foto non trovata: prova le altre estensioni (.jpg/.jpeg/.JPG/.JPEG/.png), poi segnaposto
+  window.fotoAlt = (img, rimuovi) => {
+    const base = img.getAttribute("src").replace(/\.(jpe?g|png)$/i, ""), tried = (img.dataset.tried || "").split(",").filter(Boolean);
+    tried.push(img.getAttribute("src").slice(base.length));
+    const next = [".jpg", ".jpeg", ".JPG", ".JPEG", ".png"].find(e => !tried.includes(e));
+    if(next){ img.dataset.tried = tried.join(","); img.src = base + next; return; }
+    if(rimuovi) img.remove(); else img.outerHTML = '<div class="nofoto">Foto non ancora disponibile</div>';
+  };
   const tipoOf = (p) => (p.tipo === null || p.tipo === undefined) ? "" : String(p.tipo);
 
   // ===== Mappa =====
@@ -260,7 +269,7 @@
     return `<div class="pop">
       <h3>${esc(nome)}</h3>
       <div class="sub">Manufatto n. ${esc(p.univoco)}${t ? " – " + t.l : ""}</div>
-      ${fotoOf(p).map(u => `<img src="${encodeURI(u)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)" onerror="this.remove()">`).join("")}
+      ${fotoOf(p).map(u => `<img src="${encodeURI(u)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)" onerror="fotoAlt(this, true)">`).join("")}
       <table>${rows.map(tr).join("")}</table>
       ${extra.length ? `<details><summary>Componenti e attrezzature (${extra.length})</summary><table>${extra.map(tr).join("")}</table></details>` : ""}
       ${p.pdf ? `<a class="btn" href="${encodeURI(p.pdf)}" target="_blank" rel="noopener">Schema manufatto (PDF)</a>` : ""}
@@ -314,7 +323,7 @@
       ${gmaps ? `<a class="btn" href="${gmaps}" target="_blank" rel="noopener">Apri in Google Maps</a>` : ""}
       <h4>Foto</h4>
       ${fotoOf(p).length ? fotoOf(p).map(u => `<img class="foto" src="${encodeURI(u)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)"
-          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
+          onerror="fotoAlt(this)">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
       <h4>Schema manufatto</h4>
       ${pdf ? `<iframe class="pdf" src="${pdf}#view=Fit&toolbar=0&navpanes=0" title="Schema ${esc(nome)}"></iframe>
           <a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>` : `<div class="nofoto">Schema non disponibile</div>`}
@@ -350,7 +359,7 @@
       <a class="btn" href="https://www.google.com/maps?q=${ll[1]},${ll[0]}" target="_blank" rel="noopener">Apri in Google Maps</a>
       <h4>Foto</h4>
       ${fotoOf(p).length ? fotoOf(p).map(u => `<img class="foto" src="${encodeURI(u)}" alt="Foto ${esc(p.nome)}" onclick="window.open(this.src)"
-          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
+          onerror="fotoAlt(this)">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
       <h4>Dati</h4><table>${rows.map(tr).join("")}</table>`);
   }
 
@@ -363,7 +372,7 @@
       <a class="btn" href="https://www.google.com/maps?q=${ll[1]},${ll[0]}" target="_blank" rel="noopener">Apri in Google Maps</a>
       <h4>Foto</h4>
       ${fotoOf(p).length ? fotoOf(p).map(u => `<img class="foto" src="${encodeURI(u)}" alt="Foto ${esc(p.nome)}" onclick="window.open(this.src)"
-          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
+          onerror="fotoAlt(this)">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
       <h4>${esc(p.titolo_tavola || "Tavola")}</h4>
       ${pdf ? `<iframe class="pdf" src="${pdf}#view=Fit&toolbar=0&navpanes=0" title="${esc(p.titolo_tavola)}"></iframe>
           <a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>` : `<div class="nofoto">Tavola non disponibile</div>`}
