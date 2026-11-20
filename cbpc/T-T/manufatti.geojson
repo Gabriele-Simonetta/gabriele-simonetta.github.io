@@ -74,7 +74,10 @@
     "nominativo": null,
     "posato": true,
     "pdf": null,
-    "foto": null,
+    "foto": [
+     "foto/100.jpg",
+     "foto/100bis.jpg"
+    ],
     "x_utm32": 535542.607728,
     "y_utm32": 4983277.698405
    },
@@ -308,7 +311,7 @@
     "nominativo": "Il Rio",
     "posato": true,
     "pdf": "schemi/5_107_Il Rio_I.pdf",
-    "foto": "foto/107.jpg",
+    "foto": "foto/107.jpeg",
     "x_utm32": 536204.067511,
     "y_utm32": 4981426.127602
    },
@@ -620,7 +623,7 @@
     "nominativo": "Molino",
     "posato": true,
     "pdf": "schemi/12_216_Molino_S.pdf",
-    "foto": "foto/216.jpg",
+    "foto": "foto/216.jpeg",
     "x_utm32": 538780.366879,
     "y_utm32": 4982185.857052
    },
@@ -659,7 +662,7 @@
     "nominativo": "Nicolini",
     "posato": true,
     "pdf": "schemi/13_300_Nicolini_D.pdf",
-    "foto": "foto/300.jpg",
+    "foto": "foto/300.jpeg",
     "x_utm32": 539100.468583,
     "y_utm32": 4982210.694115
    },
@@ -776,7 +779,7 @@
     "nominativo": "Tavernago",
     "posato": true,
     "pdf": "schemi/14_304_Tavernago_D.pdf",
-    "foto": "foto/304.jpg",
+    "foto": "foto/304.jpeg",
     "x_utm32": 539279.675839,
     "y_utm32": 4982284.736052
    },
@@ -929,10 +932,10 @@
     "anfore_cu": 1,
     "tronchetti": 0,
     "tronchetti_1": 0,
-    "nominativo": "scarico Rio Frate",
+    "nominativo": "Rio Frate",
     "posato": true,
     "pdf": "schemi/15_308_Rio Frate_S.pdf",
-    "foto": "foto/308.jpg",
+    "foto": "foto/308.jpeg",
     "x_utm32": 539801.943,
     "y_utm32": 4982109.468
    },
@@ -1088,7 +1091,7 @@
     "nominativo": "Ozzola",
     "posato": true,
     "pdf": "schemi/16_315_Ozzola_D.pdf",
-    "foto": "foto/315.jpg",
+    "foto": "foto/315.jpeg",
     "x_utm32": 540432.878747,
     "y_utm32": 4982080.991985001
    },
@@ -1241,10 +1244,10 @@
     "anfore_cu": 2,
     "tronchetti": 2,
     "tronchetti_1": 2,
-    "nominativo": "scarico Rio sarturano",
+    "nominativo": "Rio Sarturano",
     "posato": true,
     "pdf": "schemi/18_356_Rio Sarturano_S.pdf",
-    "foto": "foto/356.jpg",
+    "foto": "foto/356.jpeg",
     "x_utm32": 540759.873,
     "y_utm32": 4981520.744
    },
@@ -1283,7 +1286,7 @@
     "nominativo": "lago Lische",
     "posato": true,
     "pdf": "schemi/19_401_Lago Lische_D.pdf",
-    "foto": "foto/401.jpg",
+    "foto": "foto/401.jpeg",
     "x_utm32": 540800.286152,
     "y_utm32": 4981494.419106
    },
@@ -1322,7 +1325,7 @@
     "nominativo": "Castignoli",
     "posato": true,
     "pdf": "schemi/11_211_Castignoli_D.pdf",
-    "foto": "foto/211.jpg",
+    "foto": "foto/211.jpeg",
     "x_utm32": 538334.7787,
     "y_utm32": 4982038.67488
    },
@@ -1361,7 +1364,7 @@
     "nominativo": "Grugni",
     "posato": true,
     "pdf": "schemi/22B_413_Grugni_D.pdf",
-    "foto": "foto/413.jpg",
+    "foto": "foto/413.jpeg",
     "x_utm32": 541726.613551,
     "y_utm32": 4982097.875768
    },
@@ -1400,7 +1403,7 @@
     "nominativo": "Canovetta",
     "posato": true,
     "pdf": "schemi/20_408_Canovetta_D.pdf",
-    "foto": "foto/408.jpg",
+    "foto": "foto/408.jpeg",
     "x_utm32": 541073.537529,
     "y_utm32": 4981844.498807
    },
@@ -1517,7 +1520,7 @@
     "nominativo": null,
     "posato": true,
     "pdf": "schemi/22_410_Luretta monte_S.pdf",
-    "foto": "foto/410.jpg",
+    "foto": "foto/410.jpeg",
     "x_utm32": 541251.646106,
     "y_utm32": 4981977.145997
    },
@@ -1634,7 +1637,7 @@
     "nominativo": "Rio Sarmato",
     "posato": true,
     "pdf": "schemi/23_414_Rio Sarmato_D.pdf",
-    "foto": "foto/414.jpg",
+    "foto": "foto/414.jpeg",
     "x_utm32": 542378.362561,
     "y_utm32": 4982024.848872
    },
@@ -1673,7 +1676,7 @@
     "nominativo": "Rio Gandino",
     "posato": true,
     "pdf": "schemi/26_417_Rio Gandino_S.pdf",
-    "foto": "foto/417.jpg",
+    "foto": "foto/417.jpeg",
     "x_utm32": 542840.369026,
     "y_utm32": 4982084.031156
    },
@@ -1907,7 +1910,7 @@
     "nominativo": "Rio Cremasco",
     "posato": true,
     "pdf": "schemi/28_509_Rio Cremasco_D.pdf",
-    "foto": "foto/509.jpg",
+    "foto": "foto/509.jpeg",
     "x_utm32": 543782.739552,
     "y_utm32": 4981487.866281999
    },
@@ -1946,7 +1949,7 @@
     "nominativo": "scarico Gandore",
     "posato": true,
     "pdf": "schemi/29_510_Rio Gandore_S.pdf",
-    "foto": "foto/510.jpg",
+    "foto": "foto/510.jpeg",
     "x_utm32": 544025.041442,
     "y_utm32": 4981444.164727
    },
@@ -2024,7 +2027,7 @@
     "nominativo": "Molinazzo",
     "posato": true,
     "pdf": "schemi/27_505_Molinazzo_D.pdf",
-    "foto": "foto/505.jpg",
+    "foto": "foto/505.jpeg",
     "x_utm32": 543592.403118,
     "y_utm32": 4981612.543863
    },
@@ -2141,7 +2144,7 @@
     "nominativo": "Loc. Gerbido",
     "posato": true,
     "pdf": "schemi/31_516_Gerbido_D.pdf",
-    "foto": "foto/516.jpg",
+    "foto": "foto/516.jpeg",
     "x_utm32": 544427.618736,
     "y_utm32": 4981390.587194
    },
@@ -2180,7 +2183,7 @@
     "nominativo": "Rio Borla",
     "posato": true,
     "pdf": "schemi/32_518_Rio Borla_D.pdf",
-    "foto": "foto/518.jpg",
+    "foto": "foto/518.jpeg",
     "x_utm32": 544606.979082,
     "y_utm32": 4981384.758098
    },
@@ -2258,7 +2261,7 @@
     "nominativo": "Rossi",
     "posato": true,
     "pdf": "schemi/33_519_Rossi_D.pdf",
-    "foto": "foto/519.jpg",
+    "foto": "foto/519.jpeg",
     "x_utm32": 544779.627167,
     "y_utm32": 4981366.614996
    },
@@ -2336,7 +2339,7 @@
     "nominativo": "Rio Gragnano",
     "posato": true,
     "pdf": "schemi/34_521_Rio Gragnano_S.pdf",
-    "foto": "foto/521.jpg",
+    "foto": "foto/521.jpeg",
     "x_utm32": 545179.4543,
     "y_utm32": 4981416.311608
    },
@@ -2375,7 +2378,7 @@
     "nominativo": "Rio Magnano",
     "posato": true,
     "pdf": "schemi/36_522_Rio Magnano_D.pdf",
-    "foto": "foto/522.jpg",
+    "foto": "foto/522.jpeg",
     "x_utm32": 545285.122113,
     "y_utm32": 4981456.407446
    },
@@ -2414,7 +2417,7 @@
     "nominativo": "Passerini",
     "posato": true,
     "pdf": "schemi/15A_311_Passerini_D.pdf",
-    "foto": "foto/311.jpg",
+    "foto": "foto/311.jpeg",
     "x_utm32": 540059.462407,
     "y_utm32": 4982038.750455999
    },
@@ -2453,7 +2456,7 @@
     "nominativo": "Rio Agazzino",
     "posato": true,
     "pdf": "schemi/30_512_Rio Agazzino_D.pdf",
-    "foto": "foto/512.jpg",
+    "foto": "foto/512.jpeg",
     "x_utm32": 544225.667113,
     "y_utm32": 4981438.934742
    },
@@ -2921,7 +2924,7 @@
     "nominativo": "Dieci",
     "posato": true,
     "pdf": "schemi/21_404_Dieci_D.pdf",
-    "foto": "foto/404.jpg",
+    "foto": "foto/404.jpeg",
     "x_utm32": 540936.01607,
     "y_utm32": 4981723.681817
    },
@@ -3116,7 +3119,7 @@
     "nominativo": "Dividendo",
     "posato": true,
     "pdf": "schemi/37_523_Dividendo_S.pdf",
-    "foto": "foto/523.jpg",
+    "foto": "foto/523.jpeg",
     "x_utm32": 545488.765169,
     "y_utm32": 4981501.340323
    },
@@ -3155,7 +3158,7 @@
     "nominativo": "Locatelli",
     "posato": true,
     "pdf": "schemi/24_420_Locatelli_D.pdf",
-    "foto": "foto/420.jpg",
+    "foto": "foto/420.jpeg",
     "x_utm32": 543109.528,
     "y_utm32": 4981914.339000001
    },
@@ -3428,7 +3431,7 @@
     "nominativo": "Innesto RDB",
     "posato": true,
     "pdf": null,
-    "foto": null,
+    "foto": "foto/1.jpg",
     "x_utm32": 536047.113055,
     "y_utm32": 4984841.722017
    },

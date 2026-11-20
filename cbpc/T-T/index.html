@@ -91,6 +91,7 @@
   .scheda-head button{ border:1px solid var(--border); background:#fff; border-radius:10px; padding:4px 10px; font-size:16px; cursor:pointer; }
   .scheda-body{ overflow:auto; padding:10px 12px; font-size:12px; }
   .scheda-body h4{ margin:12px 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+  .scheda-body .foto + .foto{ margin-top:8px; }
   .scheda-body .foto{ width:100%; height:220px; object-fit:cover; border-radius:10px; display:block; cursor:zoom-in; background:#eef1f5; }
   .scheda-body .nofoto{ border:1px dashed var(--border); border-radius:10px; padding:18px; text-align:center; color:var(--muted); }
   .scheda-body table td{ padding:4px 6px; border-bottom:1px solid #f0f0f0; } .scheda-body table td:first-child{ color:var(--muted); }
@@ -179,6 +180,7 @@
   const troncoLabel = (t) => String(t) === "0" ? "PV" : String(t);
   // nome manufatto: da QGIS, altrimenti dal nome del PDF (NN_univoco_Nome_X.pdf)
   const nomeOf = (p) => p.nominativo || (p.pdf ? p.pdf.split("/").pop().replace(/\.pdf$/i,"").replace(/^(?:\w+?_)?\d+_/,"").replace(/_[IDS]$/,"").replace(/_/g," ") : "");
+  const fotoOf = (p) => (Array.isArray(p.foto) ? p.foto : (p.foto ? [p.foto] : [])); // una o più foto per manufatto
   const tipoOf = (p) => (p.tipo === null || p.tipo === undefined) ? "" : String(p.tipo);
 
   // ===== Mappa =====
@@ -252,7 +254,7 @@
     return `<div class="pop">
       <h3>${esc(nome)}</h3>
       <div class="sub">Manufatto n. ${esc(p.univoco)}${t ? " – " + t.l : ""}</div>
-      ${p.foto ? `<img src="${encodeURI(p.foto)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)" onerror="this.remove()">` : ""}
+      ${fotoOf(p).map(u => `<img src="${encodeURI(u)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)" onerror="this.remove()">`).join("")}
       <table>${rows.map(tr).join("")}</table>
       ${extra.length ? `<details><summary>Componenti e attrezzature (${extra.length})</summary><table>${extra.map(tr).join("")}</table></details>` : ""}
       ${p.pdf ? `<a class="btn" href="${encodeURI(p.pdf)}" target="_blank" rel="noopener">Schema manufatto (PDF)</a>` : ""}
@@ -305,8 +307,8 @@
     document.getElementById("schedaBody").innerHTML = `
       ${gmaps ? `<a class="btn" href="${gmaps}" target="_blank" rel="noopener">Apri in Google Maps</a>` : ""}
       <h4>Foto</h4>
-      ${p.foto ? `<img class="foto" src="${encodeURI(p.foto)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)"
-          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">` : `<div class="nofoto">Foto non disponibile</div>`}
+      ${fotoOf(p).length ? fotoOf(p).map(u => `<img class="foto" src="${encodeURI(u)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)"
+          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
       <h4>Schema manufatto</h4>
       ${pdf ? `<iframe class="pdf" src="${pdf}#view=Fit&toolbar=0&navpanes=0" title="Schema ${esc(nome)}"></iframe>
           <a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>` : `<div class="nofoto">Schema non disponibile</div>`}
