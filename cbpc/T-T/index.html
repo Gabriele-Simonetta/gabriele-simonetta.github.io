@@ -235,7 +235,8 @@
       `<div class="item"><span class="imp">${PUMP}</span>Impianto di pompaggio</div>` +
       `<div class="t" style="margin-top:6px">Condotta</div>` +
       `<div class="item"><span style="display:inline-block;width:22px;border-top:4px solid #3cb44b"></span>Tubo in PVC-A DN 630 (clic: dati e CRE)</div>` +
-      `<div class="item"><span class="line-dash"></span>Convogliamento nella rete esistente già intubata</div>`;
+      `<div class="item"><span class="line-dash"></span>Convogliamento nella rete esistente già intubata</div>` +
+      `<div class="item"><span class="line-dash" style="border-top-color:#29b6f6"></span>Adduzione esistente da Po</div>`;
     div.querySelectorAll("[data-st]").forEach(el => el.onclick = () => openSchemaTipo(el.dataset.st));
     L.DomEvent.disableClickPropagation(div);
     return div;
@@ -402,12 +403,15 @@
     // Collegamenti tratteggiati: convogliamento nella rete esistente già intubata
     if(collegamenti){
       L.geoJSON(collegamenti, {
-        style: () => ({ color:"#fff", weight:3, opacity:.95, dashArray:"8 7", lineCap:"butt" }),
+        style: f => f.properties.tipo === "adduzione"
+          ? ({ color:"#29b6f6", weight:3, opacity:.95, dashArray:"10 7", lineCap:"butt" })
+          : ({ color:"#fff", weight:3, opacity:.95, dashArray:"8 7", lineCap:"butt" }),
         onEachFeature: (f, layer) => {
           const p = f.properties, txt = p.descrizione || "Convogliamento nella rete esistente già intubata";
           layer.bindTooltip(esc(txt), { permanent:true, direction:"center", className:"lbl-coll perm" });
           layer.bindPopup(`<div class="pop"><h3>${esc(txt)}</h3><div class="sub">${esc(p.tratto || ("Tronco " + p.tronco))}</div>
-            <table><tr><td>Tratto</td><td><b>Rete esistente, non oggetto di posa</b></td></tr></table></div>`);
+            <table><tr><td>Tratto</td><td><b>Rete esistente, non oggetto di posa</b></td></tr>
+            ${p.tipo === "adduzione" ? `<tr><td>Tracciato</td><td><b>Schematico, a tratti rettilinei fra gli impianti</b></td></tr>` : ""}</table></div>`);
         }
       }).addTo(map);
       // etichette fisse solo da vicino, per non affollare la vista d'insieme
