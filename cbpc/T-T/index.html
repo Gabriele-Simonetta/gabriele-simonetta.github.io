@@ -309,6 +309,8 @@
       <h4>Foto</h4>
       ${fotoOf(p).length ? fotoOf(p).map(u => `<img class="foto" src="${encodeURI(u)}" alt="Foto ${esc(nome)}" onclick="window.open(this.src)"
           onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
+      ${p.impianto ? `<h4>${esc(p.impianto.nome)}</h4>
+          <a class="btn" href="${encodeURI(p.impianto.tavola)}" target="_blank" rel="noopener">${esc(p.impianto.titolo_tavola)} (PDF)</a>` : ""}
       <h4>Schema manufatto</h4>
       ${pdf ? `<iframe class="pdf" src="${pdf}#view=Fit&toolbar=0&navpanes=0" title="Schema ${esc(nome)}"></iframe>
           <a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>` : `<div class="nofoto">Schema non disponibile</div>`}
@@ -343,8 +345,8 @@
     showScheda(p.nome, p.fornitore, `
       <a class="btn" href="https://www.google.com/maps?q=${ll[1]},${ll[0]}" target="_blank" rel="noopener">Apri in Google Maps</a>
       <h4>Foto</h4>
-      ${p.foto ? `<img class="foto" src="${encodeURI(p.foto)}" alt="Foto ${esc(p.nome)}" onclick="window.open(this.src)"
-          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">` : `<div class="nofoto">Foto non disponibile</div>`}
+      ${fotoOf(p).length ? fotoOf(p).map(u => `<img class="foto" src="${encodeURI(u)}" alt="Foto ${esc(p.nome)}" onclick="window.open(this.src)"
+          onerror="this.outerHTML='<div class=&quot;nofoto&quot;>Foto non ancora disponibile</div>'">`).join("") : `<div class="nofoto">Foto non disponibile</div>`}
       <h4>Dati</h4><table>${rows.map(tr).join("")}</table>`);
   }
 
