@@ -101,7 +101,49 @@
   .scheda-body .pdf{ width:100%; height:max(320px, calc(100vh - var(--schedaTop, 300px) - 400px)); border:1px solid var(--border); border-radius:10px; display:block; background:#f4f4f4; }
   .scheda-body .btn{ display:inline-block; margin-top:6px; padding:6px 10px; border-radius:8px; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; }
   .footnote{ padding:8px 12px; border-top:1px dashed #d9d9d9; font-size:11px; color:#58606b; line-height:1.35; }
-  @media (max-width:720px){ .scheda{ left:8px; right:8px; width:auto; z-index:1001; } .scheda-body .pdf{ height:60vh; } .logos img{ height:34px; } .overlay{ top:auto; bottom:14px; left:14px; right:14px; width:auto; } .overlay-body{ max-height:35vh; } }
+  .more, .leg-toggle{ display:none; }
+  /* ===== Smartphone ===== */
+  @media (max-width:720px){
+    body{ height:100vh; height:100dvh; }
+    header{ padding:8px 10px; }
+    .topline{ gap:6px; flex-direction:column; }
+    .title{ width:100%; min-width:0; }
+    .title b{ font-size:15px; margin-bottom:2px; }
+    .title .desc{ display:none; }
+    header.open .title .desc{ display:block; max-height:30vh; overflow:auto; margin-top:4px; }
+    .more{ display:inline-block; border:0; background:none; padding:2px 0; color:var(--accent); font-size:12px; font-weight:700; cursor:pointer; }
+    .meta{ flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; margin-top:4px; padding-bottom:2px; }
+    .meta::-webkit-scrollbar{ display:none; }
+    .meta .pill{ white-space:nowrap; flex:none; padding:6px 10px; }
+    .logos{ justify-content:flex-start; gap:6px; flex-wrap:nowrap; }
+    .logos img{ height:26px; padding:3px 5px; border-radius:6px; }
+
+    .overlay{ top:auto; bottom:8px; left:8px; right:8px; width:auto; border-radius:12px; }
+    .overlay-header{ padding:6px 8px; flex-wrap:nowrap; }
+    .overlay button, .overlay input, .overlay select{ padding:8px 10px; font-size:14px; }
+    .filters input{ min-width:0; flex-basis:100%; }
+    .filters select{ flex:1; }
+    .overlay-body{ max-height:34vh; max-height:34dvh; }
+    .footnote{ display:none; }
+    .leaflet-bottom{ bottom:var(--ovH, 0px); transition:bottom .15s; }
+    body.scheda-open .leaflet-bottom{ bottom:0; }
+
+    .leg-toggle{ display:block; border:0; background:none; padding:2px 0; font-weight:700; font-size:13px; color:var(--fg); cursor:pointer; }
+    .legend:not(.open) .leg-body{ display:none; }
+    .legend .leg-body{ max-height:45vh; overflow:auto; margin-top:4px; }
+    .basebar button{ padding:8px 10px; font-size:13px; }
+
+    .scheda{ top:auto !important; left:0; right:0; bottom:0; width:auto; height:62vh; height:62dvh; border-radius:14px 14px 0 0; z-index:1001; }
+    .scheda-head button{ padding:6px 14px; font-size:20px; }
+    .scheda-body{ font-size:13px; }
+    .scheda-body .foto{ height:200px; }
+    /* i browser degli smartphone non mostrano i PDF incorporati: resta il pulsante per aprirli */
+    .scheda-body .pdf{ display:none; }
+    body.ov-open .leaflet-bottom.leaflet-left{ display:none; }
+    .scheda-body .btn{ padding:9px 12px; }
+    .pop{ min-width:0; max-width:calc(100vw - 80px); }
+    .pop .btn{ padding:8px 12px; }
+  }
 </style>
 </head>
 <body>
@@ -109,7 +151,8 @@
   <div class="topline">
     <div class="title">
       <b>Schema irriguo Tidone – Condotta e manufatti as-built</b>
-      Piano Nazionale di Ripresa e Resilienza (PNRR). Missione 2 - Componente 4 - Investimento 4.3 - Investimenti nella resilienza dell'agrosistema irriguo per una migliore gestione delle risorse idriche - finanziato dall'Unione Europea - Next Generation EU. Intervento: Schema irriguo Tidone: interventi di risparmio idrico per il contrasto alla siccità e adeguamenti funzionali del sistema adduzione in sponda sinistra e destra Tidone: tronchi 1) Bruso - Rio; 2) da canale Tavernago - Tuna a lago delle Lische; 3) dal lago delle Lische a Tuna. Codice intervento: 08-05-5703-847. Decreto MIPAAF - DISR 01 - Prot. 0484456 del 30/09/2022. Importo complessivo € 7.666.906,95. CUP G99J21006930005.
+      <button class="more" id="more" aria-expanded="false">Dettagli intervento ▾</button>
+      <span class="desc" id="desc">Piano Nazionale di Ripresa e Resilienza (PNRR). Missione 2 - Componente 4 - Investimento 4.3 - Investimenti nella resilienza dell'agrosistema irriguo per una migliore gestione delle risorse idriche - finanziato dall'Unione Europea - Next Generation EU. Intervento: Schema irriguo Tidone: interventi di risparmio idrico per il contrasto alla siccità e adeguamenti funzionali del sistema adduzione in sponda sinistra e destra Tidone: tronchi 1) Bruso - Rio; 2) da canale Tavernago - Tuna a lago delle Lische; 3) dal lago delle Lische a Tuna. Codice intervento: 08-05-5703-847. Decreto MIPAAF - DISR 01 - Prot. 0484456 del 30/09/2022. Importo complessivo € 7.666.906,95. CUP G99J21006930005.</span>
       <div class="meta">
         <span class="pill">Lavori ultimati – rilievo as-built</span>
         <a class="pill navlink" href="info.html">Scheda informativa</a>
@@ -226,7 +269,7 @@
   const PUMP = `<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="14" r="6"/><path d="M16 12h5v-5"/><path d="M10 14l3-3M10 14l-3 3M10 14l-3-3M10 14l3 3"/></svg>`;
   const Legend = L.Control.extend({ options:{ position:"bottomleft" }, onAdd(){
     const div = L.DomUtil.create("div","legend");
-    div.innerHTML = `<div class="t">Manufatti</div>` +
+    div.innerHTML = `<button class="leg-toggle" type="button" aria-expanded="false">Legenda ▾</button><div class="leg-body"><div class="t">Manufatti</div>` +
       Object.entries(TIPI).map(([k,t]) => SCHEMI_TIPO[k]
         ? `<div class="item link" data-st="${k}" title="Apri lo schema tipo"><span class="sym ${t.s}"></span>${t.l}<span class="pdfi">PDF</span></div>`
         : `<div class="item"><span class="sym ${t.s}"></span>${t.l}</div>`).join("") +
@@ -236,7 +279,8 @@
       `<div class="t" style="margin-top:6px">Condotta</div>` +
       `<div class="item"><span style="display:inline-block;width:22px;border-top:4px solid #3cb44b"></span>Tubo in PVC-A DN 630 (clic: dati e CRE)</div>` +
       `<div class="item"><span class="line-dash"></span>Convogliamento nella rete esistente già intubata</div>` +
-      `<div class="item"><span class="line-dash" style="border-top-color:#29b6f6"></span>Adduzione esistente da Po</div>`;
+      `<div class="item"><span class="line-dash" style="border-top-color:#29b6f6"></span>Adduzione esistente da Po</div></div>`;
+    div.querySelector(".leg-toggle").onclick = (e) => { const o = div.classList.toggle("open"); e.currentTarget.setAttribute("aria-expanded", o); e.currentTarget.textContent = o ? "Legenda ▴" : "Legenda ▾"; };
     div.querySelectorAll("[data-st]").forEach(el => el.onclick = () => openSchemaTipo(el.dataset.st));
     L.DomEvent.disableClickPropagation(div);
     return div;
@@ -389,7 +433,17 @@
     tblT.hidden = m; tblM.hidden = !m; filters.hidden = !m;
   }
   tabT.onclick = () => showTab(false); tabM.onclick = () => showTab(true);
-  document.getElementById("toggle").onclick = (e) => { overlay.classList.toggle("compact"); e.target.textContent = overlay.classList.contains("compact") ? "Espandi" : "Comprimi"; };
+  const toggleBtn = document.getElementById("toggle");
+  function setCompact(c){ overlay.classList.toggle("compact", c); document.body.classList.toggle("ov-open", !c); toggleBtn.textContent = c ? "Espandi" : "Comprimi"; }
+  toggleBtn.onclick = () => setCompact(!overlay.classList.contains("compact"));
+  // Smartphone: pannello compresso all'avvio e controlli della mappa sopra il pannello
+  const isMobile = () => window.matchMedia("(max-width:720px)").matches;
+  if(isMobile()) setCompact(true);
+  const setOvH = () => document.documentElement.style.setProperty("--ovH", (isMobile() ? overlay.offsetHeight + 8 : 0) + "px");
+  if(window.ResizeObserver) new ResizeObserver(setOvH).observe(overlay);
+  setOvH(); window.addEventListener("resize", setOvH);
+  const hdr = document.querySelector("header"), moreBtn = document.getElementById("more");
+  moreBtn.onclick = () => { const o = hdr.classList.toggle("open"); moreBtn.setAttribute("aria-expanded", o); moreBtn.textContent = o ? "Nascondi dettagli ▴" : "Dettagli intervento ▾"; setTimeout(() => map.invalidateSize(), 50); };
 
   Promise.all([
     fetch("tronchi.geojson?cb=" + CB).then(r => { if(!r.ok) throw new Error("tronchi.geojson HTTP " + r.status); return r.json(); }),
@@ -463,7 +517,7 @@
       const p = f.properties, m = markerFor(f).addTo(map);
       f_ll.set(p.univoco, f.geometry.coordinates);
       if(TIPI[tipoOf(p)]) m.on("click", () => { openScheda(p);
-        if(window.innerWidth > 720){ const z = map.getZoom(); map.panTo(map.unproject(map.project(m.getLatLng(), z).add([scheda.offsetWidth / 2, 0]), z)); } });
+        const z = map.getZoom(); map.panTo(map.unproject(map.project(m.getLatLng(), z).add(isMobile() ? [0, scheda.offsetHeight / 2] : [scheda.offsetWidth / 2, 0]), z)); });
       else m.bindPopup(popupHtml(p), { maxWidth:340, autoPanPadding:[20,20] });
       markers.set(p.univoco, m);
     });
@@ -487,7 +541,7 @@
       const u = Number(tr.dataset.u), m = markers.get(u), f = named.find(x => x.properties.univoco === u);
       openScheda(f.properties);
       // centra il manufatto nella parte di mappa non coperta dalla scheda
-      const z = Math.max(map.getZoom(), 17), pt = map.project(m.getLatLng(), z).add([window.innerWidth > 720 ? scheda.offsetWidth / 2 : 0, 0]);
+      const z = Math.max(map.getZoom(), 17), pt = map.project(m.getLatLng(), z).add(isMobile() ? [0, scheda.offsetHeight / 2] : [scheda.offsetWidth / 2, 0]);
       map.setView(map.unproject(pt, z), z); };
   }).catch(err => { console.error(err); alert("Errore caricamento dati: " + err.message); });
 })();
