@@ -430,6 +430,20 @@
   },
   "lavori_posa": [
     {
+      "tronco": "PV",
+      "impresa": "Peveri Costruzioni Generali S.r.l.",
+      "cig": "B94AF648F8",
+      "importo_contratto_eur": 79337.37,
+      "ribasso_pct": 2.85,
+      "lunghezza_contratto_m": 1160,
+      "lunghezza_asbuilt_m": 1139.23,
+      "contabilizzato_eur": 79337.37,
+      "ultimazione": "26/02/2026",
+      "cre": "Emesso 03/05/2026",
+      "ritenuta_eur": 0,
+      "note": "Tratto di variante RDB-Bruso. Importo con variante; affidamento iniziale € 72.689,78 (DCA 469 del 26/11/2025). Saldo pagato con CP n. 1 del 29/04/2026"
+    },
+    {
       "tronco": "1",
       "impresa": "Botti Emanuele",
       "cig": "B49CED3237",
@@ -463,11 +477,11 @@
       "ribasso_pct": null,
       "lunghezza_contratto_m": 1010,
       "lunghezza_asbuilt_m": 905.51,
-      "contabilizzato_eur": 82053.52,
+      "contabilizzato_eur": 91269.14,
       "ultimazione": "31/01/2025",
-      "cre": "Da emettere a liquidazione della variante (saldo € 9.625,89)",
-      "ritenuta_eur": 0,
-      "note": "Importo con variante DCA 245/2025; contratto iniziale € 54.248,52"
+      "cre": "Emesso 21/10/2026",
+      "ritenuta_eur": 9625.89,
+      "note": "Importo con variante DCA 245/2025; contratto iniziale € 54.248,52. Da svincolare € 9.625,89 = lavori in variante € 9.215,62 + ritenuta 0,50% € 410,27"
     },
     {
       "tronco": "3-2",
