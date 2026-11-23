@@ -71,9 +71,9 @@
     "anfore_cu": 0,
     "tronchetti": null,
     "tronchetti_1": null,
-    "nominativo": null,
+    "nominativo": "Collegamento impianto Bruso",
     "posato": true,
-    "pdf": null,
+    "pdf": "schemi/1_100_Imp.Bruso_I.pdf",
     "foto": [
      "foto/100.jpg",
      "foto/100bis.jpg"
@@ -113,9 +113,9 @@
     "anfore_cu": 0,
     "tronchetti": 0,
     "tronchetti_1": 0,
-    "nominativo": null,
+    "nominativo": "Collegamento Tub. Bruso-Bilegno",
     "posato": true,
-    "pdf": "schemi/101_Collegamento Tub.Bruso-Bilegno.pdf",
+    "pdf": "schemi/2_101_Collegamento Tub.Bruso-Bilegno.pdf",
     "foto": "foto/101.jpg",
     "x_utm32": 535555.705277,
     "y_utm32": 4983257.463563
@@ -3119,7 +3119,11 @@
     "nominativo": "Dividendo",
     "posato": true,
     "pdf": "schemi/37_523_Dividendo_S.pdf",
-    "foto": "foto/523.jpeg",
+    "foto": [
+     "foto/523.jpeg",
+     "foto/523bis-1.jpg",
+     "foto/523bis-2.jpg"
+    ],
     "x_utm32": 545488.765169,
     "y_utm32": 4981501.340323
    },
