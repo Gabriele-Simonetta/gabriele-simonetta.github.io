@@ -144,7 +144,7 @@
   const num = (v, d=2) => (v === null || v === undefined) ? '—' : new Intl.NumberFormat('it-IT',{minimumFractionDigits:d, maximumFractionDigits:d, useGrouping:'always'}).format(v);
   const pct = (n, d) => d ? Math.max(0, Math.min(100, n / d * 100)) : 0;
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const CRE = { "PV":"CRE PV Peveri.pdf", "1":"CRE T1.pdf", "2":"CRE T2.pdf", "3-1":"CRE T3-1.pdf", "3-2":"CRE T3-2.pdf", "4":"CRE T4.pdf" };
+  const CRE = { "PV":"CRE PV Peveri.pdf.p7m", "1":"CRE T1.pdf", "2":"CRE T2.pdf", "3-1":"CRE T3-1.pdf", "3-2":"CRE T3-2.pdf", "4":"CRE T4.pdf" };
   function creFile(p){ return p.tronco === "5" ? (/Pagani/i.test(p.impresa) ? "CRE T5-Pagani.pdf" : "CRE T5-Gom.pdf") : CRE[p.tronco]; }
   function render(data){
     document.getElementById('updated').textContent = 'Ultimo aggiornamento: 21/10/2026 (CRE)';
