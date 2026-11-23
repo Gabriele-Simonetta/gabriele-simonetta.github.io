@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PNRR M2C4 – Investimento 4.3 | Forniture</title>
+  <title>Schema irriguo Tidone | Lavori di posa</title>
   <link rel="icon" href="data:," />
   <style>
     :root{
@@ -71,7 +71,7 @@
   <div class="top">
     <div class="title">
       <b>Schema irriguo Tidone | Finanziato CBPC – Lavori di posa</b>
-      <div class="subtitle">Investimenti nella resilienza dell'agrosistema irriguo per una migliore gestione delle risorse idriche. Decreto MIPAAF - DISR 01 - Prot. Interno N. 484456 del 30/9/2022. Codice progetto DANIA: 08-05-5703-847. Lavori di posa delle tubazioni finanziati dal Consorzio di Bonifica di Piacenza.Intervento: Schema irriguo Tidone: interventi di risparmio idrico per il contrasto alla siccità e adeguamenti funzionali sistema di adduzione in sponda sinistra e destra Tidone: tronchi 1) Bruso - il Rio; 2) da canale Tavernago - Tuna a lago delle Lische; 3) dal lago delle Lische a Tuna. CUP G99J21006930005.</div>
+      <div class="subtitle">Lavori di posa delle tubazioni finanziati dal Consorzio di Bonifica di Piacenza (non finanziati PNRR). Le forniture di tubazioni e materiali rientrano invece nel finanziamento PNRR (vedi pagina "Finanziato PNRR"). Intervento: Schema irriguo Tidone: interventi di risparmio idrico per il contrasto alla siccità e adeguamenti funzionali sistema di adduzione in sponda sinistra e destra Tidone: tronchi 1) Bruso - il Rio; 2) da canale Tavernago - Tuna a lago delle Lische; 3) dal lago delle Lische a Tuna. CUP G58B24000030005.</div>
       <div class="meta">
         <div class="meta-nav">
           <a class="pill navlink" href="index.html">Mappa as-built</a>
@@ -98,7 +98,7 @@
   <section class="panel">
     <div class="panelHeader">
       <div class="h">Lavori di posa per tronco – certificati di regolare esecuzione</div>
-      <div class="hint">Relazioni sul conto finale e CRE del Direttore dei Lavori (art. 116 c. 7 e All. II.14 art. 28 D.Lgs. 36/2023), 21/10/2026.</div>
+      <div class="hint">Relazioni sul conto finale e CRE del Direttore dei Lavori (art. 116 c. 7 e All. II.14 art. 28 D.Lgs. 36/2023).</div>
     </div>
     <div class="panelBody">
       <div class="cards">
@@ -124,7 +124,7 @@
           <thead><tr>
             <th class="L">Tronco</th><th class="L">Impresa</th><th class="L">CIG</th><th>Importo contratto (€)</th>
             <th>Lungh. contratto (m)</th><th>Lungh. as-built (m)</th><th>Contabilizzato (€)</th><th>%</th>
-            <th class="L">Ultimazione</th><th>Ritenuta da svincolare (€)</th><th class="L">CRE</th>
+            <th class="L">Ultimazione</th><th>Da svincolare (€)</th><th class="L">CRE</th>
           </tr></thead>
           <tbody id="posaRows"></tbody>
           <tfoot id="posaTot"></tfoot>
@@ -144,7 +144,7 @@
   const num = (v, d=2) => (v === null || v === undefined) ? '—' : new Intl.NumberFormat('it-IT',{minimumFractionDigits:d, maximumFractionDigits:d, useGrouping:'always'}).format(v);
   const pct = (n, d) => d ? Math.max(0, Math.min(100, n / d * 100)) : 0;
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const CRE = { "1":"CRE T1.pdf", "2":"CRE T2.pdf", "3-1":"CRE T3-1.pdf", "3-2":"CRE T3-2.pdf", "4":"CRE T4.pdf" };
+  const CRE = { "PV":"CRE PV Peveri.pdf.p7m", "1":"CRE T1.pdf", "2":"CRE T2.pdf", "3-1":"CRE T3-1.pdf", "3-2":"CRE T3-2.pdf", "4":"CRE T4.pdf" };
   function creFile(p){ return p.tronco === "5" ? (/Pagani/i.test(p.impresa) ? "CRE T5-Pagani.pdf" : "CRE T5-Gom.pdf") : CRE[p.tronco]; }
   function render(data){
     document.getElementById('updated').textContent = 'Ultimo aggiornamento: 21/10/2026 (CRE)';
@@ -153,12 +153,12 @@
     const sum = (k) => posa.reduce((a,p) => a + (p[k] || 0), 0);
     const contr = sum('importo_contratto_eur'), cont = sum('contabilizzato_eur'), len = sum('lunghezza_asbuilt_m');
     document.getElementById('totContr').textContent = eur(contr) + ' €';
-    document.getElementById('totContrDetail').textContent = `${posa.length} contratti, 6 imprese – oltre IVA`;
+    document.getElementById('totContrDetail').textContent = `${posa.length} contratti, ${new Set(posa.map(p => p.impresa)).size} imprese – oltre IVA`;
     document.getElementById('totCont').textContent = eur(cont) + ' €';
-    document.getElementById('totContDetail').textContent = `${pct(cont, contr).toFixed(2)}% dell'importo contrattuale – ritenute da svincolare ${eur(sum('ritenuta_eur'))} €`;
+    document.getElementById('totContDetail').textContent = `${pct(cont, contr).toFixed(2)}% dell'importo contrattuale – da svincolare ${eur(sum('ritenuta_eur'))} €`;
     document.getElementById('barCont').style.width = pct(cont, contr) + '%';
     document.getElementById('totLen').textContent = num(len) + ' m';
-    document.getElementById('totLenDetail').textContent = 'Tronchi 1–5 (escluso PV, senza CRE di posa)';
+    document.getElementById('totLenDetail').textContent = 'Tronchi PV e 1–5';
     document.getElementById('posaRows').innerHTML = posa.map(p => `<tr>
       <td class="L">${esc(p.tronco)}</td><td class="L">${esc(p.impresa)}</td><td class="L">${esc(p.cig)}</td><td>${eur(p.importo_contratto_eur)}</td>
       <td>${p.lunghezza_contratto_m ? num(p.lunghezza_contratto_m,0) : '—'}</td><td>${num(p.lunghezza_asbuilt_m)}</td>
@@ -167,7 +167,8 @@
       <td class="L${/^Emesso/.test(p.cre) ? '' : ' warn'}"><a class="navlink" href="documenti/${encodeURI(creFile(p))}" target="_blank" rel="noopener">${esc(p.cre)}</a></td></tr>`).join('');
     document.getElementById('posaTot').innerHTML = `<tr><td></td><td class="L">Totale</td><td></td><td>${eur(contr)}</td><td></td><td>${num(len)}</td><td>${eur(cont)}</td><td></td><td></td><td>${eur(sum('ritenuta_eur'))}</td><td></td></tr>`;
     document.getElementById('posaNote').innerHTML = posa.filter(p => p.note).map(p => `• Tronco ${esc(p.tronco)} (${esc(p.impresa)}): ${esc(p.note)}`).join('<br>');
-    document.getElementById('docs').innerHTML = posa.map(p => `• <a class="navlink" href="documenti/${encodeURI(creFile(p))}" target="_blank" rel="noopener">CRE lavori di posa – tronco ${esc(p.tronco)} (${esc(p.impresa)})</a>`).join('<br>');
+    document.getElementById('docs').innerHTML = posa.map(p => `• <a class="navlink" href="documenti/${encodeURI(creFile(p))}" target="_blank" rel="noopener">CRE lavori di posa – tronco ${esc(p.tronco)} (${esc(p.impresa)})</a>`).join('<br>')
+      + '<br>• <a class="navlink" href="documenti/CRE%20Pompe.pdf" target="_blank" rel="noopener">CRE lavori di posa elettropompe ad asse verticale (GPG s.r.l., 18/06/2026)</a>';
   }
   fetch('forniture.json?cb=' + Date.now()).then(r => r.json()).then(render).catch(() => {
     document.getElementById('posaRows').innerHTML = '<tr><td colspan="11">Errore nel caricamento dei dati</td></tr>';

@@ -103,7 +103,7 @@
   .footnote{ padding:8px 12px; border-top:1px dashed #d9d9d9; font-size:11px; color:#58606b; line-height:1.35; }
   .more, .leg-toggle{ display:none; }
   /* ===== Smartphone ===== */
-  @media (max-width:720px){
+  @media (max-width:720px), (max-height:500px){
     body{ height:100vh; height:100dvh; }
     header{ padding:8px 10px; }
     .topline{ gap:6px; flex-direction:column; }
@@ -143,6 +143,20 @@
     .scheda-body .btn{ padding:9px 12px; }
     .pop{ min-width:0; max-width:calc(100vw - 80px); }
     .pop .btn{ padding:8px 12px; }
+  }
+  /* ===== Smartphone in orizzontale: intestazione su una riga, pannello a destra ===== */
+  @media (max-height:500px) and (orientation:landscape){
+    header{ padding:4px 10px; }
+    .topline{ flex-direction:row; flex-wrap:nowrap; align-items:center; }
+    .title{ flex:1; width:auto; }
+    .title b{ font-size:14px; }
+    .meta{ margin-top:2px; }
+    .meta .pill{ padding:4px 8px; font-size:11px; }
+    .logos{ flex:none; flex-wrap:nowrap; gap:4px; }
+    .logos img{ height:20px; padding:2px 4px; }
+    .overlay{ left:auto; right:8px; width:min(440px, 58vw); }
+    .overlay-body{ max-height:42vh; max-height:42dvh; }
+    .scheda{ left:auto; width:min(460px, 60vw); height:auto; top:4px !important; bottom:4px; border-radius:14px; }
   }
 </style>
 </head>
@@ -324,7 +338,7 @@
 
   // ===== Popup tronco: condotta, finanziamento posa CBPC, CRE =====
   const CONDOTTA = "Tubo in PVC-A DN 630";
-  const CRE = { "1":["CRE T1.pdf"], "2":["CRE T2.pdf"], "3-1":["CRE T3-1.pdf"], "3-2":["CRE T3-2.pdf"], "4":["CRE T4.pdf"],
+  const CRE = { "PV":["CRE PV Peveri.pdf.p7m"], "1":["CRE T1.pdf"], "2":["CRE T2.pdf"], "3-1":["CRE T3-1.pdf"], "3-2":["CRE T3-2.pdf"], "4":["CRE T4.pdf"],
     "5":["CRE T5-Gom.pdf","CRE T5-Pagani.pdf"] };
   let POSA = []; // lavori_posa da forniture.json (imprese e stato CRE)
   const creFile = (lp) => lp.tronco === "5" ? (/Pagani/i.test(lp.impresa) ? "CRE T5-Pagani.pdf" : "CRE T5-Gom.pdf") : (CRE[lp.tronco] || [])[0];
@@ -339,7 +353,7 @@
       <tr><td>Lunghezza as-built</td><td><b>${nf(len ?? p.lunghezza_m)} m${id === "PV" ? " (questo tratto)" : ""}</b></td></tr></table>
       ${cre.length ? `<div class="fin"><img src="assets/consorzio.png" alt="Consorzio di Bonifica di Piacenza">
         <div>Lavori di posa <b>finanziati CBPC</b><br><a href="posa.html">Dettaglio lavori di posa</a></div></div>
-        <div class="cre">${cre.map(([f, imp]) => `<a class="btn" href="documenti/${encodeURI(f)}" target="_blank" rel="noopener">CRE${imp ? " – " + esc(imp) : ""} (PDF)</a>`).join("")}</div>`
+        <div class="cre">${cre.map(([f, imp]) => `<a class="btn" href="documenti/${encodeURI(f)}" target="_blank" rel="noopener">CRE${imp ? " – " + esc(imp) : ""} (${/\.p7m$/i.test(f) ? "P7M firmato" : "PDF"})</a>`).join("")}</div>`
       : `<div class="fin"><div>Certificato di regolare esecuzione non disponibile per questo tronco.</div></div>`}
     </div>`;
   }
@@ -437,7 +451,7 @@
   function setCompact(c){ overlay.classList.toggle("compact", c); document.body.classList.toggle("ov-open", !c); toggleBtn.textContent = c ? "Espandi" : "Comprimi"; }
   toggleBtn.onclick = () => setCompact(!overlay.classList.contains("compact"));
   // Smartphone: pannello compresso all'avvio e controlli della mappa sopra il pannello
-  const isMobile = () => window.matchMedia("(max-width:720px)").matches;
+  const isMobile = () => window.matchMedia("(max-width:720px), (max-height:500px)").matches;
   if(isMobile()) setCompact(true);
   const setOvH = () => document.documentElement.style.setProperty("--ovH", (isMobile() ? overlay.offsetHeight + 8 : 0) + "px");
   if(window.ResizeObserver) new ResizeObserver(setOvH).observe(overlay);
