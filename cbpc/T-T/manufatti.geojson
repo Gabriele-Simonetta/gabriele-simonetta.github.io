@@ -2394,7 +2394,7 @@
    "type": "Feature",
    "properties": {
     "univoco": 311,
-    "tronco": 2,
+    "tronco": 3,
     "curva": 45,
     "id_qgis": 3,
     "tipo": 2,

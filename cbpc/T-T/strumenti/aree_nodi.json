@@ -47,9 +47,9 @@
       "pdf": "schemi/11_211_Castignoli_D.pdf",
       "titolo": "Nodo 211 - Castignoli (vertice 11, tronco 2)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: W4030A19000\nCodice quadro: W3304B1900",
+        "misuratore": "Codice misuratore di portata: W4030A19000\nCodice quadro: W3304B19000",
         "motore": "Codice motore (attuatore elettrico): 6X00075936",
-        "quadro": "Quadro misuratore di portata: W3304B1900\nStazione RTU: S.N. 0622024-TLC/UPS",
+        "quadro": "Quadro misuratore di portata: W3304B19000\nStazione RTU: S.N. 0622024-TLC/UPS",
         "pannello": "Pannello solare: A02250900551760",
         "passo_uomo": "Passo d'uomo: 80x80 quadrato"
       },
@@ -185,11 +185,11 @@
       "pdf": "schemi/12_216_Molino_S.pdf",
       "titolo": "Nodo 216 - Molino (vertice 12, tronco 2)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: W4030C19000\nCodice quadro: W403081900",
+        "misuratore": "Codice misuratore di portata: W4030C19000\nCodice quadro: W4030819000",
         "motore_mis": "Codice motore linea misuratore (attuatore elettrico): 6X00075935",
         "motore_scarico": "Codice motore scarico (attuatore elettrico): 6X00077530",
         "passo_uomo": "Passo d'uomo: 80x80 quadrato",
-        "quadro": "Quadro misuratore di portata: W403081900\nStazione RTU: Tlc_RTU06_Molino, S.N. 0422024-TLC/UPS",
+        "quadro": "Quadro misuratore di portata: W4030819000\nStazione RTU: Tlc_RTU06_Molino, S.N. 0422024-TLC/UPS",
         "pannello": "Pannello solare: A02250900551441",
         "anelli": "Anelli di prolunga 150x160: 4",
         "tronchetti": "Tronchetti verticali DN 200: 5"
@@ -1169,7 +1169,7 @@
     },
     "311": {
       "pdf": "schemi/15A_311_Passerini_D.pdf",
-      "titolo": "Nodo 311 - Passerini (vertice 15A, tronco 2)",
+      "titolo": "Nodo 311 - Passerini (vertice 15A, tronco 3)",
       "dati": {
         "misuratore": "Codice misuratore di portata: W3304519000\nCodice quadro: W4030719000",
         "motore": "Codice motore (attuatore elettrico): 6X00075939",
@@ -2535,7 +2535,7 @@
       "pdf": "schemi/20_408_Canovetta_D.pdf",
       "titolo": "Nodo 408 - Canovetta (vertice 20, tronco 4)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: W40307119000\nCodice quadro: W4030D19000",
+        "misuratore": "Codice misuratore di portata: W4030719000\nCodice quadro: W4030D19000",
         "motore": "Codice motore (attuatore elettrico): 6X00077532",
         "quadro": "Quadro misuratore di portata: W4030D19000\nStazione RTU: S.N. 0582024",
         "pannello": "Pannello solare: A02250900551457",
@@ -3059,7 +3059,7 @@
       "pdf": "schemi/23_414_Rio Sarmato_D.pdf",
       "titolo": "Nodo 414 - Rio Sarmato (vertice 23, tronco 4)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: 4030219000\nCodice quadro: W4030419000",
+        "misuratore": "Codice misuratore di portata: W4030219000\nCodice quadro: W4030419000",
         "motore": "Codice motore (attuatore elettrico): 6X00077529",
         "quadro": "Quadro misuratore di portata: W4030419000\nStazione RTU: S.N. 0452024-TLC/UPS",
         "pannello": "Pannello solare: A0225090051789",
@@ -3291,10 +3291,10 @@
       "pdf": "schemi/26_417_Rio Gandino_S.pdf",
       "titolo": "Nodo 417 - Rio Gandino (vertice 26, tronco 4)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: W3304719000\nCodice quadro: W330411900",
+        "misuratore": "Codice misuratore di portata: W3304719000\nCodice quadro: W3304119000",
         "motore_mis": "Codice motore linea misuratore (attuatore elettrico): 6X00075943",
         "motore_scarico": "Codice motore scarico (attuatore elettrico): 6X00077533",
-        "quadro": "Quadro misuratore di portata: W330411900\nStazione RTU: S.N. 0462024-TLC/UPS",
+        "quadro": "Quadro misuratore di portata: W3304119000\nStazione RTU: S.N. 0462024-TLC/UPS",
         "pannello": "Pannello solare: A0225090055171",
         "passo_uomo": "Passo d'uomo: 80x80 quadrato",
         "anelli": "Anelli di prolunga 150x160: 4",
@@ -5243,7 +5243,7 @@
       "pdf": "schemi/34_521_Rio Gragnano_S.pdf",
       "titolo": "Nodo 521 - Rio Gragnano (vertice 34, tronco 5)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: W33045019000\nCodice quadro: W3304719000",
+        "misuratore": "Codice misuratore di portata: W3305019000\nCodice quadro: W3304719000",
         "motore": "Codice motore (attuatore elettrico): 6X00075269",
         "quadro": "Quadro misuratore di portata: W3304719000\nStazione RTU: S.N. 0612024-TLC/UPS",
         "pannello": "Pannello solare: A02250900551686",
@@ -5643,7 +5643,7 @@
       "pdf": "schemi/37_523_Dividendo_S.pdf",
       "titolo": "Nodo 523 - Dividendo (vertice 37, tronco 5)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: 43304E19000\nCodice quadro: W3304819000",
+        "misuratore": "Codice misuratore di portata: W3304E19000\nCodice quadro: W3304819000",
         "motore": "Codice motore (attuatore elettrico): 6X00075267",
         "quadro": "Quadro misuratore di portata: W3304819000\nStazione RTU: S.N. 0502024-TLC/UPS",
         "pannello": "Pannello solare: A02250990548821",
