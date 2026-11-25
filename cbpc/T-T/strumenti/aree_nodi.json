@@ -1,0 +1,27 @@
+{
+  "_nota": "Aree cliccabili sugli schemi PDF dei nodi. Coordinate in punti PDF [x1, y1, x2, y2], origine in basso a sinistra (pagina 1152 x 800). Dati dalla Scheda Verifica Nodi aggiornata (DL, novembre 2026).",
+  "nodi": {
+    "413": {
+      "pdf": "schemi/22B_413_Grugni_D.pdf",
+      "titolo": "Nodo 413 - Grugni (vertice 22B, tronco 4)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3305319000\nCodice quadro: W4030C19000",
+        "motore": "Codice motore (attuatore elettrico): 6X00077528",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato"
+      },
+      "aree": [
+        {"dato": "passo_uomo", "rect": [640, 627, 847, 641], "nota": "planimetria, lato superiore del pozzetto"},
+        {"dato": "passo_uomo", "rect": [640, 290, 848, 306], "nota": "sezione A-A, soletta di copertura"},
+        {"dato": "passo_uomo", "rect": [761, 504, 779, 522], "nota": "planimetria, richiamo 6"},
+        {"dato": "misuratore", "rect": [799, 565, 836, 602], "nota": "planimetria, misuratore (2)"},
+        {"dato": "misuratore", "rect": [800, 138, 836, 177], "nota": "sezione A-A, misuratore (2)"},
+        {"dato": "misuratore", "rect": [787, 504, 806, 523], "nota": "planimetria, richiamo 2"},
+        {"dato": "misuratore", "rect": [803, 183, 822, 202], "nota": "sezione A-A, richiamo 2"},
+        {"dato": "motore", "rect": [686, 573, 709, 595], "nota": "planimetria, attuatore (8)"},
+        {"dato": "motore", "rect": [688, 188, 724, 211], "nota": "sezione A-A, attuatore (8)"},
+        {"dato": "motore", "rect": [674, 506, 687, 521], "nota": "planimetria, richiamo 8"},
+        {"dato": "motore", "rect": [678, 207, 697, 226], "nota": "sezione A-A, richiamo 8"}
+      ]
+    }
+  }
+}
