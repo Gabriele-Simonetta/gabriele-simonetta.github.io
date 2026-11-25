@@ -9,7 +9,8 @@
         "motore": "Codice motore (attuatore elettrico): 6X00077528",
         "passo_uomo": "Passo d'uomo: 80x80 quadrato",
         "quadro": "Quadro misuratore di portata: W4030C19000\nStazione RTU: S.N. 0602024-TLC/UPS",
-        "pannello": "Pannello solare: A02250900551353"
+        "pannello": "Pannello solare: A02250900551353",
+        "anelli": "Anelli di prolunga 150x160: 2"
       },
       "aree": [
         {
@@ -171,6 +172,112 @@
             482
           ],
           "nota": "sezione A-A, pannello solare (C)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            639.4,
+            198.1,
+            652.3,
+            291.7
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            734.4,
+            198.1,
+            747.4,
+            291.7
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            836.6,
+            198.1,
+            849.6,
+            291.7
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            732.2,
+            316.2,
+            746.6,
+            330.6
+          ],
+          "nota": "sezione A-A, richiamo D"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            28.8,
+            437.1,
+            280.8,
+            451.5
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            28.8,
+            319.8,
+            331.2,
+            348.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            28.8,
+            275.8,
+            151.2,
+            290.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            28.8,
+            231.2,
+            360.0,
+            245.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            25.9,
+            26.0,
+            298.8,
+            50.5
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            25.9,
+            13.8,
+            270.0,
+            26.7
+          ],
+          "nota": "legenda",
+          "legenda": true
         }
       ]
     },
@@ -183,7 +290,9 @@
         "motore_scarico": "Codice motore scarico (attuatore elettrico): 6X00077530",
         "passo_uomo": "Passo d'uomo: 80x80 quadrato",
         "quadro": "Quadro misuratore di portata: W403081900\nStazione RTU: Tlc_RTU06_Molino, S.N. 0422024-TLC/UPS",
-        "pannello": "Pannello solare: A02250900551441"
+        "pannello": "Pannello solare: A02250900551441",
+        "anelli": "Anelli di prolunga 150x160: 4",
+        "tronchetti": "Tronchetti verticali DN 200: 5"
       },
       "aree": [
         {
@@ -405,6 +514,143 @@
             502
           ],
           "nota": "sezione A-A, pannello solare (C)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            587,
+            216,
+            600,
+            311
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            681,
+            216,
+            703,
+            311
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            784,
+            216,
+            810,
+            311
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            891,
+            216,
+            913,
+            311
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            994,
+            216,
+            1007,
+            311
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            783,
+            333,
+            797,
+            347
+          ],
+          "nota": "sezione A-A, richiamo D"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            54.3,
+            453.8,
+            281.3,
+            470.1
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            54.3,
+            336.0,
+            352.0,
+            366.9
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            54.0,
+            291.8,
+            171.3,
+            308.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            54.0,
+            291.8,
+            171.3,
+            308.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            46.9,
+            247.5,
+            381.0,
+            263.7
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            46.9,
+            42.3,
+            320.5,
+            69.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            46.9,
+            30.0,
+            292.3,
+            46.3
+          ],
+          "nota": "legenda",
+          "legenda": true
         }
       ]
     }

@@ -387,7 +387,7 @@
       <h4>Schema manufatto</h4>
       ${INTER[p.univoco] ? `<a class="btn" href="schema.html?n=${encodeURIComponent(p.univoco)}" target="_blank" rel="noopener">Schema interattivo con i codici</a>` : ""}
       ${pdf ? `<iframe class="pdf" src="${pdf}#view=Fit&toolbar=0&navpanes=0" title="Schema ${esc(nome)}"></iframe>
-          <a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>` : `<div class="nofoto">Schema non disponibile</div>`}
+          ${INTER[p.univoco] ? "" : `<a class="btn" href="${pdf}" target="_blank" rel="noopener">Apri il PDF a schermo intero</a>`}` : `<div class="nofoto">Schema non disponibile</div>`}
       <h4>Dati</h4>
       <table>${rows.map(tr).join("")}</table>
       ${extra.length ? `<h4>Componenti e attrezzature</h4><table>${extra.map(tr).join("")}</table>` : ""}`;

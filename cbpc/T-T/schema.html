@@ -33,6 +33,7 @@
   .hit{ position:absolute; border:0; padding:0; margin:0; background:transparent; cursor:pointer; border-radius:4px; outline:none;
     transition:background-color .15s, box-shadow .15s; }
   .hit:hover, .hit.on, .hit:focus-visible{ background:var(--accent-soft); box-shadow:0 0 0 2px var(--accent); }
+  .hit.leg:hover, .hit.leg.on{ background:rgba(255,205,40,.38); box-shadow:0 0 0 2px #e0a800; }
   .hit.sel{ background:rgba(11,61,145,.2); box-shadow:0 0 0 2px var(--accent); }
   #hits.hint .hit{ animation:hint 1.6s ease-in-out 2; }
   @keyframes hint{ 0%,100%{ background:transparent; box-shadow:none; } 50%{ background:var(--accent-soft); box-shadow:0 0 0 2px var(--accent); } }
@@ -66,7 +67,7 @@
   .rows{ padding:6px 14px 12px; }
   .row{ padding:8px 0; border-bottom:1px solid #f0f0f0; }
   .row:last-child{ border-bottom:0; }
-  .row .l{ font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; }
+  .row .l{ font-size:11px; color:var(--muted); letter-spacing:.02em; }
   .row .vv{ display:flex; align-items:center; gap:8px; margin-top:3px; }
   .row code{ flex:1; font-family:Consolas, "Courier New", monospace; font-size:15px; font-weight:700; color:#0d1b33; overflow-wrap:anywhere; }
   .row .txt{ flex:1; font-size:14px; font-weight:700; }
@@ -95,7 +96,7 @@
     <span class="zl" id="zl">100%</span>
     <button id="zi" title="Ingrandisci" aria-label="Ingrandisci">+</button>
     <button id="zf" title="Adatta alla finestra">Adatta</button>
-    <a id="orig" class="hide-m" href="#" target="_blank" rel="noopener">PDF originale</a>
+    <a id="orig" href="#" download>Scarica PDF</a>
   </div>
 </header>
 <main>
@@ -116,6 +117,8 @@
     motor:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>',
     hatch:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16"/></svg>',
     box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>',
+    rings:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="5" rx="1"/><rect x="5" y="10" width="14" height="5" rx="1"/><rect x="5" y="17" width="14" height="4" rx="1"/></svg>',
+    pipe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3v18M15 3v18M7 3h10M7 21h10"/></svg>',
     sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 18l3-12h12l3 12z"/><path d="M4.5 12h15M12 6v12"/></svg>'
   };
   // Nome e icona di ogni tipo di dato in aree_nodi.json
@@ -126,9 +129,11 @@
     motore_scarico: { n:"Attuatore scarico",            i:"motor", c:"#8e3a8e" },
     quadro:         { n:"Stazione TLC / quadro RTU",    i:"box",   c:"#2a7a3b" },
     pannello:       { n:"Pannello solare",              i:"sun",   c:"#b8860b" },
-    passo_uomo:     { n:"Pozzetto – passo d'uomo",      i:"hatch", c:"#5b6573" }
+    passo_uomo:     { n:"Pozzetto – passo d'uomo",      i:"hatch", c:"#5b6573" },
+    anelli:         { n:"Anelli di prolunga",           i:"rings", c:"#1f6fb2" },
+    tronchetti:     { n:"Tronchetti verticali DN 200",  i:"pipe",  c:"#6b5b95" }
   };
-  const ORD = ["misuratore","quadro","motore","motore_mis","motore_scarico","pannello","passo_uomo"];
+  const ORD = ["misuratore","quadro","motore","motore_mis","motore_scarico","pannello","passo_uomo","anelli","tronchetti"];
   const tipo = k => TIPI[k] || { n:k, i:"box", c:"#0b3d91" };
   const icon = (k) => `<span class="ic" style="--c:${tipo(k).c}">${IC[tipo(k).i]}</span>`;
   // "Etichetta: valore" su ogni riga
@@ -154,7 +159,7 @@
     $("tit").textContent = m ? m[1].replace(" - ", " – ") : node.titolo;
     $("sub").textContent = m ? m[2] : "";
     document.title = $("tit").textContent + " – Schema interattivo";
-    $("orig").href = encodeURI(node.pdf);
+    $("orig").href = encodeURI(node.pdf); $("orig").setAttribute("download", node.pdf.split("/").pop());
     return pdfjsLib.getDocument(encodeURI(node.pdf)).promise.then(d => d.getPage(1)).then(p => {
       page = p; const v = p.getViewport({ scale:1 }); W = v.width; H = v.height;
       buildHits(); buildList(); fitZoom(); render();
@@ -165,7 +170,7 @@
   function buildHits(){
     hits.innerHTML = node.aree.map((a, i) => {
       const [x1, y1, x2, y2] = a.rect;
-      return `<button class="hit" data-k="${esc(a.dato)}" data-i="${i}" aria-label="${esc(tipo(a.dato).n)}" title="${esc(tipo(a.dato).n)}"
+      return `<button class="hit${a.legenda ? " leg" : ""}" data-k="${esc(a.dato)}" data-i="${i}" aria-label="${esc(tipo(a.dato).n)}" title="${esc(tipo(a.dato).n)}"
         style="left:${x1 / W * 100}%;top:${(H - y2) / H * 100}%;width:${(x2 - x1) / W * 100}%;height:${(y2 - y1) / H * 100}%"></button>`;
     }).join("");
     hits.querySelectorAll(".hit").forEach(b => {
