@@ -1,5 +1,5 @@
 {
-  "_nota": "Aree cliccabili sugli schemi PDF dei nodi. Coordinate in punti PDF [x1, y1, x2, y2], origine in basso a sinistra (pagina 1152 x 800). Dati dalla Scheda Verifica Nodi aggiornata (DL, novembre 2026).",
+  "_nota": "Aree cliccabili sugli schemi PDF dei nodi. Coordinate in punti PDF [x1, y1, x2, y2], origine in basso a sinistra. Dati dalla Scheda Verifica Nodi aggiornata (DL, novembre 2026).",
   "nodi": {
     "413": {
       "pdf": "schemi/22B_413_Grugni_D.pdf",
@@ -7,20 +7,405 @@
       "dati": {
         "misuratore": "Codice misuratore di portata: W3305319000\nCodice quadro: W4030C19000",
         "motore": "Codice motore (attuatore elettrico): 6X00077528",
-        "passo_uomo": "Passo d'uomo: 80x80 quadrato"
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "quadro": "Quadro misuratore di portata: W4030C19000\nStazione RTU: S.N. 0602024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551353"
       },
       "aree": [
-        {"dato": "passo_uomo", "rect": [640, 627, 847, 641], "nota": "planimetria, lato superiore del pozzetto"},
-        {"dato": "passo_uomo", "rect": [640, 290, 848, 306], "nota": "sezione A-A, soletta di copertura"},
-        {"dato": "passo_uomo", "rect": [761, 504, 779, 522], "nota": "planimetria, richiamo 6"},
-        {"dato": "misuratore", "rect": [799, 565, 836, 602], "nota": "planimetria, misuratore (2)"},
-        {"dato": "misuratore", "rect": [800, 138, 836, 177], "nota": "sezione A-A, misuratore (2)"},
-        {"dato": "misuratore", "rect": [787, 504, 806, 523], "nota": "planimetria, richiamo 2"},
-        {"dato": "misuratore", "rect": [803, 183, 822, 202], "nota": "sezione A-A, richiamo 2"},
-        {"dato": "motore", "rect": [686, 573, 709, 595], "nota": "planimetria, attuatore (8)"},
-        {"dato": "motore", "rect": [688, 188, 724, 211], "nota": "sezione A-A, attuatore (8)"},
-        {"dato": "motore", "rect": [674, 506, 687, 521], "nota": "planimetria, richiamo 8"},
-        {"dato": "motore", "rect": [678, 207, 697, 226], "nota": "sezione A-A, richiamo 8"}
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            640,
+            627,
+            847,
+            641
+          ],
+          "nota": "planimetria, lato superiore del pozzetto"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            640,
+            290,
+            848,
+            306
+          ],
+          "nota": "sezione A-A, soletta di copertura"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            761,
+            504,
+            779,
+            522
+          ],
+          "nota": "planimetria, richiamo 6"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            799,
+            565,
+            836,
+            602
+          ],
+          "nota": "planimetria, misuratore (2)"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            800,
+            138,
+            836,
+            177
+          ],
+          "nota": "sezione A-A, misuratore (2)"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            787,
+            504,
+            806,
+            523
+          ],
+          "nota": "planimetria, richiamo 2"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            803,
+            183,
+            822,
+            202
+          ],
+          "nota": "sezione A-A, richiamo 2"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            686,
+            573,
+            709,
+            595
+          ],
+          "nota": "planimetria, attuatore (8)"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            688,
+            188,
+            724,
+            211
+          ],
+          "nota": "sezione A-A, attuatore (8)"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            674,
+            506,
+            687,
+            521
+          ],
+          "nota": "planimetria, richiamo 8"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            678,
+            207,
+            697,
+            226
+          ],
+          "nota": "sezione A-A, richiamo 8"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            797,
+            611,
+            837,
+            629
+          ],
+          "nota": "planimetria, stazione TLC/RTU (10)"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            797,
+            301,
+            837,
+            363
+          ],
+          "nota": "sezione A-A, stazione TLC/RTU (10)"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            859,
+            642,
+            875,
+            658
+          ],
+          "nota": "planimetria, richiamo 10"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            802,
+            368.6,
+            818,
+            384.6
+          ],
+          "nota": "sezione A-A, richiamo 10"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            758,
+            384,
+            834,
+            482
+          ],
+          "nota": "sezione A-A, pannello solare (C)"
+        }
+      ]
+    },
+    "216": {
+      "pdf": "schemi/12_216_Molino_S.pdf",
+      "titolo": "Nodo 216 - Molino (vertice 12, tronco 2)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030C19000\nCodice quadro: W403081900",
+        "motore_mis": "Codice motore linea misuratore (attuatore elettrico): 6X00075935",
+        "motore_scarico": "Codice motore scarico (attuatore elettrico): 6X00077530",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "quadro": "Quadro misuratore di portata: W403081900\nStazione RTU: Tlc_RTU06_Molino, S.N. 0422024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551441"
+      },
+      "aree": [
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            589,
+            718,
+            1007,
+            729
+          ],
+          "nota": "planimetria, lato superiore dei pozzetti"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            589,
+            308,
+            1007,
+            320
+          ],
+          "nota": "sezione A-A, solette di copertura"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            908.0,
+            735.9,
+            924.0,
+            751.9
+          ],
+          "nota": "planimetria, richiamo 6"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            689.6,
+            87.7,
+            705.6,
+            103.7
+          ],
+          "nota": "sezione A-A, richiamo 6 sinistro"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            893.6,
+            87.7,
+            909.6,
+            103.7
+          ],
+          "nota": "sezione A-A, richiamo 6 destro"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            827,
+            662,
+            857,
+            690
+          ],
+          "nota": "planimetria, misuratore (2)"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            827,
+            140,
+            859,
+            176
+          ],
+          "nota": "sezione A-A, misuratore (2)"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            850.9,
+            735.9,
+            866.9,
+            751.9
+          ],
+          "nota": "planimetria, richiamo 2"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            840.3,
+            207.0,
+            856.3,
+            223.0
+          ],
+          "nota": "sezione A-A, richiamo 2"
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            650,
+            666,
+            675,
+            687
+          ],
+          "nota": "planimetria, attuatore (8) lato scarico, ovest"
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            650,
+            188,
+            682,
+            210
+          ],
+          "nota": "sezione A-A, attuatore (8) sinistro"
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            667.7,
+            735.9,
+            683.7,
+            751.9
+          ],
+          "nota": "planimetria, richiamo 8 sinistro"
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            668.8,
+            220.2,
+            684.8,
+            236.2
+          ],
+          "nota": "sezione A-A, richiamo 8 sinistro"
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            947,
+            666,
+            969,
+            687
+          ],
+          "nota": "planimetria, attuatore (8) lato misuratore, est"
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            941,
+            188,
+            970,
+            210
+          ],
+          "nota": "sezione A-A, attuatore (8) destro"
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            969.2,
+            735.9,
+            985.2,
+            751.9
+          ],
+          "nota": "planimetria, richiamo 8 destro"
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            961.9,
+            216.9,
+            977.9,
+            232.9
+          ],
+          "nota": "sezione A-A, richiamo 8 destro"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            819,
+            631,
+            860,
+            649
+          ],
+          "nota": "planimetria, stazione TLC/RTU (10)"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            819,
+            320,
+            860,
+            381
+          ],
+          "nota": "sezione A-A, stazione TLC/RTU (10)"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            796,
+            603,
+            812,
+            619
+          ],
+          "nota": "planimetria, richiamo 10"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            831.5,
+            387,
+            847.5,
+            403
+          ],
+          "nota": "sezione A-A, richiamo 10"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            812,
+            428,
+            889,
+            502
+          ],
+          "nota": "sezione A-A, pannello solare (C)"
+        }
       ]
     }
   }
