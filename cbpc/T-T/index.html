@@ -230,9 +230,11 @@
   const ATTR = [
     ["valv_315","Valvole DN315"],["valv_630","Valvole DN630"],["mis_315","Misuratori DN315"],["mot_315","Motorizzazioni DN315"],
     ["pozz","Pozzetti"],["coperchio","Coperchi"],["anfore_cu","Anfor"],["r150x160","Anelli da 160"],["r150x80","Anelli da 80"],
-    ["r150x75","Anelli da 75"],["r150x40","Anelli da 40"],["tronchetti","Tronchetti verticali DN 200"],["tronchetti_1","Tronchetti (2)"],
+    ["r150x75","Anelli da 75"],["r150x40","Anelli da 40"],["tronchetti","Tronchetti verticali DN 200"],
     ["vertice_pe","Vertice PE"]
   ];
+  // tronchetti e tronchetti_1 sono tutti tronchetti verticali DN 200 (indicazione DL): si mostra la somma
+  const attrVal = (p, k) => k === "tronchetti" ? ((p.tronchetti || 0) + (p.tronchetti_1 || 0)) : p[k];
   const nf = (n, d=2) => Number(n).toLocaleString("it-IT",{minimumFractionDigits:d, maximumFractionDigits:d});
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const colorForTronco = (id) => String(id) === "3" ? "#555" /* manufatti tronco 3 = 3-1 + 3-2 */ : PALETTE[Math.max(0, TRONCHI_ORDER.indexOf(String(id))) % PALETTE.length];
@@ -323,7 +325,7 @@
     if(p.curva) rows.push(["Curva", p.curva + "°"]);
     if(p.progressiva_m !== null && p.progressiva_m !== undefined) rows.push(["Progressiva", nf(p.progressiva_m) + " m"]);
     rows.push(["Coord. UTM32 (E, N)", nf(p.x_utm32,2) + ", " + nf(p.y_utm32,2)]);
-    const extra = ATTR.filter(([k]) => p[k] !== null && p[k] !== undefined && p[k] !== 0 && p[k] !== "").map(([k,l]) => [l, p[k]]);
+    const extra = ATTR.map(([k,l]) => [l, attrVal(p, k)]).filter(([,v]) => v !== null && v !== undefined && v !== 0 && v !== "");
     const tr = (r) => `<tr><td>${esc(r[0])}</td><td><b>${esc(r[1])}</b></td></tr>`;
     return `<div class="pop">
       <h3>${esc(nome)}</h3>
@@ -373,7 +375,7 @@
     if(p.curva) rows.push(["Curva", p.curva + "°"]);
     if(p.progressiva_m != null) rows.push(["Progressiva", nf(p.progressiva_m) + " m"]);
     rows.push(["Coord. UTM32 (E, N)", nf(p.x_utm32,2) + ", " + nf(p.y_utm32,2)]);
-    const extra = ATTR.filter(([k]) => p[k] !== null && p[k] !== undefined && p[k] !== 0 && p[k] !== "").map(([k,l]) => [l, p[k]]);
+    const extra = ATTR.map(([k,l]) => [l, attrVal(p, k)]).filter(([,v]) => v !== null && v !== undefined && v !== 0 && v !== "");
     const tr = (r) => `<tr><td>${esc(r[0])}</td><td><b>${esc(r[1])}</b></td></tr>`;
     const pdf = p.pdf ? encodeURI(p.pdf) : null;
     const ll = f_ll.get(p.univoco), gmaps = ll ? `https://www.google.com/maps?q=${ll[1]},${ll[0]}` : null;
