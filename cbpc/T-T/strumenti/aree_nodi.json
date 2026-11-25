@@ -629,11 +629,11 @@
       "pdf": "schemi/13_300_Nicolini_D.pdf",
       "titolo": "Nodo 300 - Nicolini (vertice 13, tronco 3)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: W4030419000\nCodice quadro: W4030B1900",
+        "misuratore": "Codice misuratore di portata: W4030419000\nCodice quadro: W4030B19000",
         "motore": "Codice motore (attuatore elettrico): 6X00075941",
-        "quadro": "Quadro misuratore di portata: W4030B1900\nStazione RTU: S.N. 0412024-TLC/UPS",
+        "quadro": "Quadro misuratore di portata: W4030B19000\nStazione RTU: S.N. 0412024-TLC/UPS",
         "pannello": "Pannello solare: A02250900551400",
-        "passo_uomo": "Passo d'uomo: Sistemati",
+        "passo_uomo": "Passo d'uomo: Botola carrabile",
         "anelli": "Anelli di prolunga 150x160: 2",
         "tronchetti": "Tronchetti verticali DN 200: 2"
       },
@@ -841,11 +841,11 @@
       "pdf": "schemi/14_304_Tavernago_D.pdf",
       "titolo": "Nodo 304 - Tavernago (vertice 14, tronco 3)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: W4030B1900\nCodice quadro: W4030919000",
+        "misuratore": "Codice misuratore di portata: W4030B19000\nCodice quadro: W4030919000",
         "motore": "Codice motore (attuatore elettrico): 6X00075938",
         "quadro": "Quadro misuratore di portata: W4030919000\nStazione RTU: S.N. 0592024-TLC/UPS",
         "pannello": "Pannello solare: A02250900551342",
-        "passo_uomo": "Passo d'uomo: Sistemati",
+        "passo_uomo": "Passo d'uomo: Botola carrabile",
         "anelli": "Anelli di prolunga 150x80: 2",
         "tronchetti": "Tronchetti verticali DN 200: 1"
       },
@@ -1057,7 +1057,7 @@
         "motore": "Codice motore (attuatore elettrico): 6X00075937",
         "quadro": "Quadro misuratore di portata: W4031019000\nStazione RTU: S.N. 0692024-TLC/UPS",
         "pannello": "Pannello solare: A02250900551008",
-        "passo_uomo": "Passo d'uomo: Sistemati"
+        "passo_uomo": "Passo d'uomo: Botola carrabile"
       },
       "aree": [
         {
@@ -1175,7 +1175,7 @@
         "motore": "Codice motore (attuatore elettrico): 6X00075939",
         "quadro": "Quadro misuratore di portata: W4030719000\nStazione RTU: S.N. 0402024-TLC/UPS",
         "pannello": "Pannello solare: A02250900551325",
-        "passo_uomo": "Passo d'uomo: Sistemati",
+        "passo_uomo": "Passo d'uomo: Botola carrabile",
         "anelli": "Anelli di prolunga 150x160: 2",
         "tronchetti": "Tronchetti verticali DN 200: 2"
       },
@@ -3930,7 +3930,7 @@
       "titolo": "Nodo 509 - Rio Cremasco (vertice 28, tronco 5)",
       "dati": {
         "misuratore": "Codice misuratore di portata: W3304A19000\nCodice quadro: W4030319000",
-        "motore": "Codice motore (attuatore elettrico): 6X000677523",
+        "motore": "Codice motore (attuatore elettrico): 6X00077523",
         "quadro": "Quadro misuratore di portata: W4030319000\nStazione RTU: S.N. 0562024-TLC/UPS",
         "pannello": "Pannello solare: A02250900551647",
         "passo_uomo": "Passo d'uomo: 2 Tondi",
