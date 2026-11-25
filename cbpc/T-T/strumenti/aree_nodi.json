@@ -1,176 +1,183 @@
 {
   "_nota": "Aree cliccabili sugli schemi PDF dei nodi. Coordinate in punti PDF [x1, y1, x2, y2], origine in basso a sinistra. Dati dalla Scheda Verifica Nodi aggiornata (DL, novembre 2026).",
   "nodi": {
-    "413": {
-      "pdf": "schemi/22B_413_Grugni_D.pdf",
-      "titolo": "Nodo 413 - Grugni (vertice 22B, tronco 4)",
+    "107": {
+      "pdf": "schemi/5_107_Il Rio_I.pdf",
+      "titolo": "Nodo 107 - Il Rio (vertice 11, tronco 1)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: W3305319000\nCodice quadro: W4030C19000",
-        "motore": "Codice motore (attuatore elettrico): 6X00077528",
-        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
-        "quadro": "Quadro misuratore di portata: W4030C19000\nStazione RTU: S.N. 0602024-TLC/UPS",
-        "pannello": "Pannello solare: A02250900551353"
+        "quadro": "Stazione RTU: S.N. 0742024",
+        "pannello": "Pannello solare: 078901198256754",
+        "anelli": "Anelli di prolunga 150x80: 1"
       },
       "aree": [
         {
-          "dato": "passo_uomo",
+          "dato": "anelli",
           "rect": [
-            640,
-            627,
-            847,
-            641
+            646.6,
+            233.4,
+            659.8,
+            283.8
           ],
-          "nota": "planimetria, lato superiore del pozzetto"
+          "nota": "auto prolunga"
         },
         {
-          "dato": "passo_uomo",
+          "dato": "anelli",
           "rect": [
-            640,
-            290,
-            848,
-            306
+            811.0,
+            221.4,
+            819.8,
+            284.2
           ],
-          "nota": "sezione A-A, soletta di copertura"
+          "nota": "auto prolunga"
         },
         {
-          "dato": "passo_uomo",
+          "dato": "anelli",
           "rect": [
-            761,
-            504,
-            779,
-            522
+            26.6,
+            36.2,
+            273.0,
+            51.0
           ],
-          "nota": "planimetria, richiamo 6"
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "211": {
+      "pdf": "schemi/11_211_Castignoli_D.pdf",
+      "titolo": "Nodo 211 - Castignoli (vertice 11, tronco 2)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030A19000\nCodice quadro: W3304B19000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075936",
+        "quadro": "Quadro misuratore di portata: W3304B19000\nStazione RTU: S.N. 0622024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551760",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            801.6,
+            654.8,
+            838.8,
+            691.6
+          ],
+          "nota": "auto mis_plan"
         },
         {
           "dato": "misuratore",
           "rect": [
-            799,
-            565,
-            836,
-            602
+            802.8,
+            125.2,
+            838.8,
+            164.4
           ],
-          "nota": "planimetria, misuratore (2)"
-        },
-        {
-          "dato": "misuratore",
-          "rect": [
-            800,
-            138,
-            836,
-            177
-          ],
-          "nota": "sezione A-A, misuratore (2)"
-        },
-        {
-          "dato": "misuratore",
-          "rect": [
-            787,
-            504,
-            806,
-            523
-          ],
-          "nota": "planimetria, richiamo 2"
-        },
-        {
-          "dato": "misuratore",
-          "rect": [
-            803,
-            183,
-            822,
-            202
-          ],
-          "nota": "sezione A-A, richiamo 2"
+          "nota": "auto mis_sez"
         },
         {
           "dato": "motore",
           "rect": [
-            686,
-            573,
-            709,
-            595
+            688.8,
+            662.4,
+            711.6,
+            684.4
           ],
-          "nota": "planimetria, attuatore (8)"
+          "nota": "auto mot_plan"
         },
         {
           "dato": "motore",
           "rect": [
-            688,
-            188,
-            724,
-            211
+            690.8,
+            175.2,
+            726.8,
+            198.4
           ],
-          "nota": "sezione A-A, attuatore (8)"
-        },
-        {
-          "dato": "motore",
-          "rect": [
-            674,
-            506,
-            687,
-            521
-          ],
-          "nota": "planimetria, richiamo 8"
-        },
-        {
-          "dato": "motore",
-          "rect": [
-            678,
-            207,
-            697,
-            226
-          ],
-          "nota": "sezione A-A, richiamo 8"
+          "nota": "auto mot_sez"
         },
         {
           "dato": "quadro",
           "rect": [
-            797,
-            611,
-            837,
-            629
+            800.6,
+            216.2,
+            838.6,
+            276.2
           ],
-          "nota": "planimetria, stazione TLC/RTU (10)"
-        },
-        {
-          "dato": "quadro",
-          "rect": [
-            797,
-            301,
-            837,
-            363
-          ],
-          "nota": "sezione A-A, stazione TLC/RTU (10)"
-        },
-        {
-          "dato": "quadro",
-          "rect": [
-            859,
-            642,
-            875,
-            658
-          ],
-          "nota": "planimetria, richiamo 10"
-        },
-        {
-          "dato": "quadro",
-          "rect": [
-            802,
-            368.6,
-            818,
-            384.6
-          ],
-          "nota": "sezione A-A, richiamo 10"
+          "nota": "auto tlc_sez"
         },
         {
           "dato": "pannello",
           "rect": [
-            758,
-            384,
-            834,
-            482
+            811.0,
+            321.0,
+            829.0,
+            339.0
           ],
-          "nota": "sezione A-A, pannello solare (C)"
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            766.6,
+            298.2,
+            872.6,
+            398.2
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.0,
+            435.8,
+            281.0,
+            452.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.0,
+            318.6,
+            331.4,
+            349.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.0,
+            274.6,
+            151.4,
+            291.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.0,
+            230.2,
+            360.2,
+            246.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            23.8,
+            24.6,
+            299.0,
+            51.4
+          ],
+          "nota": "legenda",
+          "legenda": true
         }
       ]
     },
@@ -178,12 +185,14 @@
       "pdf": "schemi/12_216_Molino_S.pdf",
       "titolo": "Nodo 216 - Molino (vertice 12, tronco 2)",
       "dati": {
-        "misuratore": "Codice misuratore di portata: W4030C19000\nCodice quadro: W403081900",
+        "misuratore": "Codice misuratore di portata: W4030C19000\nCodice quadro: W4030819000",
         "motore_mis": "Codice motore linea misuratore (attuatore elettrico): 6X00075935",
         "motore_scarico": "Codice motore scarico (attuatore elettrico): 6X00077530",
         "passo_uomo": "Passo d'uomo: 80x80 quadrato",
-        "quadro": "Quadro misuratore di portata: W403081900\nStazione RTU: Tlc_RTU06_Molino, S.N. 0422024-TLC/UPS",
-        "pannello": "Pannello solare: A02250900551441"
+        "quadro": "Quadro misuratore di portata: W4030819000\nStazione RTU: Tlc_RTU06_Molino, S.N. 0422024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551441",
+        "anelli": "Anelli di prolunga 150x160: 4",
+        "tronchetti": "Tronchetti verticali DN 200: 5"
       },
       "aree": [
         {
@@ -405,6 +414,5366 @@
             502
           ],
           "nota": "sezione A-A, pannello solare (C)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            587,
+            216,
+            600,
+            311
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            681,
+            216,
+            703,
+            311
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            784,
+            216,
+            810,
+            311
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            891,
+            216,
+            913,
+            311
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            994,
+            216,
+            1007,
+            311
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            783,
+            333,
+            797,
+            347
+          ],
+          "nota": "sezione A-A, richiamo D"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            54.3,
+            453.8,
+            281.3,
+            470.1
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            54.3,
+            336.0,
+            352.0,
+            366.9
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            54.0,
+            291.8,
+            171.3,
+            308.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            54.0,
+            291.8,
+            171.3,
+            308.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            46.9,
+            247.5,
+            381.0,
+            263.7
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            46.9,
+            42.3,
+            320.5,
+            69.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            46.9,
+            30.0,
+            292.3,
+            46.3
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            511,
+            167,
+            536,
+            224
+          ],
+          "nota": "sezione A-A, blocco B sinistro"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            1054,
+            167,
+            1079,
+            224
+          ],
+          "nota": "sezione A-A, blocco B destro"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            479.4,
+            204,
+            495.4,
+            220
+          ],
+          "nota": "sezione A-A, richiamo B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            1083.5,
+            206.2,
+            1099.5,
+            222.2
+          ],
+          "nota": "sezione A-A, richiamo B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            503,
+            698.6,
+            519,
+            714.6
+          ],
+          "nota": "planimetria, richiamo B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            1055.4,
+            706,
+            1071.4,
+            722
+          ],
+          "nota": "planimetria, richiamo B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            47,
+            66,
+            355,
+            80
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "300": {
+      "pdf": "schemi/13_300_Nicolini_D.pdf",
+      "titolo": "Nodo 300 - Nicolini (vertice 13, tronco 3)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030419000\nCodice quadro: W4030B19000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075941",
+        "quadro": "Quadro misuratore di portata: W4030B19000\nStazione RTU: S.N. 0412024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551400",
+        "passo_uomo": "Passo d'uomo: Botola carrabile",
+        "anelli": "Anelli di prolunga 150x160: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 2"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            774.4,
+            603.2,
+            811.6,
+            640.0
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            775.6,
+            142.4,
+            811.6,
+            181.6
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            661.6,
+            611.2,
+            684.4,
+            633.2
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            664.0,
+            192.8,
+            700.0,
+            216.0
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            773.8,
+            649.0,
+            813.8,
+            667.0
+          ],
+          "nota": "auto tlc_plan"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            791.0,
+            302.6,
+            829.0,
+            362.6
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            757.0,
+            384.6,
+            863.0,
+            484.6
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            591.4,
+            165.4,
+            615.4,
+            237.4
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            597.4,
+            644.6,
+            612.2,
+            659.4
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            638.2,
+            196.6,
+            652.2,
+            295.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            835.4,
+            197.0,
+            849.4,
+            295.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            636.8,
+            294.2,
+            850.8,
+            306.2
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.0,
+            435.8,
+            281.0,
+            452.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.0,
+            318.6,
+            331.4,
+            349.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.0,
+            274.6,
+            151.4,
+            291.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.0,
+            229.8,
+            360.2,
+            246.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            23.8,
+            24.6,
+            299.0,
+            51.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            23.8,
+            12.6,
+            270.2,
+            27.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            23.8,
+            47.4,
+            291.8,
+            61.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "304": {
+      "pdf": "schemi/14_304_Tavernago_D.pdf",
+      "titolo": "Nodo 304 - Tavernago (vertice 14, tronco 3)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030B19000\nCodice quadro: W4030919000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075938",
+        "quadro": "Quadro misuratore di portata: W4030919000\nStazione RTU: S.N. 0592024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551342",
+        "passo_uomo": "Passo d'uomo: Botola carrabile",
+        "anelli": "Anelli di prolunga 150x80: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            789.6,
+            574.8,
+            826.8,
+            611.6
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            790.8,
+            129.6,
+            826.8,
+            168.8
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            676.8,
+            582.8,
+            699.6,
+            604.8
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            678.8,
+            179.6,
+            714.8,
+            202.8
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            788.6,
+            620.6,
+            828.6,
+            638.6
+          ],
+          "nota": "auto tlc_plan"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            788.6,
+            261.4,
+            826.6,
+            321.4
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            811.0,
+            384.6,
+            829.0,
+            402.6
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            754.6,
+            343.4,
+            860.6,
+            443.4
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            606.2,
+            152.6,
+            630.2,
+            224.6
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            638.2,
+            202.6,
+            651.8,
+            253.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            835.8,
+            202.6,
+            845.8,
+            253.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            636.8,
+            252.0,
+            847.2,
+            264.0
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.0,
+            437.4,
+            281.0,
+            453.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.0,
+            320.2,
+            331.4,
+            351.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.0,
+            276.2,
+            151.4,
+            292.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.0,
+            231.4,
+            360.2,
+            247.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            23.8,
+            26.2,
+            299.0,
+            53.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            23.8,
+            14.6,
+            270.2,
+            29.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            23.8,
+            49.4,
+            291.8,
+            63.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "308": {
+      "pdf": "schemi/15_308_Rio Frate_S.pdf",
+      "titolo": "Nodo 308 - Rio Frate (vertice 15, tronco 3)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4031019000\nCodice quadro: W4031019000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075937",
+        "quadro": "Quadro misuratore di portata: W4031019000\nStazione RTU: S.N. 0692024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551008",
+        "passo_uomo": "Passo d'uomo: Botola carrabile"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            745.6,
+            578.0,
+            782.8,
+            614.8
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            748.0,
+            122.0,
+            784.0,
+            161.2
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            634.0,
+            586.0,
+            656.8,
+            608.0
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            636.0,
+            172.4,
+            672.0,
+            195.6
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            800.2,
+            341.4,
+            818.2,
+            359.4
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            28.6,
+            435.8,
+            282.6,
+            452.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            28.6,
+            318.6,
+            333.0,
+            349.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            28.6,
+            274.6,
+            153.0,
+            291.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            28.6,
+            229.8,
+            361.8,
+            246.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            25.4,
+            24.6,
+            300.6,
+            51.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "311": {
+      "pdf": "schemi/15A_311_Passerini_D.pdf",
+      "titolo": "Nodo 311 - Passerini (vertice 15A, tronco 3)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3304519000\nCodice quadro: W4030719000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075939",
+        "quadro": "Quadro misuratore di portata: W4030719000\nStazione RTU: S.N. 0402024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551325",
+        "passo_uomo": "Passo d'uomo: Botola carrabile",
+        "anelli": "Anelli di prolunga 150x160: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 2"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            732.4,
+            643.6,
+            769.6,
+            680.4
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            732.4,
+            122.8,
+            768.4,
+            162.0
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            859.6,
+            651.6,
+            882.4,
+            673.6
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            844.4,
+            172.8,
+            880.4,
+            196.0
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            734.2,
+            689.4,
+            774.2,
+            707.4
+          ],
+          "nota": "auto tlc_plan"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            730.6,
+            301.8,
+            768.6,
+            361.8
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            737.8,
+            409.4,
+            755.8,
+            427.4
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            696.6,
+            383.8,
+            802.6,
+            483.8
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            929.0,
+            145.8,
+            953.0,
+            217.8
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            718.2,
+            196.2,
+            732.2,
+            293.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            812.2,
+            196.2,
+            835.4,
+            294.2
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            915.4,
+            196.2,
+            929.4,
+            293.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            716.8,
+            292.8,
+            930.8,
+            304.8
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.0,
+            437.0,
+            281.0,
+            453.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.0,
+            320.2,
+            331.4,
+            351.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.0,
+            275.8,
+            151.4,
+            292.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.0,
+            231.4,
+            360.2,
+            247.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            23.8,
+            25.8,
+            299.0,
+            52.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            23.8,
+            14.2,
+            270.2,
+            29.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            23.8,
+            49.0,
+            291.8,
+            63.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "315": {
+      "pdf": "schemi/16_315_Ozzola_D.pdf",
+      "titolo": "Nodo 315 - Ozzola (vertice 16, tronco 3)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030819000\nCodice quadro: W4030219000",
+        "motore": "Codice motore (attuatore elettrico): 6X00077524",
+        "quadro": "Quadro misuratore di portata: W4030219000\nStazione RTU: S.N. 0442024-TLC/UPS",
+        "pannello": "Pannello solare: A0225090055040",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x160: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            742.8,
+            635.6,
+            780.0,
+            672.4
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            744.0,
+            132.0,
+            780.0,
+            171.2
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            868.8,
+            643.6,
+            891.6,
+            665.6
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            853.2,
+            182.0,
+            889.2,
+            205.2
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            743.8,
+            302.2,
+            781.8,
+            362.2
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            803.0,
+            388.2,
+            821.0,
+            406.2
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            709.8,
+            384.2,
+            815.8,
+            484.2
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            994.6,
+            155.0,
+            1018.6,
+            227.0
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            732.6,
+            196.6,
+            746.6,
+            294.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            929.8,
+            197.0,
+            944.6,
+            294.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            731.2,
+            293.6,
+            946.0,
+            305.6
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            28.2,
+            435.8,
+            282.2,
+            452.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            28.2,
+            318.6,
+            332.6,
+            349.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            28.2,
+            274.6,
+            152.6,
+            291.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            28.2,
+            229.8,
+            361.4,
+            246.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            25.0,
+            24.6,
+            300.2,
+            51.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            25.0,
+            12.6,
+            271.4,
+            27.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            25.0,
+            47.8,
+            293.0,
+            62.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "317": {
+      "pdf": "schemi/17_317_Scrocchi_D.pdf",
+      "titolo": "Nodo 317 - Scrocchi (vertice 17, tronco 3)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030919000\nCodice quadro: W3305319000",
+        "motore": "Codice motore (attuatore elettrico): 6X00077522",
+        "quadro": "Quadro misuratore di portata: W3305319000\nStazione RTU: S.N. 0392024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551608",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x160: 2\nAnelli di prolunga 150x40: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            778.8,
+            654.0,
+            816.0,
+            690.8
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            781.6,
+            141.6,
+            817.6,
+            180.8
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            906.0,
+            662.0,
+            928.8,
+            684.0
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            890.8,
+            191.6,
+            926.8,
+            214.8
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            831.0,
+            325.0,
+            869.0,
+            385.0
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            824.6,
+            399.4,
+            842.6,
+            417.4
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            797.0,
+            407.0,
+            903.0,
+            507.0
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            975.8,
+            164.6,
+            999.8,
+            236.6
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            754.2,
+            197.4,
+            768.2,
+            319.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            848.2,
+            197.4,
+            871.4,
+            316.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            951.8,
+            197.4,
+            965.8,
+            316.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            752.8,
+            315.6,
+            967.2,
+            327.6
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.0,
+            436.6,
+            281.0,
+            453.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.0,
+            319.4,
+            331.4,
+            350.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.0,
+            275.4,
+            151.4,
+            291.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.0,
+            231.0,
+            360.2,
+            247.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            23.8,
+            25.4,
+            299.0,
+            52.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            23.8,
+            13.8,
+            270.2,
+            28.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            23.8,
+            48.6,
+            291.8,
+            63.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "356": {
+      "pdf": "schemi/18_356_Rio Sarturano_S.pdf",
+      "titolo": "Nodo 356 - Rio Sarturano (vertice 18, tronco 3)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: Dato mancante\nCodice quadro: W3304419000",
+        "motore_mis": "Codice motore linea misuratore (attuatore elettrico): 6X00075270",
+        "motore_scarico": "Codice motore scarico (attuatore elettrico): 6X00077525",
+        "quadro": "Quadro misuratore di portata: W3304419000\nStazione RTU: S.N. 0472024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551612",
+        "passo_uomo": "Passo d'uomo: 3 80x80 quadrato 1 tondo",
+        "anelli": "Anelli di prolunga 150x160: 1\nAnelli di prolunga 150x80: 6",
+        "tronchetti": "Tronchetti verticali DN 200: 4"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            794.4,
+            633.6,
+            831.6,
+            670.4
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            804.4,
+            130.8,
+            840.4,
+            170.0
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            920.4,
+            641.6,
+            943.2,
+            663.6
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            641.6,
+            641.6,
+            664.4,
+            663.6
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            914.0,
+            180.8,
+            950.0,
+            204.0
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            635.2,
+            180.8,
+            671.2,
+            204.0
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            802.2,
+            298.2,
+            840.2,
+            358.2
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            768.2,
+            380.2,
+            874.2,
+            480.2
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            501.8,
+            153.8,
+            525.8,
+            225.8
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            1055.0,
+            153.8,
+            1079.0,
+            225.8
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            485.8,
+            197.4,
+            500.6,
+            212.2
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            502.2,
+            670.2,
+            517.0,
+            685.0
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            793.0,
+            193.0,
+            807.4,
+            290.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            887.4,
+            193.0,
+            910.6,
+            290.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            672.6,
+            193.0,
+            695.0,
+            289.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            990.6,
+            193.4,
+            1004.6,
+            289.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            671.2,
+            289.2,
+            1006.0,
+            301.2
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            28.6,
+            435.8,
+            282.6,
+            452.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            28.6,
+            318.6,
+            333.0,
+            349.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            28.6,
+            274.2,
+            153.0,
+            290.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            28.6,
+            274.2,
+            153.0,
+            290.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            28.6,
+            229.8,
+            361.8,
+            246.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            25.4,
+            24.2,
+            300.6,
+            51.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            25.4,
+            12.6,
+            271.8,
+            27.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            25.4,
+            47.4,
+            293.4,
+            61.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "401": {
+      "pdf": "schemi/19_401_Lago Lische_D.pdf",
+      "titolo": "Nodo 401 - lago Lische (vertice 19, tronco 4)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3304819000\nCodice quadro: W4030E19000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075942",
+        "quadro": "Quadro misuratore di portata: W4030E19000\nStazione RTU: S.N. 0542024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900550631",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x160: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            795.2,
+            560.4,
+            832.4,
+            597.2
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            796.4,
+            125.6,
+            832.4,
+            164.8
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            682.4,
+            568.4,
+            705.2,
+            590.4
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            684.4,
+            175.6,
+            720.4,
+            198.8
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            794.2,
+            606.2,
+            834.2,
+            624.2
+          ],
+          "nota": "auto tlc_plan"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            794.2,
+            301.8,
+            832.2,
+            361.8
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            810.6,
+            403.0,
+            828.6,
+            421.0
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            760.2,
+            383.8,
+            866.2,
+            483.8
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            611.8,
+            148.6,
+            635.8,
+            220.6
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            598.2,
+            601.4,
+            613.0,
+            616.2
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            732.2,
+            196.6,
+            746.2,
+            294.2
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            750.2,
+            196.6,
+            764.2,
+            294.2
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            844.6,
+            197.0,
+            858.6,
+            294.2
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            730.8,
+            293.2,
+            860.0,
+            305.2
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.0,
+            436.6,
+            281.0,
+            453.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.0,
+            319.4,
+            331.4,
+            350.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.0,
+            275.4,
+            151.4,
+            291.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.0,
+            230.6,
+            360.2,
+            247.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            23.8,
+            25.4,
+            299.0,
+            52.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            23.8,
+            13.4,
+            270.2,
+            28.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            23.8,
+            48.2,
+            291.8,
+            62.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "404": {
+      "pdf": "schemi/21_404_Dieci_D.pdf",
+      "titolo": "Nodo 404 - Dieci (vertice 21, tronco 4)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3304119000\nCodice quadro: W4030A19000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075940",
+        "quadro": "Quadro misuratore di portata: W4030A19000\nStazione RTU: S.N. 0532024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551294",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x160: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            792.0,
+            573.2,
+            829.2,
+            610.0
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            793.2,
+            123.6,
+            829.2,
+            162.8
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            679.2,
+            581.2,
+            702.0,
+            603.2
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            681.2,
+            173.6,
+            717.2,
+            196.8
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            791.0,
+            619.0,
+            831.0,
+            637.0
+          ],
+          "nota": "auto tlc_plan"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            775.4,
+            303.8,
+            813.4,
+            363.8
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            812.2,
+            413.0,
+            830.2,
+            431.0
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            741.4,
+            385.8,
+            847.4,
+            485.8
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            557.4,
+            146.6,
+            581.4,
+            218.6
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            529.4,
+            178.2,
+            544.2,
+            193.0
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            638.6,
+            198.2,
+            653.0,
+            296.2
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            836.2,
+            198.6,
+            850.2,
+            296.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            637.2,
+            295.4,
+            851.6,
+            307.4
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            436.6,
+            281.8,
+            453.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            319.4,
+            332.2,
+            350.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            275.4,
+            152.2,
+            291.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            230.6,
+            361.0,
+            247.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            25.4,
+            299.8,
+            52.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            24.6,
+            13.8,
+            271.0,
+            28.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            24.6,
+            48.6,
+            292.6,
+            63.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "408": {
+      "pdf": "schemi/20_408_Canovetta_D.pdf",
+      "titolo": "Nodo 408 - Canovetta (vertice 20, tronco 4)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030719000\nCodice quadro: W4030D19000",
+        "motore": "Codice motore (attuatore elettrico): 6X00077532",
+        "quadro": "Quadro misuratore di portata: W4030D19000\nStazione RTU: S.N. 0582024",
+        "pannello": "Pannello solare: A02250900551457",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x160: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            723.6,
+            633.6,
+            760.8,
+            670.4
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            724.8,
+            119.2,
+            760.8,
+            158.4
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            849.6,
+            641.6,
+            872.4,
+            663.6
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            834.0,
+            169.2,
+            870.0,
+            192.4
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            723.8,
+            302.6,
+            761.8,
+            362.6
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            689.8,
+            384.6,
+            795.8,
+            484.6
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            918.6,
+            142.2,
+            942.6,
+            214.2
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            920.2,
+            680.2,
+            935.0,
+            695.0
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            794.6,
+            196.6,
+            817.8,
+            306.2
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            699.8,
+            197.4,
+            714.6,
+            295.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            897.8,
+            197.0,
+            911.8,
+            295.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            698.4,
+            294.4,
+            913.2,
+            306.4
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            436.6,
+            281.8,
+            453.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            319.4,
+            332.2,
+            350.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            275.0,
+            152.2,
+            291.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            230.6,
+            361.0,
+            247.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            25.0,
+            299.8,
+            51.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            24.6,
+            13.4,
+            271.0,
+            28.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            24.6,
+            48.2,
+            292.6,
+            62.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "413": {
+      "pdf": "schemi/22B_413_Grugni_D.pdf",
+      "titolo": "Nodo 413 - Grugni (vertice 22B, tronco 4)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3305319000\nCodice quadro: W4030C19000",
+        "motore": "Codice motore (attuatore elettrico): 6X00077528",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "quadro": "Quadro misuratore di portata: W4030C19000\nStazione RTU: S.N. 0602024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551353",
+        "anelli": "Anelli di prolunga 150x160: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            640,
+            627,
+            847,
+            641
+          ],
+          "nota": "planimetria, lato superiore del pozzetto"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            640,
+            290,
+            848,
+            306
+          ],
+          "nota": "sezione A-A, soletta di copertura"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            761,
+            504,
+            779,
+            522
+          ],
+          "nota": "planimetria, richiamo 6"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            799,
+            565,
+            836,
+            602
+          ],
+          "nota": "planimetria, misuratore (2)"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            800,
+            138,
+            836,
+            177
+          ],
+          "nota": "sezione A-A, misuratore (2)"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            787,
+            504,
+            806,
+            523
+          ],
+          "nota": "planimetria, richiamo 2"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            803,
+            183,
+            822,
+            202
+          ],
+          "nota": "sezione A-A, richiamo 2"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            686,
+            573,
+            709,
+            595
+          ],
+          "nota": "planimetria, attuatore (8)"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            688,
+            188,
+            724,
+            211
+          ],
+          "nota": "sezione A-A, attuatore (8)"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            674,
+            506,
+            687,
+            521
+          ],
+          "nota": "planimetria, richiamo 8"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            678,
+            207,
+            697,
+            226
+          ],
+          "nota": "sezione A-A, richiamo 8"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            797,
+            611,
+            837,
+            629
+          ],
+          "nota": "planimetria, stazione TLC/RTU (10)"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            797,
+            301,
+            837,
+            363
+          ],
+          "nota": "sezione A-A, stazione TLC/RTU (10)"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            859,
+            642,
+            875,
+            658
+          ],
+          "nota": "planimetria, richiamo 10"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            802,
+            368.6,
+            818,
+            384.6
+          ],
+          "nota": "sezione A-A, richiamo 10"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            758,
+            384,
+            834,
+            482
+          ],
+          "nota": "sezione A-A, pannello solare (C)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            639.4,
+            198.1,
+            652.3,
+            291.7
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            734.4,
+            198.1,
+            747.4,
+            291.7
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            836.6,
+            198.1,
+            849.6,
+            291.7
+          ],
+          "nota": "sezione A-A, prolunga (D)"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            732.2,
+            316.2,
+            746.6,
+            330.6
+          ],
+          "nota": "sezione A-A, richiamo D"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            28.8,
+            437.1,
+            280.8,
+            451.5
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            28.8,
+            319.8,
+            331.2,
+            348.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            28.8,
+            275.8,
+            151.2,
+            290.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            28.8,
+            231.2,
+            360.0,
+            245.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            25.9,
+            26.0,
+            298.8,
+            50.5
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            25.9,
+            13.8,
+            270.0,
+            26.7
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            554,
+            163,
+            575,
+            231
+          ],
+          "nota": "sezione A-A, blocco B e tronchetto"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            531,
+            190,
+            546,
+            205
+          ],
+          "nota": "sezione A-A, richiamo B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            25.9,
+            49,
+            291.6,
+            61.5
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "414": {
+      "pdf": "schemi/23_414_Rio Sarmato_D.pdf",
+      "titolo": "Nodo 414 - Rio Sarmato (vertice 23, tronco 4)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030219000\nCodice quadro: W4030419000",
+        "motore": "Codice motore (attuatore elettrico): 6X00077529",
+        "quadro": "Quadro misuratore di portata: W4030419000\nStazione RTU: S.N. 0452024-TLC/UPS",
+        "pannello": "Pannello solare: A0225090051789",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x160: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            800.8,
+            599.6,
+            838.0,
+            636.4
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            799.6,
+            119.6,
+            835.6,
+            158.8
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            688.0,
+            607.6,
+            710.8,
+            629.6
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            690.4,
+            169.6,
+            726.4,
+            192.8
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            800.2,
+            645.4,
+            840.2,
+            663.4
+          ],
+          "nota": "auto tlc_plan"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            800.2,
+            301.0,
+            838.2,
+            361.0
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            766.2,
+            383.0,
+            872.2,
+            483.0
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            617.4,
+            142.6,
+            641.4,
+            214.6
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            612.6,
+            643.8,
+            627.4,
+            658.6
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            593.8,
+            189.8,
+            608.6,
+            204.6
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            840.6,
+            195.4,
+            855.0,
+            293.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            733.0,
+            195.4,
+            747.0,
+            293.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            746.6,
+            195.8,
+            760.6,
+            293.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            731.6,
+            292.0,
+            856.4,
+            304.0
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            435.8,
+            281.8,
+            452.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            318.6,
+            332.2,
+            349.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            274.6,
+            152.2,
+            291.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            230.2,
+            361.0,
+            246.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            24.6,
+            299.8,
+            51.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            24.6,
+            13.0,
+            271.0,
+            27.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            24.6,
+            47.8,
+            292.6,
+            62.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "417": {
+      "pdf": "schemi/26_417_Rio Gandino_S.pdf",
+      "titolo": "Nodo 417 - Rio Gandino (vertice 26, tronco 4)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3304719000\nCodice quadro: W3304119000",
+        "motore_mis": "Codice motore linea misuratore (attuatore elettrico): 6X00075943",
+        "motore_scarico": "Codice motore scarico (attuatore elettrico): 6X00077533",
+        "quadro": "Quadro misuratore di portata: W3304119000\nStazione RTU: S.N. 0462024-TLC/UPS",
+        "pannello": "Pannello solare: A0225090055171",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x160: 4",
+        "tronchetti": "Tronchetti verticali DN 200: 4"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            789.6,
+            572.4,
+            826.8,
+            609.2
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            789.6,
+            116.0,
+            825.6,
+            155.2
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            916.8,
+            580.4,
+            939.6,
+            602.4
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            638.0,
+            580.4,
+            660.8,
+            602.4
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            622.8,
+            166.0,
+            658.8,
+            189.2
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            901.6,
+            166.0,
+            937.6,
+            189.2
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            786.6,
+            296.6,
+            824.6,
+            356.6
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            752.6,
+            378.6,
+            858.6,
+            478.6
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            489.4,
+            139.0,
+            513.4,
+            211.0
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            1042.6,
+            139.0,
+            1066.6,
+            211.0
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            559.0,
+            191.8,
+            573.0,
+            289.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            653.0,
+            191.4,
+            676.2,
+            289.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            779.8,
+            191.8,
+            793.8,
+            289.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            873.8,
+            191.8,
+            897.0,
+            289.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            977.4,
+            191.8,
+            991.0,
+            289.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            557.6,
+            288.0,
+            992.4,
+            300.0
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            28.6,
+            437.0,
+            282.6,
+            453.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            28.6,
+            320.2,
+            333.0,
+            351.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            28.6,
+            275.8,
+            153.0,
+            292.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            28.6,
+            275.8,
+            153.0,
+            292.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            28.6,
+            231.4,
+            361.8,
+            247.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            25.4,
+            25.8,
+            300.6,
+            52.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            25.4,
+            14.2,
+            271.8,
+            29.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            25.4,
+            49.0,
+            293.4,
+            63.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "420": {
+      "pdf": "schemi/24_420_Locatelli_D.pdf",
+      "titolo": "Nodo 420 - Locatelli (vertice 24, tronco 4)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3304419000\nCodice quadro: W4030519000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075944",
+        "quadro": "Quadro misuratore di portata: W4030519000\nStazione RTU: S.N. 0722024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551649",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x40: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            798.0,
+            564.0,
+            835.2,
+            600.8
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            796.8,
+            110.8,
+            832.8,
+            150.0
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            685.2,
+            572.0,
+            708.0,
+            594.0
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            687.2,
+            160.8,
+            723.2,
+            184.0
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            797.4,
+            223.4,
+            835.4,
+            283.4
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            811.8,
+            343.0,
+            829.8,
+            361.0
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            763.4,
+            305.4,
+            869.4,
+            405.4
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            552.2,
+            133.8,
+            576.2,
+            205.8
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            552.6,
+            601.8,
+            567.4,
+            616.6
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            733.0,
+            186.6,
+            748.2,
+            238.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            435.8,
+            281.8,
+            452.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            318.6,
+            332.2,
+            349.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            274.6,
+            152.2,
+            291.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            229.8,
+            361.0,
+            246.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            24.6,
+            299.8,
+            51.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            24.6,
+            12.6,
+            271.0,
+            27.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            24.6,
+            47.8,
+            292.6,
+            62.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "505": {
+      "pdf": "schemi/27_505_Molinazzo_D.pdf",
+      "titolo": "Nodo 505 - Molinazzo (vertice 27, tronco 5)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3305119000\nCodice quadro: W3304A19000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075271",
+        "quadro": "Quadro misuratore di portata: W3304A19000\nStazione RTU: S.N. 0382024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551797",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x80: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 2"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            794.0,
+            660.8,
+            831.2,
+            697.6
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            792.8,
+            118.0,
+            828.8,
+            157.2
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            681.6,
+            668.8,
+            704.4,
+            690.8
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            683.6,
+            168.0,
+            719.6,
+            191.2
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            793.4,
+            259.8,
+            831.4,
+            319.8
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            811.8,
+            382.6,
+            829.8,
+            400.6
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            759.4,
+            341.8,
+            865.4,
+            441.8
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            611.0,
+            141.0,
+            635.0,
+            213.0
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            836.6,
+            200.2,
+            850.2,
+            251.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            437.4,
+            281.8,
+            453.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            320.2,
+            332.2,
+            351.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            276.2,
+            152.2,
+            292.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            231.4,
+            361.0,
+            247.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            26.2,
+            299.8,
+            53.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            24.6,
+            14.6,
+            271.0,
+            29.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            24.6,
+            49.4,
+            292.6,
+            63.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "509": {
+      "pdf": "schemi/28_509_Rio Cremasco_D.pdf",
+      "titolo": "Nodo 509 - Rio Cremasco (vertice 28, tronco 5)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3304A19000\nCodice quadro: W4030319000",
+        "motore": "Codice motore (attuatore elettrico): 6X00077523",
+        "quadro": "Quadro misuratore di portata: W4030319000\nStazione RTU: S.N. 0562024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551647",
+        "passo_uomo": "Passo d'uomo: 2 Tondi",
+        "anelli": "Anelli di prolunga 150x160: 2\nAnelli di prolunga 150x40: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 2"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            760.4,
+            567.2,
+            797.6,
+            604.0
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            761.6,
+            112.4,
+            797.6,
+            151.6
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            647.6,
+            575.2,
+            670.4,
+            597.2
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            649.6,
+            162.8,
+            685.6,
+            186.0
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            759.4,
+            613.0,
+            799.4,
+            631.0
+          ],
+          "nota": "auto tlc_plan"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            759.4,
+            324.6,
+            797.4,
+            384.6
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            725.4,
+            406.6,
+            831.4,
+            506.6
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            577.0,
+            135.8,
+            601.0,
+            207.8
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            556.2,
+            191.4,
+            571.0,
+            206.2
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            604.6,
+            196.6,
+            619.0,
+            316.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            802.2,
+            196.6,
+            816.6,
+            316.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            603.2,
+            315.6,
+            818.0,
+            327.6
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            437.4,
+            281.8,
+            453.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            320.2,
+            332.2,
+            351.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            275.8,
+            152.2,
+            292.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            231.4,
+            361.0,
+            247.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            25.8,
+            299.8,
+            52.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            24.6,
+            14.2,
+            271.0,
+            29.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            24.6,
+            49.0,
+            292.6,
+            63.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "510": {
+      "pdf": "schemi/29_510_Rio Gandore_S.pdf",
+      "titolo": "Nodo 510 - scarico Gandore (vertice 29, tronco 5)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3304B19000\nCodice quadro: W3304E19000",
+        "motore_mis": "Codice motore linea misuratore (attuatore elettrico): 6X00077527",
+        "motore_scarico": "Codice motore scarico (attuatore elettrico): 6X00075272",
+        "quadro": "Quadro misuratore di portata: W3304E19000\nStazione RTU: S.N. 0512024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551599",
+        "passo_uomo": "Passo d'uomo: 1 80x80 quadrato 3 Tondi",
+        "anelli": "Anelli di prolunga 150x160: 4",
+        "tronchetti": "Tronchetti verticali DN 200: 4"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            786.4,
+            637.6,
+            823.6,
+            674.4
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            787.6,
+            117.6,
+            823.6,
+            156.8
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            570.0,
+            167.6,
+            606.0,
+            190.8
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            897.2,
+            167.6,
+            933.2,
+            190.8
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            785.4,
+            298.6,
+            823.4,
+            358.6
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            751.4,
+            380.6,
+            857.4,
+            480.6
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            490.6,
+            140.6,
+            514.6,
+            212.6
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            984.6,
+            140.6,
+            1008.6,
+            212.6
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            467.0,
+            194.2,
+            481.8,
+            209.0
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            854.6,
+            193.0,
+            877.8,
+            291.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            958.2,
+            193.4,
+            971.8,
+            291.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            606.2,
+            193.4,
+            620.2,
+            291.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            657.4,
+            193.4,
+            671.4,
+            291.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            604.8,
+            290.2,
+            973.2,
+            302.2
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            28.6,
+            437.0,
+            282.6,
+            453.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            28.6,
+            319.8,
+            333.0,
+            350.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore_mis",
+          "rect": [
+            28.6,
+            275.8,
+            153.0,
+            292.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore_scarico",
+          "rect": [
+            28.6,
+            275.8,
+            153.0,
+            292.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            28.6,
+            231.0,
+            361.8,
+            247.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            25.4,
+            25.8,
+            300.6,
+            52.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            25.4,
+            13.8,
+            271.8,
+            28.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            25.4,
+            49.0,
+            293.4,
+            63.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "512": {
+      "pdf": "schemi/30_512_Rio Agazzino_D.pdf",
+      "titolo": "Nodo 512 - Rio Agazzino (vertice 30, tronco 5)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030319000\nCodice quadro: W3305019000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075274 (NOTA: ROTTO IL VOLANTINO)",
+        "quadro": "Quadro misuratore di portata: W3305019000\nStazione RTU: S.N. 0522024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900549928",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x80: 2\nAnelli di prolunga 150x40: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 2"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            777.2,
+            560.8,
+            814.4,
+            597.6
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            778.4,
+            124.8,
+            814.4,
+            164.0
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            664.4,
+            568.8,
+            687.2,
+            590.8
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            666.4,
+            174.8,
+            702.4,
+            198.0
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            776.2,
+            606.6,
+            816.2,
+            624.6
+          ],
+          "nota": "auto tlc_plan"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            776.2,
+            280.2,
+            814.2,
+            340.2
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            811.4,
+            400.6,
+            829.4,
+            418.6
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            742.2,
+            362.2,
+            848.2,
+            462.2
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            593.8,
+            147.8,
+            617.8,
+            219.8
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            639.0,
+            199.4,
+            652.2,
+            272.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            733.0,
+            198.6,
+            755.4,
+            273.0
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            836.6,
+            200.6,
+            849.8,
+            272.2
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            637.6,
+            271.6,
+            851.2,
+            283.6
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            435.8,
+            281.8,
+            452.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            318.6,
+            332.2,
+            349.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            274.6,
+            152.2,
+            291.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            229.8,
+            361.0,
+            246.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            24.6,
+            299.8,
+            51.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            24.6,
+            12.6,
+            271.0,
+            27.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            24.6,
+            47.8,
+            292.6,
+            62.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "516": {
+      "pdf": "schemi/31_516_Gerbido_D.pdf",
+      "titolo": "Nodo 516 - Loc. Gerbido (vertice 31, tronco 5)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030F19000\nCodice quadro: W3305119000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075276",
+        "quadro": "Quadro misuratore di portata: W3305119000\nStazione RTU: 0712024-TLC/UPS",
+        "pannello": "Pannello solare: C55HH2N2257006429",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x80: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            778.8,
+            568.8,
+            816.0,
+            605.6
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            780.0,
+            125.2,
+            816.0,
+            164.4
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            666.0,
+            576.8,
+            688.8,
+            598.8
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            668.0,
+            175.2,
+            704.0,
+            198.4
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            777.8,
+            257.0,
+            815.8,
+            317.0
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            811.8,
+            377.8,
+            829.8,
+            395.8
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            743.8,
+            339.0,
+            849.8,
+            439.0
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            595.4,
+            148.2,
+            619.4,
+            220.2
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            733.0,
+            198.2,
+            755.8,
+            249.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            639.0,
+            197.8,
+            652.6,
+            247.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            637.6,
+            247.6,
+            757.2,
+            259.6
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            437.4,
+            281.8,
+            453.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            320.2,
+            332.2,
+            351.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            276.2,
+            152.2,
+            292.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            231.4,
+            361.0,
+            247.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            26.2,
+            299.8,
+            53.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            24.6,
+            14.6,
+            271.0,
+            29.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            24.6,
+            49.4,
+            292.6,
+            63.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "518": {
+      "pdf": "schemi/32_518_Rio Borla_D.pdf",
+      "titolo": "Nodo 518 - Rio Borla (vertice 32, tronco 5)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030D19000\nCodice quadro: W3304619000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075275",
+        "quadro": "Quadro misuratore di portata: W3304619000\nStazione RTU: S.N. 0682024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900549199",
+        "passo_uomo": "Passo d'uomo: Tondo 80",
+        "anelli": "Anelli di prolunga 150x80: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            792.0,
+            568.4,
+            829.2,
+            605.2
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            790.4,
+            123.6,
+            826.4,
+            162.8
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            678.8,
+            576.4,
+            701.6,
+            598.4
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            681.2,
+            174.0,
+            717.2,
+            197.2
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            791.0,
+            614.2,
+            831.0,
+            632.2
+          ],
+          "nota": "auto tlc_plan"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            791.0,
+            262.6,
+            829.0,
+            322.6
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            813.0,
+            388.2,
+            831.0,
+            406.2
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            757.0,
+            344.6,
+            863.0,
+            444.6
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            608.2,
+            146.6,
+            632.2,
+            218.6
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            639.0,
+            203.8,
+            652.2,
+            254.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            836.2,
+            203.4,
+            849.8,
+            254.6
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            637.6,
+            253.6,
+            851.2,
+            265.6
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            437.4,
+            281.8,
+            453.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            320.2,
+            332.2,
+            351.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            276.2,
+            152.2,
+            292.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            231.4,
+            361.0,
+            247.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            26.2,
+            299.8,
+            53.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            24.6,
+            14.2,
+            271.0,
+            29.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            24.6,
+            49.4,
+            292.6,
+            63.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "519": {
+      "pdf": "schemi/33_519_Rossi_D.pdf",
+      "titolo": "Nodo 519 - Rossi (vertice 33, tronco 5)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W4030519000\nCodice quadro: W4030619000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075273",
+        "quadro": "Quadro misuratore di portata: W4030619000\nStazione RTU: S.N. 0732024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900550629",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x80: 2",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            764.0,
+            576.0,
+            801.2,
+            612.8
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            764.0,
+            116.0,
+            800.0,
+            155.2
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            891.2,
+            584.0,
+            914.0,
+            606.0
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            876.0,
+            166.0,
+            912.0,
+            189.2
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            766.6,
+            254.6,
+            804.6,
+            314.6
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            839.0,
+            383.8,
+            857.0,
+            401.8
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            732.6,
+            336.6,
+            838.6,
+            436.6
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            960.6,
+            139.0,
+            984.6,
+            211.0
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            960.6,
+            133.8,
+            984.2,
+            248.2
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            743.0,
+            195.8,
+            751.0,
+            246.2
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            843.8,
+            195.8,
+            859.8,
+            245.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            747.8,
+            195.8,
+            756.6,
+            245.4
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            741.6,
+            245.0,
+            985.6,
+            257.0
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            437.0,
+            281.8,
+            453.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            319.8,
+            332.2,
+            350.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            275.8,
+            152.2,
+            292.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            231.0,
+            361.0,
+            247.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            25.8,
+            299.8,
+            52.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            24.6,
+            14.2,
+            271.0,
+            29.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            24.6,
+            49.0,
+            292.6,
+            63.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "521": {
+      "pdf": "schemi/34_521_Rio Gragnano_S.pdf",
+      "titolo": "Nodo 521 - Rio Gragnano (vertice 34, tronco 5)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3305019000\nCodice quadro: W3304719000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075269",
+        "quadro": "Quadro misuratore di portata: W3304719000\nStazione RTU: S.N. 0612024-TLC/UPS",
+        "pannello": "Pannello solare: A02250900551686",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato",
+        "anelli": "Anelli di prolunga 150x160: 3",
+        "tronchetti": "Tronchetti verticali DN 200: 1"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            766.0,
+            628.8,
+            803.2,
+            665.6
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            767.2,
+            118.8,
+            803.2,
+            158.0
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            653.2,
+            636.8,
+            676.0,
+            658.8
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            655.2,
+            168.8,
+            691.2,
+            192.0
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            765.0,
+            299.4,
+            803.0,
+            359.4
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            731.0,
+            381.4,
+            837.0,
+            481.4
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            579.4,
+            141.8,
+            603.4,
+            213.8
+          ],
+          "nota": "auto blocco B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            569.8,
+            672.6,
+            584.6,
+            687.4
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            557.4,
+            199.8,
+            572.2,
+            214.6
+          ],
+          "nota": "auto richiamo B"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            621.8,
+            194.2,
+            635.8,
+            291.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            715.8,
+            193.8,
+            729.8,
+            291.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            730.6,
+            194.2,
+            744.6,
+            291.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            824.6,
+            193.8,
+            839.0,
+            291.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            882.2,
+            194.2,
+            896.2,
+            291.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            976.2,
+            194.2,
+            990.2,
+            291.8
+          ],
+          "nota": "auto prolunga"
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            620.4,
+            290.8,
+            991.6,
+            302.8
+          ],
+          "nota": "auto soletta"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            28.6,
+            436.6,
+            282.6,
+            453.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            28.6,
+            319.4,
+            333.0,
+            350.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            28.6,
+            275.4,
+            153.0,
+            291.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            28.6,
+            230.6,
+            361.8,
+            247.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            25.4,
+            25.4,
+            300.6,
+            52.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "anelli",
+          "rect": [
+            25.4,
+            13.8,
+            271.8,
+            28.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "tronchetti",
+          "rect": [
+            25.4,
+            48.6,
+            293.4,
+            63.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "522": {
+      "pdf": "schemi/36_522_Rio Magnano_D.pdf",
+      "titolo": "Nodo 522 - Rio Magnano (vertice 36, tronco 5)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3304619000\nCodice quadro: W3304519000",
+        "motore": "Codice motore (attuatore elettrico): 6x00075268",
+        "quadro": "Quadro misuratore di portata: W3304519000\nStazione RTU: S.N. 0672024-TLC/UPS",
+        "pannello": "Pannello solare: A0225090052277",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            794.0,
+            566.4,
+            831.2,
+            603.2
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            795.2,
+            112.0,
+            831.2,
+            151.2
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            681.2,
+            574.4,
+            704.0,
+            596.4
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            683.2,
+            162.0,
+            719.2,
+            185.2
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            793.4,
+            612.2,
+            833.4,
+            630.2
+          ],
+          "nota": "auto tlc_plan"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            793.0,
+            210.2,
+            831.0,
+            270.2
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            812.2,
+            324.2,
+            830.2,
+            342.2
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            759.0,
+            292.2,
+            865.0,
+            392.2
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            27.8,
+            437.0,
+            281.8,
+            453.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            27.8,
+            319.8,
+            332.2,
+            350.6
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            27.8,
+            275.4,
+            152.2,
+            291.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            27.8,
+            231.0,
+            361.0,
+            247.4
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            24.6,
+            25.4,
+            299.8,
+            52.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        }
+      ]
+    },
+    "523": {
+      "pdf": "schemi/37_523_Dividendo_S.pdf",
+      "titolo": "Nodo 523 - Dividendo (vertice 37, tronco 5)",
+      "dati": {
+        "misuratore": "Codice misuratore di portata: W3304E19000\nCodice quadro: W3304819000",
+        "motore": "Codice motore (attuatore elettrico): 6X00075267",
+        "quadro": "Quadro misuratore di portata: W3304819000\nStazione RTU: S.N. 0502024-TLC/UPS",
+        "pannello": "Pannello solare: A02250990548821",
+        "passo_uomo": "Passo d'uomo: 80x80 quadrato"
+      },
+      "aree": [
+        {
+          "dato": "misuratore",
+          "rect": [
+            762.0,
+            564.4,
+            799.2,
+            601.2
+          ],
+          "nota": "auto mis_plan"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            763.2,
+            120.4,
+            799.2,
+            159.6
+          ],
+          "nota": "auto mis_sez"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            682.8,
+            572.4,
+            705.6,
+            594.4
+          ],
+          "nota": "auto mot_plan"
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            684.8,
+            170.8,
+            720.8,
+            194.0
+          ],
+          "nota": "auto mot_sez"
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            773.4,
+            210.6,
+            811.4,
+            270.6
+          ],
+          "nota": "auto tlc_sez"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            810.6,
+            312.2,
+            828.6,
+            330.2
+          ],
+          "nota": "auto richiamo C"
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            739.4,
+            292.6,
+            845.4,
+            392.6
+          ],
+          "nota": "auto pannello (sopra stazione)"
+        },
+        {
+          "dato": "misuratore",
+          "rect": [
+            28.2,
+            436.6,
+            282.2,
+            453.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "passo_uomo",
+          "rect": [
+            28.2,
+            319.4,
+            332.6,
+            350.2
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "motore",
+          "rect": [
+            28.2,
+            275.4,
+            152.6,
+            291.8
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "quadro",
+          "rect": [
+            28.2,
+            230.6,
+            361.4,
+            247.0
+          ],
+          "nota": "legenda",
+          "legenda": true
+        },
+        {
+          "dato": "pannello",
+          "rect": [
+            25.0,
+            25.4,
+            300.2,
+            52.2
+          ],
+          "nota": "legenda",
+          "legenda": true
         }
       ]
     }
