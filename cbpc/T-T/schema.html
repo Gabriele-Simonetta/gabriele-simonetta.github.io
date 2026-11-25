@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schema interattivo – Schema irriguo Tidone</title>
+<link rel="icon" href="data:,">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+  :root{ --fg:#111; --muted:#666; --border:#ddd; --accent:#0b3d91; --accent-soft:rgba(11,61,145,.12); --bg:#f3f4f6;
+    --shadow:0 12px 32px rgba(0,0,0,.18); }
+  *{ box-sizing:border-box; }
+  html, body{ height:100%; }
+  body{ margin:0; font-family:Arial, sans-serif; color:var(--fg); background:var(--bg); display:flex; flex-direction:column; overflow:hidden; }
+
+  header{ display:flex; align-items:center; gap:12px; padding:10px 14px; background:#fff; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .back{ color:var(--accent); text-decoration:none; font-weight:700; font-size:13px; white-space:nowrap; }
+  .back:hover{ text-decoration:underline; }
+  .tit{ flex:1; min-width:180px; line-height:1.25; }
+  .tit b{ display:block; font-size:16px; }
+  .tit span{ font-size:12px; color:var(--muted); }
+  .tools{ display:flex; gap:6px; align-items:center; }
+  .tools button, .tools a{ border:1px solid var(--border); background:#fff; border-radius:10px; padding:6px 10px; font-size:12px; cursor:pointer;
+    color:var(--fg); text-decoration:none; font-family:inherit; min-width:34px; text-align:center; }
+  .tools button:hover, .tools a:hover{ background:#f4f7fd; border-color:#c7d3ea; }
+  .tools .zl{ font-size:12px; color:var(--muted); min-width:44px; text-align:center; }
+
+  main{ flex:1; min-height:0; display:flex; }
+  #stage{ flex:1; min-width:0; overflow:auto; position:relative; padding:16px; }
+  #sheet{ position:relative; margin:0 auto; background:#fff; box-shadow:0 2px 14px rgba(0,0,0,.12); }
+  #sheet canvas{ display:block; width:100%; height:100%; }
+  #hits{ position:absolute; inset:0; }
+  .hit{ position:absolute; border:0; padding:0; margin:0; background:transparent; cursor:pointer; border-radius:4px; outline:none;
+    transition:background-color .15s, box-shadow .15s; }
+  .hit:hover, .hit.on, .hit:focus-visible{ background:var(--accent-soft); box-shadow:0 0 0 2px var(--accent); }
+  .hit.sel{ background:rgba(11,61,145,.2); box-shadow:0 0 0 2px var(--accent); }
+  #hits.hint .hit{ animation:hint 1.6s ease-in-out 2; }
+  @keyframes hint{ 0%,100%{ background:transparent; box-shadow:none; } 50%{ background:var(--accent-soft); box-shadow:0 0 0 2px var(--accent); } }
+
+  aside{ width:300px; flex:none; background:#fff; border-left:1px solid var(--border); overflow:auto; }
+  aside h2{ font-size:13px; margin:0; padding:12px 14px; border-bottom:1px solid var(--border); background:#fafafa; }
+  aside .help{ font-size:12px; color:var(--muted); padding:10px 14px 4px; line-height:1.4; }
+  .comp{ display:flex; gap:10px; align-items:flex-start; width:100%; text-align:left; background:#fff; border:0; border-bottom:1px solid #eee;
+    padding:10px 14px; cursor:pointer; font-family:inherit; color:inherit; }
+  .comp:hover, .comp.on{ background:#f4f7fd; }
+  .comp .ic{ flex:none; }
+  .comp .n{ font-size:13px; font-weight:700; }
+  .comp .v{ font-size:12px; color:var(--muted); margin-top:2px; font-family:Consolas, "Courier New", monospace; word-break:break-all; }
+
+  .ic{ width:30px; height:30px; border-radius:8px; display:grid; place-items:center; color:#fff; background:var(--c, var(--accent)); }
+  .ic svg{ width:17px; height:17px; }
+
+  /* Scheda componente */
+  #card{ position:fixed; z-index:20; width:340px; max-width:calc(100vw - 24px); background:#fff; border-radius:14px; box-shadow:var(--shadow);
+    border:1px solid var(--border); overflow:hidden; animation:pop .14s ease-out; }
+  #card[hidden]{ display:none; }
+  @keyframes pop{ from{ opacity:0; transform:translateY(4px) scale(.98); } to{ opacity:1; transform:none; } }
+  .ch{ display:flex; gap:10px; align-items:center; padding:12px 12px 10px 14px; border-bottom:1px solid #eee; }
+  .ch .ic{ width:36px; height:36px; border-radius:10px; }
+  .ch .ic svg{ width:20px; height:20px; }
+  .ch .t{ flex:1; min-width:0; }
+  .ch .t b{ display:block; font-size:15px; }
+  .ch .t span{ font-size:12px; color:var(--muted); }
+  .x{ border:0; background:transparent; font-size:22px; line-height:1; color:#888; cursor:pointer; padding:4px 6px; border-radius:8px; }
+  .x:hover{ background:#f0f0f0; color:#333; }
+  .rows{ padding:6px 14px 12px; }
+  .row{ padding:8px 0; border-bottom:1px solid #f0f0f0; }
+  .row:last-child{ border-bottom:0; }
+  .row .l{ font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; }
+  .row .vv{ display:flex; align-items:center; gap:8px; margin-top:3px; }
+  .row code{ flex:1; font-family:Consolas, "Courier New", monospace; font-size:15px; font-weight:700; color:#0d1b33; overflow-wrap:anywhere; }
+  .row .txt{ flex:1; font-size:14px; font-weight:700; }
+  .cp{ flex:none; border:1px solid var(--border); background:#fff; border-radius:8px; font-size:11px; padding:4px 8px; cursor:pointer; color:var(--accent); font-family:inherit; }
+  .cp:hover{ background:#f4f7fd; }
+  .cp.ok{ color:#137333; border-color:#a8d5b5; background:#eef8f0; }
+  .miss{ display:inline-block; font-size:12px; font-weight:700; color:#8a5a00; background:#fff4d6; border:1px solid #f1d58a; border-radius:999px; padding:2px 8px; }
+  .cf{ font-size:11px; color:var(--muted); padding:8px 14px; background:#fafafa; border-top:1px solid #eee; }
+
+  .msg{ padding:40px 20px; text-align:center; color:var(--muted); font-size:14px; }
+
+  @media (max-width: 760px){
+    aside{ display:none; }
+    #stage{ padding:8px; }
+    .tools .hide-m{ display:none; }
+    #card{ left:8px !important; right:8px; bottom:8px; top:auto !important; width:auto; max-width:none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="./">← Mappa</a>
+  <div class="tit"><b id="tit">Schema interattivo</b><span id="sub">Caricamento…</span></div>
+  <div class="tools">
+    <button id="zo" title="Riduci" aria-label="Riduci">−</button>
+    <span class="zl" id="zl">100%</span>
+    <button id="zi" title="Ingrandisci" aria-label="Ingrandisci">+</button>
+    <button id="zf" title="Adatta alla finestra">Adatta</button>
+    <a id="orig" class="hide-m" href="#" target="_blank" rel="noopener">PDF originale</a>
+  </div>
+</header>
+<main>
+  <div id="stage"><div id="sheet"><canvas id="cv"></canvas><div id="hits"></div></div></div>
+  <aside>
+    <h2>Dati verifica nodi</h2>
+    <div class="help">Clicca un componente sul disegno o nell'elenco per vederne i codici.</div>
+    <div id="list"></div>
+  </aside>
+</main>
+<div id="card" hidden role="dialog" aria-modal="false"></div>
+
+<script>
+(() => {
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+  const IC = {
+    meter:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15a8 8 0 1 1 16 0"/><path d="M12 15l4-5"/><circle cx="12" cy="15" r="1.3" fill="currentColor"/></svg>',
+    motor:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>',
+    hatch:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16"/></svg>',
+    box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>',
+    sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 18l3-12h12l3 12z"/><path d="M4.5 12h15M12 6v12"/></svg>'
+  };
+  // Nome e icona di ogni tipo di dato in aree_nodi.json
+  const TIPI = {
+    misuratore:     { n:"Misuratore di portata",        i:"meter", c:"#0b3d91" },
+    motore:         { n:"Attuatore elettrico",          i:"motor", c:"#b4461b" },
+    motore_mis:     { n:"Attuatore linea misuratore",   i:"motor", c:"#b4461b" },
+    motore_scarico: { n:"Attuatore scarico",            i:"motor", c:"#8e3a8e" },
+    quadro:         { n:"Stazione TLC / quadro RTU",    i:"box",   c:"#2a7a3b" },
+    pannello:       { n:"Pannello solare",              i:"sun",   c:"#b8860b" },
+    passo_uomo:     { n:"Pozzetto – passo d'uomo",      i:"hatch", c:"#5b6573" }
+  };
+  const ORD = ["misuratore","quadro","motore","motore_mis","motore_scarico","pannello","passo_uomo"];
+  const tipo = k => TIPI[k] || { n:k, i:"box", c:"#0b3d91" };
+  const icon = (k) => `<span class="ic" style="--c:${tipo(k).c}">${IC[tipo(k).i]}</span>`;
+  // "Etichetta: valore" su ogni riga
+  const righe = (testo) => (testo || "").split("\n").filter(Boolean).map(r => {
+    const i = r.indexOf(": "); return i > 0 ? [r.slice(0, i), r.slice(i + 2)] : ["", r];
+  });
+  const mancante = v => !v || /^dato mancante$/i.test(v) || /_{3,}/.test(v);
+  const isCode = v => /[A-Z0-9_./-]{7,}/i.test(v) && !/quadrat|tond/i.test(v);
+
+  const $ = id => document.getElementById(id);
+  const n = new URLSearchParams(location.search).get("n");
+  const stage = $("stage"), sheet = $("sheet"), cv = $("cv"), hits = $("hits"), card = $("card");
+  let node, page, W, H, zoom = 1, fit = 1, selKey = null;
+
+  const fail = (m) => { stage.innerHTML = `<div class="msg">${esc(m)}</div>`; $("sub").textContent = ""; };
+  if(!window.pdfjsLib) return fail("Impossibile caricare il visualizzatore PDF.");
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+  fetch("strumenti/aree_nodi.json?cb=" + Date.now()).then(r => r.json()).then(j => {
+    node = j.nodi[n];
+    if(!node) return fail(n ? `Lo schema interattivo del nodo ${n} non è ancora disponibile.` : "Nodo non indicato.");
+    const m = node.titolo.match(/^(.*?)\s*\((.*)\)$/);
+    $("tit").textContent = m ? m[1].replace(" - ", " – ") : node.titolo;
+    $("sub").textContent = m ? m[2] : "";
+    document.title = $("tit").textContent + " – Schema interattivo";
+    $("orig").href = encodeURI(node.pdf);
+    return pdfjsLib.getDocument(encodeURI(node.pdf)).promise.then(d => d.getPage(1)).then(p => {
+      page = p; const v = p.getViewport({ scale:1 }); W = v.width; H = v.height;
+      buildHits(); buildList(); fitZoom(); render();
+      hits.classList.add("hint"); setTimeout(() => hits.classList.remove("hint"), 3400);
+    });
+  }).catch(e => fail("Errore nel caricamento dello schema: " + e.message));
+
+  function buildHits(){
+    hits.innerHTML = node.aree.map((a, i) => {
+      const [x1, y1, x2, y2] = a.rect;
+      return `<button class="hit" data-k="${esc(a.dato)}" data-i="${i}" aria-label="${esc(tipo(a.dato).n)}" title="${esc(tipo(a.dato).n)}"
+        style="left:${x1 / W * 100}%;top:${(H - y2) / H * 100}%;width:${(x2 - x1) / W * 100}%;height:${(y2 - y1) / H * 100}%"></button>`;
+    }).join("");
+    hits.querySelectorAll(".hit").forEach(b => {
+      b.onclick = (e) => { e.stopPropagation(); open(b.dataset.k, b.getBoundingClientRect()); };
+      b.onmouseenter = () => mark(b.dataset.k, true);
+      b.onmouseleave = () => mark(b.dataset.k, false);
+    });
+  }
+  function buildList(){
+    const keys = ORD.filter(k => k in node.dati).concat(Object.keys(node.dati).filter(k => !ORD.includes(k)));
+    $("list").innerHTML = keys.map(k => {
+      const r = righe(node.dati[k]);
+      return `<button class="comp" data-k="${esc(k)}">${icon(k)}<span><div class="n">${esc(tipo(k).n)}</div>
+        ${r.map(([, v]) => `<div class="v">${mancante(v) ? "dato mancante" : esc(v)}</div>`).join("")}</span></button>`;
+    }).join("");
+    $("list").querySelectorAll(".comp").forEach(b => {
+      b.onclick = (e) => { e.stopPropagation(); const first = hits.querySelector(`.hit[data-k="${b.dataset.k}"]`);
+        if(first) first.scrollIntoView({ block:"center", inline:"center", behavior:"smooth" });
+        setTimeout(() => open(b.dataset.k, (first || b).getBoundingClientRect()), first ? 250 : 0); };
+      b.onmouseenter = () => mark(b.dataset.k, true);
+      b.onmouseleave = () => mark(b.dataset.k, false);
+    });
+  }
+  function mark(k, on){
+    hits.querySelectorAll(`.hit[data-k="${k}"]`).forEach(h => h.classList.toggle("on", on));
+    document.querySelectorAll(`.comp[data-k="${k}"]`).forEach(h => h.classList.toggle("on", on));
+  }
+
+  function open(k, rect){
+    selKey = k;
+    hits.querySelectorAll(".hit").forEach(h => h.classList.toggle("sel", h.dataset.k === k));
+    const nome = $("tit").textContent;
+    card.innerHTML = `
+      <div class="ch">${icon(k)}<div class="t"><b>${esc(tipo(k).n)}</b><span>${esc(nome)}</span></div>
+        <button class="x" aria-label="Chiudi" title="Chiudi">×</button></div>
+      <div class="rows">${righe(node.dati[k]).map(([l, v]) => `<div class="row"><div class="l">${esc(l)}</div><div class="vv">
+        ${mancante(v) ? `<span class="miss">Dato mancante</span>` : isCode(v) ? `<code>${esc(v)}</code><button class="cp" data-v="${esc(v)}">Copia</button>` : `<span class="txt">${esc(v)}</span>`}
+        </div></div>`).join("")}</div>
+      <div class="cf">Fonte: Scheda verifica nodi (DL), novembre 2026</div>`;
+    card.querySelector(".x").onclick = close;
+    card.querySelectorAll(".cp").forEach(b => b.onclick = () => {
+      const done = () => { b.textContent = "Copiato"; b.classList.add("ok"); setTimeout(() => { b.textContent = "Copia"; b.classList.remove("ok"); }, 1400); };
+      (navigator.clipboard ? navigator.clipboard.writeText(b.dataset.v) : Promise.reject()).then(done, () => {
+        const t = document.createElement("textarea"); t.value = b.dataset.v; document.body.appendChild(t); t.select();
+        try{ document.execCommand("copy"); done(); }catch(e){} t.remove(); });
+    });
+    card.hidden = false;
+    // posizione: accanto all'area cliccata, dentro la finestra
+    const cw = card.offsetWidth, ch = card.offsetHeight, vh = innerHeight, g = 12, vw = stage.getBoundingClientRect().right;
+    let x = rect.right + g, y = rect.top + rect.height / 2 - ch / 2;
+    if(x + cw > vw - g) x = rect.left - cw - g;
+    if(x < g){ x = Math.min(Math.max(g, rect.left + rect.width / 2 - cw / 2), vw - cw - g); y = rect.bottom + g; if(y + ch > vh - g) y = rect.top - ch - g; }
+    card.style.left = x + "px"; card.style.top = Math.min(Math.max(g, y), vh - ch - g) + "px";
+  }
+  function close(){ card.hidden = true; selKey = null; hits.querySelectorAll(".hit.sel").forEach(h => h.classList.remove("sel")); }
+  document.addEventListener("click", (e) => { if(!card.hidden && !card.contains(e.target)) close(); });
+  document.addEventListener("keydown", (e) => { if(e.key === "Escape") close(); });
+
+  // Zoom e disegno
+  function fitZoom(){ fit = Math.min((stage.clientWidth - 32) / W, (stage.clientHeight - 32) / H); zoom = fit; }
+  let rt = null, task = null;
+  function render(){
+    sheet.style.width = W * zoom + "px"; sheet.style.height = H * zoom + "px";
+    $("zl").textContent = Math.round(zoom / fit * 100) + "%";
+    clearTimeout(rt);
+    rt = setTimeout(() => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2), vp = page.getViewport({ scale: zoom * dpr });
+      if(task) task.cancel();
+      const off = document.createElement("canvas"); off.width = vp.width; off.height = vp.height;
+      task = page.render({ canvasContext: off.getContext("2d"), viewport: vp });
+      task.promise.then(() => { cv.width = off.width; cv.height = off.height; cv.getContext("2d").drawImage(off, 0, 0); }).catch(() => {});
+    }, 60);
+  }
+  const setZoom = (z) => { close(); zoom = Math.max(fit * .5, Math.min(fit * 6, z)); render(); };
+  $("zi").onclick = () => setZoom(zoom * 1.3);
+  $("zo").onclick = () => setZoom(zoom / 1.3);
+  $("zf").onclick = () => { close(); fitZoom(); render(); };
+  stage.addEventListener("wheel", (e) => { if(e.ctrlKey){ e.preventDefault(); setZoom(zoom * (e.deltaY < 0 ? 1.15 : 1 / 1.15)); } }, { passive:false });
+  stage.addEventListener("scroll", () => { if(!card.hidden) close(); });
+  let rz; addEventListener("resize", () => { if(!page) return; clearTimeout(rz); rz = setTimeout(() => { const r = zoom / fit; fitZoom(); zoom = fit * r; render(); }, 150); });
+})();
+</script>
+</body>
+</html>
